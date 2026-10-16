@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+# Zum Livegang ersetzen durch:
+# User-agent: *
+# Allow: /
