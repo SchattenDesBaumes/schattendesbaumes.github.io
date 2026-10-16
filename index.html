@@ -66,32 +66,44 @@ h1 .red{color:var(--accent)}
 .progress__bar::after{content:"";position:absolute;top:0;bottom:0;left:72%;width:12%;background:var(--accent);animation:work 2.4s var(--ease) infinite alternate}
 @keyframes work{from{transform:translateX(-100%)}to{transform:none}}
 
-/* Bildfläche */
-.art{position:relative;border-top:var(--b) solid var(--fg);min-height:22rem;overflow:hidden;
-  background-color:var(--muted);
+/* Bildfläche mit Foto */
+.art{position:relative;border-top:var(--b) solid var(--fg);overflow:hidden;display:grid;place-items:center;
+  padding:3.5rem var(--pad) 4rem;background-color:var(--muted);
   background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);
   background-size:24px 24px}
-.art>*{position:absolute}
-.s-circle{width:min(46%,22rem);aspect-ratio:1;border-radius:50%;background:var(--accent);top:12%;right:10%;box-shadow:0 0 0 14px rgba(255,48,0,.12);
-  animation:pop .5s var(--ease) .1s both}
-.s-square{width:min(34%,16rem);aspect-ratio:1;background:var(--fg);left:12%;bottom:12%;animation:slide .45s var(--ease) .25s both}
-.s-stripe{width:min(30%,14rem);aspect-ratio:1;left:38%;top:16%;background:repeating-linear-gradient(45deg,var(--fg) 0 3px,transparent 3px 11px);
-  animation:slide .45s var(--ease) .4s both}
-.s-ring{width:min(18%,8rem);aspect-ratio:1;border-radius:50%;border:5px solid var(--fg);right:22%;bottom:10%;animation:pop .45s var(--ease) .55s both}
-.s-plus{width:3rem;height:3rem;left:8%;top:12%;animation:spin 6s linear infinite}
-.s-plus::before,.s-plus::after{content:"";position:absolute;left:50%;top:50%;background:var(--fg);transform:translate(-50%,-50%)}
-.s-plus::before{width:100%;height:4px}.s-plus::after{width:4px;height:100%}
-.s-tape{left:-5%;right:-5%;top:58%;height:3rem;transform:rotate(-8deg);
+.s-tape{position:absolute;left:-5%;right:-5%;top:64%;height:3rem;z-index:0;transform:rotate(-8deg);
   background:repeating-linear-gradient(-45deg,var(--fg) 0 22px,var(--accent) 22px 44px);
   border-block:var(--b2) solid var(--fg);animation:tape .6s var(--ease) .7s both}
+.s-plus{position:absolute;width:3rem;height:3rem;left:8%;top:9%;animation:spin 6s linear infinite}
+.s-plus::before,.s-plus::after{content:"";position:absolute;left:50%;top:50%;background:var(--fg);transform:translate(-50%,-50%)}
+.s-plus::before{width:100%;height:4px}.s-plus::after{width:4px;height:100%}
+.photo-wrap{position:relative;z-index:1;width:min(76%,22rem)}
+.photo{position:relative;z-index:1;margin:0;aspect-ratio:4/5;border:var(--b) solid var(--fg);overflow:hidden;background:var(--muted)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.photo .wink{opacity:0}
+.photo .wink.on{opacity:1}
+.p-circle{position:absolute;z-index:0;width:62%;aspect-ratio:1;border-radius:50%;background:var(--accent);
+  top:-16%;right:-22%;box-shadow:0 0 0 14px rgba(255,48,0,.12);animation:pop .4s var(--ease) .15s both}
+.p-square{position:absolute;z-index:0;width:44%;aspect-ratio:1;background:var(--fg);left:-16%;bottom:-9%;animation:slide .35s var(--ease) .3s both}
+.tick{position:absolute;z-index:2;width:1.25rem;height:1.25rem;border:2px solid var(--fg)}
+.tick--tr{top:-1.75rem;right:-1.75rem;border-left:0;border-bottom:0}
+.tick--bl{bottom:-1.75rem;left:-1.75rem;border-right:0;border-top:0}
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-@keyframes slide{from{transform:translateY(30%);opacity:0}to{transform:none;opacity:1}}
+@keyframes slide{from{transform:translateX(-30%);opacity:0}to{transform:none;opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes tape{from{transform:rotate(-8deg) scaleX(0)}to{transform:rotate(-8deg) scaleX(1)}}
 
+/* WhatsApp-Button */
+.btns{display:flex;flex-direction:column;gap:.75rem;width:fit-content}
+.btns .btn{width:100%;justify-content:space-between}
+.btn--wa{background:#25D366;border-color:#25D366;color:#000}
+.btn--wa .wa{width:1.25rem;height:1.25rem}
+.btn--wa:hover{background:var(--fg);border-color:var(--fg);color:#fff}
+
 @media (min-width:1024px){
   main{grid-template-columns:7fr 5fr}
-  .art{border-top:0;border-left:var(--b) solid var(--fg);min-height:0}
+  .art{border-top:0;border-left:var(--b) solid var(--fg);padding:clamp(3rem,5vw,5rem) clamp(2.5rem,4vw,4rem)}
+  .photo-wrap{width:100%;max-width:26rem}
 }
 
 /* Fuß */
@@ -114,24 +126,36 @@ h1 .red{color:var(--accent)}
   <div class="text">
     <p class="eyebrow">Hi, ich bin Sidar<span>.</span></p>
     <h1>Seite im Umbau<span class="red">.</span></h1>
-    <p class="lead">Hier entsteht gerade meine neue Website. Bis sie fertig ist, erreichen Sie mich direkt per Mail.</p>
-    <a class="btn" href="mailto:sidar.arbeit@gmail.com">
-      Mail schreiben
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-    </a>
+    <p class="lead">Hier entsteht gerade meine neue Website. Bis sie fertig ist, erreichen Sie mich direkt per Mail oder WhatsApp.</p>
+    <div class="btns">
+      <a class="btn" href="mailto:sidar.arbeit@gmail.com">
+        Mail schreiben
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn--wa" href="https://wa.me/4917631758293?text=Hallo%20Sidar%2C%0A%0A" target="_blank" rel="noopener">
+        WhatsApp schreiben
+        <svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.78 9.78 0 0 1-1.5-5.22c0-5.41 4.4-9.82 9.82-9.82a9.75 9.75 0 0 1 6.94 2.88 9.76 9.76 0 0 1 2.87 6.95c0 5.41-4.4 9.81-9.82 9.81zm8.35-18.16A11.73 11.73 0 0 0 12.05.2C5.54.2.24 5.5.24 12.01c0 2.08.54 4.11 1.58 5.9L.14 24l6.25-1.64a11.8 11.8 0 0 0 5.65 1.44h.01c6.51 0 11.81-5.3 11.81-11.81 0-3.16-1.23-6.12-3.46-8.35z"/></svg>
+      </a>
+    </div>
     <p class="small">Oder direkt an <a href="mailto:sidar.arbeit@gmail.com">sidar.arbeit@gmail.com</a></p>
     <div class="progress" aria-hidden="true">
       <div class="progress__label"><span>Fortschritt</span><span>Bald fertig</span></div>
       <div class="progress__bar"></div>
     </div>
   </div>
-  <div class="art" aria-hidden="true">
-    <span class="s-stripe"></span>
-    <span class="s-circle"></span>
-    <span class="s-square"></span>
-    <span class="s-ring"></span>
-    <span class="s-plus"></span>
-    <span class="s-tape"></span>
+  <div class="art">
+    <span class="s-tape" aria-hidden="true"></span>
+    <span class="s-plus" aria-hidden="true"></span>
+    <div class="photo-wrap">
+      <span class="p-circle" aria-hidden="true"></span>
+      <span class="p-square" aria-hidden="true"></span>
+      <figure class="photo">
+        <img src="/assets/img/sidar-avci.jpg" alt="Porträt von Sidar Avci mit runder Brille und lockigen Haaren" width="960" height="1200" fetchpriority="high">
+        <img class="wink" src="/assets/img/sidar-avci-wink.jpg" alt="" aria-hidden="true" width="960" height="1200" decoding="async">
+      </figure>
+      <span class="tick tick--tr" aria-hidden="true"></span>
+      <span class="tick tick--bl" aria-hidden="true"></span>
+    </div>
   </div>
 </main>
 
@@ -143,5 +167,12 @@ h1 .red{color:var(--accent)}
   </nav>
 </footer>
 
+<script>
+/* Zwinkern alle 12 Sekunden, wie auf der Hauptseite */
+(function(){
+  var w=document.querySelector('.wink'); if(!w||window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function(){ if(document.hidden) return; w.classList.add('on'); setTimeout(function(){w.classList.remove('on')},360) },12000);
+})();
+</script>
 </body>
 </html>
