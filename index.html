@@ -100,6 +100,12 @@ h1 .red{color:var(--accent)}
 .btn--wa .wa{width:1.25rem;height:1.25rem}
 .btn--wa:hover{background:var(--fg);border-color:var(--fg);color:#fff}
 
+/* Handy und Tablet: Foto zuerst, 38 % Bildhöhe (wie auf der Vorschau-Seite) */
+@media (max-width:1023px){
+  .art{order:-1;height:min(38svh,24rem);min-height:14rem;padding:1.5rem var(--pad);border-top:0;border-bottom:var(--b) solid var(--fg)}
+  .photo-wrap{width:min(50%,calc((min(38svh,24rem) - 3rem) * .8))}
+  .text{padding-top:clamp(2rem,6vw,3rem)}
+}
 @media (min-width:1024px){
   main{grid-template-columns:7fr 5fr}
   .art{border-top:0;border-left:var(--b) solid var(--fg);padding:clamp(3rem,5vw,5rem) clamp(2.5rem,4vw,4rem)}
