@@ -441,6 +441,20 @@ body::after{ /* swiss-noise */
 .work:hover .work__img img{transform:scale(1.05)}
 .works>li.is-active .work:hover .work__img img,.works--own .work:hover .work__img img{transform:none}
 
+/* ---------- HERO-HEADLINE: feste Zeilen ab Tablet ----------
+   Ab 768px steht die Headline immer in denselben vier Zeilen
+   („Ich gestalte / Marken und baue / die Abläufe / dahinter.“).
+   Die Schrift wird höchstens so groß, dass die längste Zeile in die Spalte passt.
+   Am Handy fließt der Text frei. */
+@media (min-width:768px){
+  .hero__title{container-type:inline-size}
+  .hero__h1 .l{display:block;white-space:nowrap}
+  .hero__h1{font-size:min(clamp(3rem,min(8.6vw,7.4svh),7rem),10.5cqi)}
+}
+@media (min-width:1024px){
+  .hero__h1{font-size:min(clamp(3.25rem,min(7.4vw,9.4svh),8.25rem),10.5cqi)}
+}
+
 /* ---------- LEISTUNGEN: Index (Desktop) / Auswahl mit Bildfläche (Handy) ---------- */
 #leistungen .sec-head .h2{font-size:clamp(2.25rem,6vw,5.5rem)}
 #leistungen .sec-head{padding-bottom:clamp(1.5rem,3vw,2.5rem)}
@@ -813,7 +827,7 @@ body::after{ /* swiss-noise */
     <div class="hero__main">
       <div class="hero__title">
         <p class="eyebrow">Hi, ich bin Sidar<span style="color:var(--fg)">.</span></p>
-        <h1 class="h1 hero__h1" id="h1">Ich gestalte Marken und baue die Abläufe dahinter<span class="red">.</span></h1>
+        <h1 class="h1 hero__h1" id="h1"><span class="l">Ich gestalte</span> <span class="l">Marken und baue</span> <span class="l">die Abläufe</span> <span class="l">dahinter<span class="red">.</span></span></h1>
       </div>
       <div class="hero__bottom">
         <p class="lead">Design, Content und KI-Automatisierung von einer Person. Für Unternehmen, die gut aussehen und dabei schneller arbeiten wollen.</p>
