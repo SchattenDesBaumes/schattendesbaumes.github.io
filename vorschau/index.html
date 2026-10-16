@@ -434,6 +434,10 @@ body::after{ /* swiss-noise */
 .work .arrow-link{padding-top:.4rem;font-size:.625rem;letter-spacing:.08em;min-height:32px}
 .work .arrow-link svg{width:1rem;height:1rem}
 .works--own .work__teaser{display:block;font-size:.8125rem;line-height:1.4;margin:0}
+/* Echte Projektbilder füllen die Bildfläche */
+.work__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s var(--ease)}
+.work:hover .work__img img{transform:scale(1.05)}
+.works>li.is-active .work:hover .work__img img,.works--own .work:hover .work__img img{transform:none}
 
 /* ---------- STIMMEN (ausgeblendet bis echte Zitate vorliegen) ---------- */
 .quotes{display:grid;gap:0;border-top:var(--b) solid var(--border)}
@@ -819,15 +823,12 @@ body::after{ /* swiss-noise */
   <ul class="works">
     <!-- 1 Ströer -->
     <li data-case="stroeer"><article class="work">
-      <div class="work__img bg-muted swiss-dots">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect x="70" y="56" width="260" height="146" fill="#000"/>
-          <rect class="r" x="70" y="188" width="172" height="14"/>
-          <rect x="94" y="80" width="64" height="64" fill="none" stroke="#fff" stroke-width="4"/>
-          <line x1="200" y1="202" x2="200" y2="250" stroke="#000" stroke-width="6"/>
-          <line x1="140" y1="252" x2="260" y2="252" stroke="#000" stroke-width="6"/>
-        </svg>
-        <span class="todo">[Projektbild]</span>
+      <div class="work__img bg-muted">
+        <img src="/assets/img/arbeiten/stroeer-motion-design-dooh.webp"
+             srcset="/assets/img/arbeiten/stroeer-motion-design-dooh-400.webp 400w, /assets/img/arbeiten/stroeer-motion-design-dooh.webp 800w"
+             sizes="(min-width:1200px) 17vw, (min-width:768px) 33vw, 50vw"
+             width="800" height="600" loading="lazy" decoding="async"
+             alt="Ströer Logo in Weiß auf orangem Grund">
       </div>
       <div class="work__body">
         <h3 class="work__client">Ströer</h3>
