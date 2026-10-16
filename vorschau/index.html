@@ -441,6 +441,18 @@ body::after{ /* swiss-noise */
 .work:hover .work__img img{transform:scale(1.05)}
 .works>li.is-active .work:hover .work__img img,.works--own .work:hover .work__img img{transform:none}
 
+/* ---------- Case: Ergebnis + Zitat, zusätzliche Aufrufe ---------- */
+.case-result{grid-column:1/-1;border-top:var(--b2) solid var(--fg);padding-top:1rem}
+.case-result p{font-weight:600;font-size:1.0625rem}
+.case-quote{grid-column:1/-1;margin:0;padding-left:1.25rem;border-left:var(--b) solid var(--accent)}
+.case-quote blockquote{margin:0;font-size:1.125rem;line-height:1.45;font-weight:500}
+.case-quote figcaption{margin-top:.5rem;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.works-foot{flex-wrap:wrap;align-items:center;gap:.75rem 1rem}
+.foot-q{margin:0 auto 0 0;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(1.125rem,1.6vw,1.5rem)}
+.faq-cta{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem}
+@media (min-width:1024px){.faq-cta{grid-column:5/-1}}
+@media (max-width:767px){.foot-q{width:100%}.faq-cta .btn{width:100%;min-height:4rem}}
+
 /* ---------- STIMMEN (ausgeblendet bis echte Zitate vorliegen) ---------- */
 .quotes{display:grid;gap:0;border-top:var(--b) solid var(--border)}
 .quote{padding:var(--pad);border-bottom:var(--b2) solid var(--border);transition:transform .15s linear,border-color .15s linear}
@@ -719,8 +731,8 @@ body::after{ /* swiss-noise */
       <nav class="nav" aria-label="Hauptnavigation">
         <ul>
           <li><a href="#arbeiten"><span class="slide"><span><span>Arbeiten</span><span aria-hidden="true">Arbeiten</span></span></span></a></li>
-          <li><a href="#ueber-mich"><span class="slide"><span><span>Über mich</span><span aria-hidden="true">Über mich</span></span></span></a></li>
           <li><a href="#leistungen"><span class="slide"><span><span>Leistungen</span><span aria-hidden="true">Leistungen</span></span></span></a></li>
+          <li><a href="#ueber-mich"><span class="slide"><span><span>Über mich</span><span aria-hidden="true">Über mich</span></span></span></a></li>
           <li><a href="#kontakt"><span class="slide"><span><span>Kontakt</span><span aria-hidden="true">Kontakt</span></span></span></a></li>
         </ul>
       </nav>
@@ -731,7 +743,7 @@ body::after{ /* swiss-noise */
   </div>
 </header>
 <div class="m1-panel" id="m1-panel" data-menu>
-  <ul class="m1-list"><li><a href="#arbeiten"><span class="m1-list__n">01</span><span class="m1-list__t">Arbeiten</span></a></li><li><a href="#ueber-mich"><span class="m1-list__n">02</span><span class="m1-list__t">Über mich</span></a></li><li><a href="#leistungen"><span class="m1-list__n">03</span><span class="m1-list__t">Leistungen</span></a></li><li><a href="#kontakt"><span class="m1-list__n">04</span><span class="m1-list__t">Kontakt</span></a></li></ul>
+  <ul class="m1-list"><li><a href="#arbeiten"><span class="m1-list__n">01</span><span class="m1-list__t">Arbeiten</span></a></li><li><a href="#leistungen"><span class="m1-list__n">02</span><span class="m1-list__t">Leistungen</span></a></li><li><a href="#ueber-mich"><span class="m1-list__n">03</span><span class="m1-list__t">Über mich</span></a></li><li><a href="#kontakt"><span class="m1-list__n">04</span><span class="m1-list__t">Kontakt</span></a></li></ul>
   <div class="m1-foot">
     <a class="btn btn--red" href="https://wa.me/4917631758293?text=Hallo%20Sidar%2C%0A%0AProjekt%3A%0ABis%20wann%3A%0AWas%20schon%20da%20ist%3A" target="_blank" rel="noopener">Projekt per WhatsApp schildern <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
     <p>Lieber per Mail? <a class="tlink" href="mailto:sidar.arbeit@gmail.com">sidar.arbeit@gmail.com</a></p>
@@ -846,8 +858,13 @@ body::after{ /* swiss-noise */
             <div>
               <h4>Was ich gemacht habe</h4>
               <p>Ich habe den gesamten Animationsprozess übernommen, vom Konzept bis zur Übergabe. Den Stil habe ich bewusst reduziert, damit der Spot auch im Vorbeigehen funktioniert.</p>
+            </div>
+            <div class="case-result">
+              <h4>Ergebnis</h4>
               <p>Der Spot läuft heute in den Stationen. Ströer hat alle Rohdaten bekommen und kann intern damit weiterarbeiten.</p>
             </div>
+            <!-- Kundenzitat: nur mit echtem, freigegebenem Zitat veröffentlichen. Sonst diese figure löschen. -->
+            <figure class="case-quote"><blockquote><p><span class="todo">[Kundenzitat ergänzen, 1–2 Sätze]</span></p></blockquote><figcaption><span class="todo">[Name, Rolle]</span></figcaption></figure>
           </div>
           <dl class="case-facts">
             <dt>Leistung</dt><dd>Konzept · Animation</dd>
@@ -890,10 +907,16 @@ body::after{ /* swiss-noise */
               <span class="todo">[VON SIDAR ERGÄNZEN: Ausgangslage, beteiligte Systeme (MOCO, Dokumentenerstellung, Signatur), Umfang.]</span>
             </div>
             <div>
-              <h4>Ergebnis</h4>
+              <h4>Was ich gemacht habe</h4>
               <p>Ein Workflow, der Auftragsverarbeitungsverträge erstellt, versendet, ablegt und nachverfolgt. Gebaut mit n8n.</p>
-              <p>Heute erledigt das ein Ablauf im Hintergrund, inklusive Erinnerung, wenn eine Unterschrift fehlt.</p>
             </div>
+            <div class="case-result">
+              <h4>Ergebnis</h4>
+              <p>Heute erledigt das ein Ablauf im Hintergrund, inklusive Erinnerung, wenn eine Unterschrift fehlt.</p>
+              <span class="todo">[VON SIDAR ERGÄNZEN: Zeitersparnis pro Vertrag oder pro Monat, falls bekannt.]</span>
+            </div>
+            <!-- Kundenzitat: nur mit echtem, freigegebenem Zitat veröffentlichen. Sonst diese figure löschen. -->
+            <figure class="case-quote"><blockquote><p><span class="todo">[Kundenzitat ergänzen, 1–2 Sätze]</span></p></blockquote><figcaption><span class="todo">[Name, Rolle]</span></figcaption></figure>
           </div>
           <dl class="case-facts">
             <dt>Leistung</dt><dd>KI-Automatisierung</dd>
@@ -935,8 +958,15 @@ body::after{ /* swiss-noise */
             </div>
             <div>
               <h4>Was ich gemacht habe</h4>
-              <p>Wir haben die Website in WordPress neu aufgebaut: klare Struktur, neue Unterseiten, überarbeitete Texte und bessere Bilder. Seitdem stehen die Büros im Mittelpunkt.</p>
+              <p>Wir haben die Website in WordPress neu aufgebaut: klare Struktur, neue Unterseiten, überarbeitete Texte und bessere Bilder.</p>
             </div>
+            <div class="case-result">
+              <h4>Ergebnis</h4>
+              <p>Seitdem stehen die Büros im Mittelpunkt.</p>
+              <span class="todo">[VON SIDAR ERGÄNZEN: mehr Anfragen oder Vermietungen seit dem Relaunch, falls bekannt.]</span>
+            </div>
+            <!-- Kundenzitat: nur mit echtem, freigegebenem Zitat veröffentlichen. Sonst diese figure löschen. -->
+            <figure class="case-quote"><blockquote><p><span class="todo">[Kundenzitat ergänzen, 1–2 Sätze]</span></p></blockquote><figcaption><span class="todo">[Name, Rolle]</span></figcaption></figure>
           </div>
           <dl class="case-facts">
             <dt>Leistung</dt><dd>Webdesign · Text</dd>
@@ -977,8 +1007,13 @@ body::after{ /* swiss-noise */
             <div>
               <h4>Was ich gemacht habe</h4>
               <p>In vier Wochen habe ich den Auftritt aufgebaut: Logo, Farbsystem, Tonalität, Bildsprache und eine vollständige Broschüre.</p>
+            </div>
+            <div class="case-result">
+              <h4>Ergebnis</h4>
               <p>Beim nächsten Tag der offenen Tür reichte es, die Broschüre zu überreichen.</p>
             </div>
+            <!-- Kundenzitat: nur mit echtem, freigegebenem Zitat veröffentlichen. Sonst diese figure löschen. -->
+            <figure class="case-quote"><blockquote><p><span class="todo">[Kundenzitat ergänzen, 1–2 Sätze]</span></p></blockquote><figcaption><span class="todo">[Name, Rolle]</span></figcaption></figure>
           </div>
           <dl class="case-facts">
             <dt>Leistung</dt><dd>Logo · Text · Print</dd>
@@ -1022,6 +1057,12 @@ body::after{ /* swiss-noise */
               <h4>Was ich gemacht habe</h4>
               <span class="todo">[VON SIDAR ERGÄNZEN: 2–3 Sätze zum Vorgehen. Eigene Rolle klar benennen.]</span>
             </div>
+            <div class="case-result">
+              <h4>Ergebnis</h4>
+              <span class="todo">[VON SIDAR ERGÄNZEN: Was hat es gebracht? Ein Satz, gern mit Zahl.]</span>
+            </div>
+            <!-- Kundenzitat: nur mit echtem, freigegebenem Zitat veröffentlichen. Sonst diese figure löschen. -->
+            <figure class="case-quote"><blockquote><p><span class="todo">[Kundenzitat ergänzen, 1–2 Sätze]</span></p></blockquote><figcaption><span class="todo">[Name, Rolle]</span></figcaption></figure>
           </div>
           <dl class="case-facts">
             <dt>Leistung</dt><dd>Logo · Schriftzug</dd>
@@ -1068,6 +1109,12 @@ body::after{ /* swiss-noise */
               <h4>Was ich gemacht habe</h4>
               <span class="todo">[VON SIDAR ERGÄNZEN: 2–3 Sätze zum Vorgehen. Eigene Rolle klar benennen.]</span>
             </div>
+            <div class="case-result">
+              <h4>Ergebnis</h4>
+              <span class="todo">[VON SIDAR ERGÄNZEN: Was hat es gebracht? Ein Satz, gern mit Zahl.]</span>
+            </div>
+            <!-- Kundenzitat: nur mit echtem, freigegebenem Zitat veröffentlichen. Sonst diese figure löschen. -->
+            <figure class="case-quote"><blockquote><p><span class="todo">[Kundenzitat ergänzen, 1–2 Sätze]</span></p></blockquote><figcaption><span class="todo">[Name, Rolle]</span></figcaption></figure>
           </div>
           <dl class="case-facts">
             <dt>Leistung</dt><dd>Logo · Text · Social Media</dd>
@@ -1083,6 +1130,8 @@ body::after{ /* swiss-noise */
   </div>
 
   <div class="works-foot">
+    <p class="foot-q">Etwas Ähnliches geplant?</p>
+    <a class="btn btn--accent" href="https://wa.me/4917631758293?text=Hallo%20Sidar%2C%0A%0AProjekt%3A%0ABis%20wann%3A%0AWas%20schon%20da%20ist%3A" target="_blank" rel="noopener">Projekt per WhatsApp schildern <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
     <a class="btn btn--secondary" href="/arbeiten/">
       Alle Arbeiten ansehen
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
@@ -1163,51 +1212,7 @@ body::after{ /* swiss-noise */
   </div>
 </section>
 
-<!-- ======================= KUNDENSTIMMEN ======================= -->
-<!-- AUSGEBLENDET bis 2–3 echte Kundenstimmen vorliegen (Master-MD 5.5).
-     Zum Einblenden: Attribut „hidden“ entfernen und Zitate eintragen.
-     Keine Platzhalter oder erfundenen Stimmen veröffentlichen. -->
-<section class="sec" id="stimmen" aria-labelledby="stimmen-h" hidden>
-  <header class="sec-head grid wrap">
-    <p class="label sec-label"><span class="num"></span><span>Stimmen</span></p>
-    <h2 class="h2" id="stimmen-h">Was Kunden sagen</h2>
-  </header>
-  <div class="quotes">
-    <figure class="quote">
-      <blockquote><p>„[Zitat, 1–2 Sätze]“</p></blockquote>
-      <figcaption class="small" style="margin-top:1.25rem">[Name], [Rolle], [Firma]</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ======================= ÜBER MICH ======================= -->
-<section class="sec" id="ueber-mich" aria-labelledby="ueber-h">
-  <div class="grid wrap about">
-    <figure class="about__media ph bg-muted swiss-diagonal">
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <rect x="0" y="300" width="400" height="200" fill="#000"/>
-        <circle cx="200" cy="200" r="110" fill="#fff" stroke="#000" stroke-width="4"/>
-        <rect class="r" x="290" y="60" width="56" height="56"/>
-        <line x1="40" y1="0" x2="40" y2="500" stroke="#000" stroke-width="1"/>
-        <line x1="0" y1="440" x2="400" y2="440" stroke="#fff" stroke-width="1"/>
-      </svg>
-      <span class="todo">[Porträtfoto]</span>
-      <img src="/assets/img/sidar-avci-ueber-mich.jpg" alt="Sidar Avci bei der Arbeit" onerror="this.remove()">
-    </figure>
-    <div class="about__text">
-      <header class="sec-head">
-        <p class="label sec-label rv"><span class="num"></span><span>Über mich</span></p>
-        <h2 class="h2 h2--side rv" id="ueber-h" style="margin-top:1.5rem">Über mich</h2>
-      </header>
-      <div class="body rv">
-        <p class="lead" style="max-width:none">Ich bin Sidar Avci, 24, Mediendesigner aus Ingolstadt. Seit 2023 arbeite ich selbstständig für Kunden im DACH-Raum, seit 2025 zusätzlich als Webdesigner und Programmierer.</p>
-        <p>Angefangen habe ich beim Zeichnen. Daraus wurde Grafikdesign, dann Social Media, dann Webentwicklung. Irgendwann ist mir aufgefallen, wie viele Arbeitsschritte bei meinen Kunden noch von Hand liefen. Seitdem baue ich auch die Technik dahinter.</p>
-        <p>Gestaltung und Umsetzung liegen damit bei derselben Person. In der Übergabe zwischen Designer und Entwickler geht nichts verloren, und eine Abstimmungsrunde fällt weg.</p>
-      </div>
-      <p class="facts-line">Mediendesign B.A. (IU Internationale Hochschule, seit 2025) · Fachabitur Gestaltung · Deutsch, Türkisch, Englisch</p>
-    </div>
-  </div>
-</section>
+<!-- Kundenstimmen stehen jetzt direkt im jeweiligen Case (Ergebnis + Zitat). -->
 
 <!-- ======================= LEISTUNGEN ======================= -->
 <section class="sec" id="leistungen" aria-labelledby="leistungen-h">
@@ -1304,6 +1309,35 @@ body::after{ /* swiss-noise */
   </div>
 </section>
 
+<!-- ======================= ÜBER MICH ======================= -->
+<section class="sec" id="ueber-mich" aria-labelledby="ueber-h">
+  <div class="grid wrap about">
+    <figure class="about__media ph bg-muted swiss-diagonal">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect x="0" y="300" width="400" height="200" fill="#000"/>
+        <circle cx="200" cy="200" r="110" fill="#fff" stroke="#000" stroke-width="4"/>
+        <rect class="r" x="290" y="60" width="56" height="56"/>
+        <line x1="40" y1="0" x2="40" y2="500" stroke="#000" stroke-width="1"/>
+        <line x1="0" y1="440" x2="400" y2="440" stroke="#fff" stroke-width="1"/>
+      </svg>
+      <span class="todo">[Porträtfoto]</span>
+      <img src="/assets/img/sidar-avci-ueber-mich.jpg" alt="Sidar Avci bei der Arbeit" onerror="this.remove()">
+    </figure>
+    <div class="about__text">
+      <header class="sec-head">
+        <p class="label sec-label rv"><span class="num"></span><span>Über mich</span></p>
+        <h2 class="h2 h2--side rv" id="ueber-h" style="margin-top:1.5rem">Über mich</h2>
+      </header>
+      <div class="body rv">
+        <p class="lead" style="max-width:none">Ich bin Sidar Avci, 24, Mediendesigner aus Ingolstadt. Seit 2023 arbeite ich selbstständig für Kunden im DACH-Raum, seit 2025 zusätzlich als Webdesigner und Programmierer.</p>
+        <p>Angefangen habe ich beim Zeichnen. Daraus wurde Grafikdesign, dann Social Media, dann Webentwicklung. Irgendwann ist mir aufgefallen, wie viele Arbeitsschritte bei meinen Kunden noch von Hand liefen. Seitdem baue ich auch die Technik dahinter.</p>
+        <p>Gestaltung und Umsetzung liegen damit bei derselben Person. In der Übergabe zwischen Designer und Entwickler geht nichts verloren, und eine Abstimmungsrunde fällt weg.</p>
+      </div>
+      <p class="facts-line">Mediendesign B.A. (IU Internationale Hochschule, seit 2025) · Fachabitur Gestaltung · Deutsch, Türkisch, Englisch</p>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= ABLAUF ======================= -->
 <section class="sec bg-muted swiss-grid-pattern" id="ablauf" aria-labelledby="ablauf-h">
   <header class="sec-head grid wrap">
@@ -1361,6 +1395,10 @@ body::after{ /* swiss-noise */
         <div class="qa__a"><p>Nein. Gespräch und Angebot sind kostenlos und unverbindlich. Verbindlich wird es erst, wenn Sie das Angebot schriftlich bestätigen.</p></div></details>
       <details class="qa"><summary><span class="qa__n">09</span><span>Was brauchen Sie von mir, um anzufangen?</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="qa__a"><p>Ziel, Zielgruppe und eine grobe visuelle Richtung. Dazu alles, was schon existiert: Logo, Texte, Bilder, Zugänge. Wenn davon nichts da ist, fangen wir genau damit an.</p></div></details>
+    </div>
+    <div class="faq-cta">
+      <p class="foot-q">Ihre Frage ist nicht dabei?</p>
+      <a class="btn btn--accent" href="https://wa.me/4917631758293?text=Hallo%20Sidar%2C%0A%0AProjekt%3A%0ABis%20wann%3A%0AWas%20schon%20da%20ist%3A" target="_blank" rel="noopener">Direkt per WhatsApp fragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
