@@ -254,6 +254,8 @@ body::after{ /* swiss-noise */
   linear-gradient(var(--c),var(--c)) 0 100%/44% 44% no-repeat,
   linear-gradient(var(--c),var(--c)) 100% 100%/44% 44% no-repeat}
 .hero__photo{position:relative;z-index:1;aspect-ratio:4/5;border:var(--b) solid var(--fg);overflow:hidden}
+/* Porträt in Farbe (alle anderen Bilder bleiben schwarz-weiß) */
+.hero__photo.ph>img{filter:none}
 .hero__photo>.hero__wink{z-index:3;opacity:0}
 .hero__photo>.hero__wink.on{opacity:1}
 .hero__photo .todo{position:absolute;left:1rem;top:1rem;background:#fff;font-size:.75rem}
