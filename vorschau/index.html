@@ -412,7 +412,7 @@ body::after{ /* swiss-noise */
 .works--own .work__teaser{margin-bottom:.5rem}
 
 /* ---------- ARBEITEN KOMPAKT (Variante C: kleine Kacheln) ----------
-   Ab 1200px alle sieben Arbeiten in einer Reihe, 768–1199px drei, Handy zwei.
+   Ab 1200px acht Arbeiten im Raster 4 × 2, 768–1199px drei, Handy zwei.
    Freie Arbeiten: drei Kacheln mit flacherem Bild und Kurztext. */
 .works-top{padding-top:clamp(3rem,6vw,5rem)}
 .works-head{padding-block:1.25rem clamp(1.5rem,3vw,2.5rem)}
@@ -424,14 +424,13 @@ body::after{ /* swiss-noise */
 .works{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (min-width:768px){.works{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (min-width:1200px){
-  .works{grid-template-columns:repeat(7,minmax(0,1fr))}
+  .works{grid-template-columns:repeat(4,minmax(0,1fr))}
   .works.works--own{grid-template-columns:repeat(3,minmax(0,1fr))}
   .works--own .work__img{aspect-ratio:2/1}
 }
-/* Füllfläche am Ende der Arbeiten: Handy 2 Spalten (1 frei), Tablet 3 Spalten (2 frei), ab 1200px 7 in einer Reihe */
-.works-fill{border-right:var(--b) solid var(--border);border-bottom:var(--b) solid var(--border);min-height:4rem}
-@media (min-width:768px){.works-fill{grid-column:span 2}}
-@media (min-width:1200px){.works-fill{display:none}}
+/* Füllfläche am Ende der Arbeiten (8 Kacheln): Handy 2 Spalten voll, Tablet 3 Spalten (1 frei), ab 1200px 4 × 2 voll */
+.works-fill{border-right:var(--b) solid var(--border);border-bottom:var(--b) solid var(--border);min-height:4rem;display:none}
+@media (min-width:768px) and (max-width:1199px){.works-fill{display:block}}
 .work__img{aspect-ratio:4/3}
 .work__body{gap:.3rem;padding:.8rem .9rem .7rem}
 .works .work__client{font-size:clamp(1.0625rem,1.35vw,1.375rem);letter-spacing:-.02em;line-height:1}
@@ -912,7 +911,7 @@ body::after{ /* swiss-noise */
       <div class="work__img bg-muted">
         <img src="/assets/img/arbeiten/stroeer-motion-design-dooh.webp"
              srcset="/assets/img/arbeiten/stroeer-motion-design-dooh-400.webp 400w, /assets/img/arbeiten/stroeer-motion-design-dooh.webp 800w"
-             sizes="(min-width:1200px) 17vw, (min-width:768px) 33vw, 50vw"
+             sizes="(min-width:1200px) 25vw, (min-width:768px) 33vw, 50vw"
              width="800" height="600" loading="lazy" decoding="async"
              alt="Ströer Logo in Weiß auf orangem Grund">
       </div>
@@ -956,7 +955,7 @@ body::after{ /* swiss-noise */
       <div class="work__img bg-muted">
         <img src="/assets/img/arbeiten/av-vertrags-bot.webp"
              srcset="/assets/img/arbeiten/av-vertrags-bot-400.webp 400w, /assets/img/arbeiten/av-vertrags-bot.webp 800w"
-             sizes="(min-width:1200px) 15vw, (min-width:768px) 33vw, 50vw"
+             sizes="(min-width:1200px) 25vw, (min-width:768px) 33vw, 50vw"
              width="800" height="600" loading="lazy" decoding="async"
              alt="Logo von fairwilly auf hellgrauem Grund">
       </div>
@@ -987,6 +986,47 @@ body::after{ /* swiss-noise */
           </dl>
           <div class="case-actions">
             <a class="btn btn--accent" href="/arbeiten/av-vertrags-bot/">Ganzen Case ansehen<span class="sr-only">: AV-Vertrags-Bot</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article></li>
+
+    <!-- Nomo (Case Study unter /arbeiten/nomo/), gemeinsam mit fairwilly -->
+    <li data-case="nomo"><article class="work">
+      <div class="work__img bg-muted">
+        <img src="/assets/img/arbeiten/nomo.webp"
+             srcset="/assets/img/arbeiten/nomo-400.webp 400w, /assets/img/arbeiten/nomo.webp 800w"
+             sizes="(min-width:1200px) 25vw, (min-width:768px) 33vw, 50vw"
+             width="800" height="600" loading="lazy" decoding="async"
+             alt="Nomo, ein Roboter-Maskottchen mit Krawatte und Aktentasche">
+      </div>
+      <div class="work__body">
+        <h3 class="work__client">Nomo</h3>
+        <p class="work__meta">KI · n8n · Webdesign</p>
+        <p class="work__teaser">Ein KI-Assistent empfängt Besucher auf Kanzlei-Websites und übergibt das Anliegen an die Kanzlei.</p>
+        <button class="arrow-link work__toggle" type="button" aria-expanded="false" aria-controls="case-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>Case ansehen<span class="sr-only">: Nomo</span></button>
+        <div class="work__more" hidden>
+          <div class="case-blocks">
+            <div>
+              <h4>Worum es ging</h4>
+              <p>Kleine und mittlere Kanzleien verlieren Anfragen, bevor es zum Erstgespräch kommt. Nomo übernimmt das Vorzimmer auf der Website.</p>
+            </div>
+            <div>
+              <h4>Was ich gemacht habe</h4>
+              <p>Nomo ist ein Produkt von fairwilly, gemeinsam entwickelt. Mein Teil: die Workflows in n8n mit Chatbot, Crawler und Bot-Bauer, die Landingpage und das Branding.</p>
+            </div>
+            <div class="case-result">
+              <h4>Ergebnis</h4>
+              <p>Nomo läuft live bei einer Pilotkanzlei. Neue Kanzlei-Bots entstehen weitgehend automatisch aus einer Website-URL.</p>
+            </div>
+          </div>
+          <dl class="case-facts">
+            <dt>Kunde</dt><dd>fairwilly</dd>
+            <dt>Team</dt><dd>Gemeinsam mit fairwilly</dd>
+            <dt>Stand</dt><dd>Live bei einer Pilotkanzlei</dd>
+          </dl>
+          <div class="case-actions">
+            <a class="btn btn--accent" href="/arbeiten/nomo/">Ganzen Case ansehen<span class="sr-only">: Nomo</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </div>
@@ -1193,7 +1233,7 @@ body::after{ /* swiss-noise */
       <div class="work__img bg-muted">
         <img src="/assets/img/arbeiten/dreamberry-studios.webp"
              srcset="/assets/img/arbeiten/dreamberry-studios-400.webp 400w, /assets/img/arbeiten/dreamberry-studios.webp 800w"
-             sizes="(min-width:1200px) 15vw, (min-width:768px) 33vw, 50vw"
+             sizes="(min-width:1200px) 25vw, (min-width:768px) 33vw, 50vw"
              width="800" height="600" loading="lazy" decoding="async"
              alt="Logo von Dreamberry Studios auf hellgrauem Grund">
       </div>
