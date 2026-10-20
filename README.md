@@ -8,6 +8,7 @@ Statische Website, gehostet über GitHub Pages.
 | `index.html`            | `/`                        |
 | `arbeiten/index.html`   | `/arbeiten/`               |
 | `referenzen/index.html` | `/referenzen/`             |
+| `arbeiten/av-vertrags-bot/index.html` | `/arbeiten/av-vertrags-bot/` (Case Study) |
 | `impressum/index.html`  | `/impressum/`              |
 | `datenschutz/index.html`| `/datenschutz/`            |
 | `404.html`              | jede unbekannte Adresse    |
@@ -21,7 +22,7 @@ Intern immer mit Schrägstrich am Anfang und Ende verlinken: `href="/leistungen/
 
 ## Livegang-Checkliste
 - [ ] `noindex`-Zeile in allen HTML-Dateien entfernen
-- [ ] In `referenzen/index.html` alle Links `/vorschau/` durch `/` ersetzen
+- [ ] In `referenzen/index.html` und `arbeiten/av-vertrags-bot/index.html` alle Links `/vorschau/` durch `/` ersetzen
 - [ ] `robots.txt` auf `Allow: /` umstellen
 - [ ] `49NUMMER` durch echte WhatsApp-Nummer ersetzen
 - [ ] Impressum + Datenschutz befüllen

@@ -476,7 +476,7 @@ body::after{ /* swiss-noise */
 
 /* Handy: wie Variante C */
 @media (max-width:767px){
-  .sx summary{grid-template-columns:2.75rem 1fr 2rem;gap:.75rem;padding:1.15rem var(--pad)}
+  .sx summary{grid-template-columns:2.75rem minmax(0,1fr) 2rem;gap:.75rem;padding:1.15rem var(--pad)}
   .sx__t{font-size:clamp(1.375rem,6vw,1.75rem)}
   .sx__p,.sx__i,.sx .plus{display:none}
   .sx__a svg{width:1.5rem;height:1.5rem;transform:rotate(90deg);transition:transform .3s var(--ease)}
@@ -951,52 +951,42 @@ body::after{ /* swiss-noise */
       </div>
     </article></li>
 
-    <!-- 2 FairWilly -->
-    <li data-case="fairwilly-av-bot"><article class="work">
-      <div class="work__img bg-muted swiss-grid-pattern">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <line x1="70" y1="130" x2="318" y2="130" stroke="#000" stroke-width="4"/>
-          <path d="M170 150 V220 H230" fill="none" stroke="#000" stroke-width="4"/>
-          <rect x="50" y="110" width="40" height="40" fill="#fff" stroke="#000" stroke-width="4"/>
-          <rect x="150" y="110" width="40" height="40" fill="#000"/>
-          <rect x="250" y="110" width="40" height="40" fill="#fff" stroke="#000" stroke-width="4"/>
-          <rect x="230" y="204" width="32" height="32" fill="#fff" stroke="#000" stroke-width="4"/>
-          <circle class="r" cx="340" cy="130" r="24"/>
-        </svg>
-        <span class="todo">[Projektbild]</span>
+    <!-- 2 AV-Vertrags-Bot (Case Study unter /arbeiten/av-vertrags-bot/). Kundenname im Text vorerst nicht nennen. -->
+    <li data-case="av-vertrags-bot"><article class="work">
+      <div class="work__img bg-muted">
+        <img src="/assets/img/arbeiten/av-vertrags-bot.webp"
+             srcset="/assets/img/arbeiten/av-vertrags-bot-400.webp 400w, /assets/img/arbeiten/av-vertrags-bot.webp 800w"
+             sizes="(min-width:1200px) 15vw, (min-width:768px) 33vw, 50vw"
+             width="800" height="600" loading="lazy" decoding="async"
+             alt="Logo von fairwilly auf hellgrauem Grund">
       </div>
       <div class="work__body">
-        <h3 class="work__client">FairWilly</h3>
-        <p class="work__meta">KI-Automatisierung · n8n</p>
-        <p class="work__teaser">Ein Bot, der AV-Verträge erstellt, versendet, ablegt und nachverfolgt.</p>
-        <button class="arrow-link work__toggle" type="button" aria-expanded="false" aria-controls="case-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>Case ansehen<span class="sr-only">: FairWilly</span></button>
-        <!-- Freigabe von FairWilly nötig, bevor dieser Case online geht (Master-MD 6.2 und 14.3). -->
+        <h3 class="work__client">AV-Vertrags-Bot</h3>
+        <p class="work__meta">Automatisierung · n8n</p>
+        <p class="work__teaser">Ein Bot erstellt DSGVO-Verträge, holt die Unterschriften ein und legt sie ab.</p>
+        <button class="arrow-link work__toggle" type="button" aria-expanded="false" aria-controls="case-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>Case ansehen<span class="sr-only">: AV-Vertrags-Bot</span></button>
         <div class="work__more" hidden>
           <div class="case-blocks">
             <div>
               <h4>Worum es ging</h4>
-              <p>AV-Verträge nach Art. 28 DSGVO wurden manuell erstellt, verschickt und nachverfolgt.</p>
-              <span class="todo">[VON SIDAR ERGÄNZEN: Ausgangslage, beteiligte Systeme (MOCO, Dokumentenerstellung, Signatur), Umfang.]</span>
+              <p>Verträge zur Auftragsverarbeitung nach DSGVO liefen komplett von Hand: Daten im CRM suchen, Serienbrief, verschicken, nachhaken, hochladen.</p>
             </div>
             <div>
               <h4>Was ich gemacht habe</h4>
-              <p>Ein Workflow, der Auftragsverarbeitungsverträge erstellt, versendet, ablegt und nachverfolgt. Gebaut mit n8n.</p>
+              <p>Drei Abläufe in n8n: Verträge aus den CRM-Daten bauen und zur digitalen Unterschrift schicken, unterschriebene Verträge ablegen, säumige Kunden erinnern. Die Vorlage kam vom Kunden, alles andere habe ich umgesetzt.</p>
             </div>
             <div class="case-result">
               <h4>Ergebnis</h4>
-              <p>Heute erledigt das ein Ablauf im Hintergrund, inklusive Erinnerung, wenn eine Unterschrift fehlt.</p>
-              <span class="todo">[VON SIDAR ERGÄNZEN: Zeitersparnis pro Vertrag oder pro Monat, falls bekannt.]</span>
+              <p>Der Bot läuft im Echtbetrieb. Von fünf Handgriffen pro Vertrag sind zwei geblieben: starten und unterschreiben.</p>
             </div>
-            <!-- Kundenzitat: nur mit echtem, freigegebenem Zitat veröffentlichen. Sonst diese figure löschen. -->
-            <figure class="case-quote"><blockquote><p><span class="todo">[Kundenzitat ergänzen, 1–2 Sätze]</span></p></blockquote><figcaption><span class="todo">[Name, Rolle]</span></figcaption></figure>
           </div>
           <dl class="case-facts">
-            <dt>Leistung</dt><dd>KI-Automatisierung</dd>
-            <dt>Werkzeuge</dt><dd>n8n</dd>
-            <dt>Rolle</dt><dd><span class="todo">[Rolle ergänzen]</span></dd>
+            <dt>Leistung</dt><dd>Konzept und Umsetzung der Automatisierung</dd>
+            <dt>Umfang</dt><dd>Drei Abläufe in n8n</dd>
+            <dt>Stand</dt><dd>Im Echtbetrieb</dd>
           </dl>
           <div class="case-actions">
-            <a class="btn btn--accent" href="/arbeiten/#fairwilly">Ganzen Case ansehen<span class="sr-only">: FairWilly</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--accent" href="/arbeiten/av-vertrags-bot/">Ganzen Case ansehen<span class="sr-only">: AV-Vertrags-Bot</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </div>
@@ -1201,11 +1191,11 @@ body::after{ /* swiss-noise */
     <!-- 7 Dreamberry Studios (ausführlich unter /referenzen/). Agentur nur als Model- und Social-Media-Agentur beschreiben. -->
     <li data-case="dreamberry"><article class="work">
       <div class="work__img bg-muted">
-        <img src="/assets/img/arbeiten/dreamberry-instagram-content.webp"
-             srcset="/assets/img/arbeiten/dreamberry-instagram-content-400.webp 400w, /assets/img/arbeiten/dreamberry-instagram-content.webp 800w"
+        <img src="/assets/img/arbeiten/dreamberry-studios.webp"
+             srcset="/assets/img/arbeiten/dreamberry-studios-400.webp 400w, /assets/img/arbeiten/dreamberry-studios.webp 800w"
              sizes="(min-width:1200px) 15vw, (min-width:768px) 33vw, 50vw"
              width="800" height="600" loading="lazy" decoding="async"
-             alt="Drei Instagram-Beiträge für Dreamberry Studios, aufgefächert">
+             alt="Logo von Dreamberry Studios auf hellgrauem Grund">
       </div>
       <div class="work__body">
         <h3 class="work__client">Dreamberry Studios</h3>
