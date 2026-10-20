@@ -1036,6 +1036,50 @@ html{scroll-padding-top:calc(var(--hdr-h,72px) + var(--idx-h,56px) + 8px)}
 ol.fx{list-style:none;margin:0;padding:0}
 [data-fx] .sb .sig path{animation:none!important}
 .a-node{transition:background-color .35s ease,border-color .35s ease,color .35s ease,transform .45s cubic-bezier(.25,1,.5,1)}
+
+/* ---------- MOBIL: Menü einklappen (Menü A) ---------- */
+@media (max-width:1023px){
+  .hdr{flex-wrap:nowrap;height:4.25rem;padding-top:0;row-gap:0}
+  .nav{display:none}
+}
+
+.m1-btn,.m1-panel{display:none}
+@media (max-width:1023px){
+  .btn--nav{display:none}
+  .m1-btn{display:inline-flex;align-items:center;gap:.75rem;min-height:44px;padding:0;border:0;background:none;cursor:pointer;
+    font:700 .75rem/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--fg)}
+  .m1-btn__icon{position:relative;width:2.75rem;height:2.75rem;background:var(--fg);transition:background-color .2s linear}
+  .m1-btn__icon i{position:absolute;left:50%;top:50%;width:1.25rem;height:2px;margin:-1px 0 0 -.625rem;background:#fff;transition:transform .3s var(--ease)}
+  .m1-btn__icon i:first-child{transform:translateY(-4px)}
+  .m1-btn__icon i:last-child{transform:translateY(4px)}
+  .menu-open .m1-btn__icon{background:var(--accent)}
+  .menu-open .m1-btn__icon i:first-child{transform:rotate(45deg)}
+  .menu-open .m1-btn__icon i:last-child{transform:rotate(-45deg)}
+  .m1-panel{display:flex;flex-direction:column;justify-content:space-between;gap:2rem;position:fixed;inset:0;z-index:49;overflow:auto;
+    background:var(--fg);color:#fff;padding:calc(var(--hdr-h,68px) + 1.5rem) var(--pad) 2rem;
+    clip-path:circle(0 at calc(100% - var(--pad) - 1.4rem) calc(var(--hdr-h,68px) / 2));visibility:hidden;
+    transition:clip-path .6s var(--ease),visibility 0s linear .6s}
+  .menu-open .m1-panel{clip-path:circle(160% at calc(100% - var(--pad) - 1.4rem) calc(var(--hdr-h,68px) / 2));visibility:visible;transition:clip-path .6s var(--ease)}
+  .menu-open body{overflow:hidden}
+  .m1-list{list-style:none;margin:0;padding:0;border-top:2px solid rgba(255,255,255,.25)}
+  .m1-list a{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:2px solid rgba(255,255,255,.25);text-decoration:none;
+    opacity:0;transform:translateY(16px);transition:opacity .3s linear,transform .4s var(--ease),color .15s linear}
+  .menu-open .m1-list a{opacity:1;transform:none}
+  .menu-open .m1-list li:nth-child(1) a{transition-delay:.15s}
+  .menu-open .m1-list li:nth-child(2) a{transition-delay:.21s}
+  .menu-open .m1-list li:nth-child(3) a{transition-delay:.27s}
+  .menu-open .m1-list li:nth-child(4) a{transition-delay:.33s}
+  .m1-list__n{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+  .m1-list__t{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.95;font-size:clamp(2.25rem,11vw,3.5rem)}
+  .m1-list a:hover,.m1-list a:focus-visible{color:var(--accent)}
+  .m1-foot{display:grid;gap:1rem}
+  .m1-foot .btn{width:100%;min-height:4rem}
+  .m1-foot p{font-size:.875rem;color:#bdbdbd}
+  .m1-foot p a{color:#fff}
+}
+@media (max-width:1023px){.menu-open .m1-list li:nth-child(5) a{transition-delay:.39s}}
+
+.m1-list a[aria-current] .m1-list__t{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -1052,11 +1096,20 @@ ol.fx{list-style:none;margin:0;padding:0}
           <li><a href="/vorschau/#kontakt"><span class="slide"><span><span>Kontakt</span><span aria-hidden="true">Kontakt</span></span></span></a></li>
         </ul>
       </nav>
+      <button class="m1-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="m1-panel"><span data-label>Menü</span><span class="m1-btn__icon" aria-hidden="true"><i></i><i></i></span></button>
       <a class="btn btn--primary btn--nav" href="https://wa.me/4917631758293?text=Hallo%20Sidar%2C%0A%0AProjekt%3A%0ABis%20wann%3A%0AWas%20schon%20da%20ist%3A" target="_blank" rel="noopener">WhatsApp schreiben</a>
     </div>
     <div class="progress" id="progress" aria-hidden="true"></div>
   </div>
 </header>
+<div class="m1-panel" id="m1-panel" data-menu>
+  <ul class="m1-list"><li><a href="/vorschau/#arbeiten" aria-current="true"><span class="m1-list__n">01</span><span class="m1-list__t">Arbeiten</span></a></li><li><a href="/referenzen/"><span class="m1-list__n">02</span><span class="m1-list__t">Referenzen</span></a></li><li><a href="/vorschau/#ueber-mich"><span class="m1-list__n">03</span><span class="m1-list__t">Über mich</span></a></li><li><a href="/vorschau/#leistungen"><span class="m1-list__n">04</span><span class="m1-list__t">Leistungen</span></a></li><li><a href="/vorschau/#kontakt"><span class="m1-list__n">05</span><span class="m1-list__t">Kontakt</span></a></li></ul>
+  <div class="m1-foot">
+    <a class="btn btn--red" href="https://wa.me/4917631758293?text=Hallo%20Sidar%2C%0A%0AProjekt%3A%0ABis%20wann%3A%0AWas%20schon%20da%20ist%3A" target="_blank" rel="noopener">Projekt per WhatsApp schildern <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+    <p>Lieber per Mail? <a class="tlink" href="mailto:sidar.arbeit@gmail.com">sidar.arbeit@gmail.com</a></p>
+  </div>
+</div>
+
 <main id="inhalt">
 <div class="frame">
 
@@ -1260,5 +1313,21 @@ ol.fx{list-style:none;margin:0;padding:0}
 })();
 </script>
 
+<script>
+/* Mobiles Menü: auf/zu, schließt bei Link-Klick und mit Esc */
+(function(){
+  var root=document.documentElement, btns=[].slice.call(document.querySelectorAll('[data-menu-toggle]'));
+  if(!btns.length) return;
+  function set(open){
+    root.classList.toggle('menu-open',open);
+    btns.forEach(function(b){ b.setAttribute('aria-expanded',open?'true':'false');
+      var l=b.querySelector('[data-label]'); if(l) l.textContent=open?'Schließen':'Menü'; });
+  }
+  btns.forEach(function(b){ b.addEventListener('click',function(){ set(!root.classList.contains('menu-open')) }) });
+  document.querySelectorAll('[data-menu] a, [data-menu-backdrop]').forEach(function(a){ a.addEventListener('click',function(){ set(false) }) });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false) });
+  window.matchMedia('(min-width:1024px)').addEventListener('change',function(e){ if(e.matches) set(false) });
+})();
+</script>
 </body>
 </html>
