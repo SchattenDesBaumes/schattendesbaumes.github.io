@@ -93,7 +93,7 @@ button{font:inherit}
 .bg-muted.swiss-dots{background-image:radial-gradient(rgba(0,0,0,.09) 1.2px,transparent 1.4px)}
 .bg-muted.swiss-diagonal{background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.05) 0 1px,transparent 1px 10px)}
 body::after{ /* swiss-noise */
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.015;
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.015;transform:translateZ(0);will-change:transform;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -189,7 +189,7 @@ body::after{ /* swiss-noise */
 .btn--nav{min-height:2.75rem;padding:0 1rem;font-size:.75rem}
 .brand,.btn--nav{white-space:nowrap}
 @media (min-width:900px) and (max-width:1100px){.nav ul{gap:1.25rem !important}.nav{margin-right:1rem !important}}
-.progress{position:absolute;left:0;bottom:calc(var(--b) * -1);height:var(--b);background:var(--accent);width:0;transform-origin:left}
+.progress{position:absolute;left:0;bottom:calc(var(--b) * -1);height:var(--b);background:var(--accent);width:100%;transform-origin:left;transform:scaleX(0);will-change:transform}
 @media (min-width:900px){
   .nav{flex:1;display:flex;justify-content:flex-end;margin-right:1.5rem;align-self:stretch}
   .nav ul{gap:2.25rem}
@@ -755,10 +755,11 @@ body::after{ /* swiss-noise */
 .wb-tab.is-on{background:var(--fg)}
 .wb-tab.is-on .wb-tn{color:#fff}.wb-tab.is-on .wb-n{color:var(--accent)}.wb-tab.is-on .wb-tm{color:#bdbdbd}
 .wb-tab:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.wb-bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent)}
+.wb-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
 .wb-tab.is-on .wb-bar{animation:wbbar 5s linear forwards}
 .wb.is-paused .wb-tab.is-on .wb-bar{animation-play-state:paused}
-@keyframes wbbar{to{width:100%}}
+.wb.is-off .wb-bar,.wb.is-off .wb-pic img{animation-play-state:paused}
+@keyframes wbbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (max-width:1023px){
   .wb{grid-template-columns:minmax(0,1fr)}
   .wb-stage{border-right:0;border-bottom:var(--b2) solid var(--border);min-height:0;aspect-ratio:auto}
@@ -773,7 +774,7 @@ body::after{ /* swiss-noise */
   .wb-tm{display:none}
 }
 @media (max-width:640px){.wb-info{grid-template-columns:minmax(0,1fr)}.wb-info .wb-btn{grid-column:1;grid-row:auto;justify-self:start;margin-top:.6rem}}
-@media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-pic img{animation:none}.wb-tab.is-on .wb-bar{animation:none;width:100%}}
+@media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-pic img{animation:none}.wb-tab.is-on .wb-bar{animation:none;transform:scaleX(1)}}
 /* Arbeiten-Abschluss auf Schwarz */
 .works-foot{background:var(--fg);color:#fff;border-top-color:var(--fg)}
 .works-foot .foot-q{color:#fff}
@@ -781,6 +782,8 @@ body::after{ /* swiss-noise */
 .works-foot .btn--secondary:hover{background:#fff;color:var(--fg)}
 .works-foot .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 #arbeiten + .sec{margin-top:-1px;position:relative}
+/* Performance: Schein im Kontakt nur animieren, solange er sichtbar ist */
+.glow-off .glow-ring{animation-play-state:paused}
 /* Text nie über den Rand laufen lassen */
 .h1,.h2,.work__client,.cs-title,.wb-name{overflow-wrap:break-word}
 /* Fokus auch auf dunklen Flächen deutlich */
@@ -1440,11 +1443,13 @@ body::after{ /* swiss-noise */
 
   // Lesefortschritt als rote Linie unter dem Header
   var bar=document.getElementById('progress');
-  function prog(){
-    var h=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
-  }
-  window.addEventListener('scroll',prog,{passive:true}); prog();
+  // Fortschritt per transform statt width: kein Layout pro Scroll-Schritt, max. einmal pro Frame
+  var ph=0, pq=0;
+  function pm(){ ph=document.documentElement.scrollHeight-window.innerHeight }
+  function prog(){ pq=0; bar.style.transform='scaleX('+(ph>0?Math.min(1,window.scrollY/ph):0)+')' }
+  pm(); window.addEventListener('resize',function(){ pm(); prog() }); window.addEventListener('load',function(){ pm(); prog() });
+  if('ResizeObserver' in window) new ResizeObserver(function(){ pm(); prog() }).observe(document.body);
+  window.addEventListener('scroll',function(){ if(!pq) pq=requestAnimationFrame(prog) },{passive:true}); prog();
 
   // Reveal beim Scrollen
   var rv=document.querySelectorAll('.rv');
@@ -2074,9 +2079,19 @@ body::after{ /* swiss-noise */
   wb.addEventListener('mouseleave',function(){ hold=false; wb.classList.remove('is-paused'); show(i) });
   wb.addEventListener('focusin',function(){ hold=true; wb.classList.add('is-paused'); clearTimeout(t) });
   wb.addEventListener('focusout',function(e){ if(!wb.contains(e.relatedTarget)){ hold=false; wb.classList.remove('is-paused'); sched() } });
-  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis=es[0].isIntersecting; if(vis) show(i); else clearTimeout(t) },{threshold:.35}).observe(wb);
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis=es[0].isIntersecting; wb.classList.toggle('is-off',!vis); if(vis) show(i); else clearTimeout(t) },{threshold:.35}).observe(wb);
   else { vis=true; sched() }
   tabs.forEach(function(b,j){ b.tabIndex=j===0?0:-1 });
+})();
+</script>
+<script>
+/* Performance: Endlos-Animationen außerhalb des Bildschirms pausieren */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var g=document.querySelector('.glow-ring'); if(!g) return;
+  var svg=g.closest('svg'), box=svg.parentElement;
+  box.classList.add('glow-off');
+  new IntersectionObserver(function(es){ box.classList.toggle('glow-off',!es[0].isIntersecting) },{rootMargin:'100px'}).observe(svg);
 })();
 </script>
 </body>

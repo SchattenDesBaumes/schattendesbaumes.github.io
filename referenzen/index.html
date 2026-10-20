@@ -1068,8 +1068,10 @@ html{scroll-padding-top:calc(var(--hdr-h,72px) + var(--idx-h,56px) + 8px)}
   function setH(){ root.style.setProperty('--hdr-h',hdr.offsetHeight+'px') }
   setH(); window.addEventListener('resize',setH);
   var bar=document.getElementById('progress');
-  function prog(){ var h=root.scrollHeight-window.innerHeight; bar.style.width=(h>0?window.scrollY/h*100:0)+'%' }
-  window.addEventListener('scroll',prog,{passive:true}); prog();
+  var ph=0, pq=0; function pm(){ ph=root.scrollHeight-window.innerHeight } function prog(){ pq=0; bar.style.transform='scaleX('+(ph>0?Math.min(1,window.scrollY/ph):0)+')' }
+  bar.style.width='100%'; bar.style.transformOrigin='left'; bar.style.transform='scaleX(0)'; bar.style.willChange='transform'; pm(); window.addEventListener('resize',function(){ pm(); prog() }); window.addEventListener('load',function(){ pm(); prog() });
+  if('ResizeObserver' in window) new ResizeObserver(function(){ pm(); prog() }).observe(document.body);
+  window.addEventListener('scroll',function(){ if(!pq) pq=requestAnimationFrame(prog) },{passive:true}); prog();
   var art=document.getElementById('dreamberry');
   function arrive(){ if(art.getBoundingClientRect().top<window.innerHeight*.75) art.classList.add('arrived') }
   window.addEventListener('scroll',arrive,{passive:true}); arrive();

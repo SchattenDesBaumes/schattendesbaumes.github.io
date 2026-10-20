@@ -1016,7 +1016,7 @@ html{scroll-padding-top:calc(var(--hdr-h,72px) + var(--idx-h,56px) + 8px)}
 /* ===== A Timeline ===== */
 .a{--g:1.25rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--g);position:relative;padding-top:0}
 .a::before{content:"";position:absolute;left:1.5rem;right:calc((100% - 6.25rem) / 6 - 1.5rem);top:1.5rem;height:2px;background:#cfcfcf}
-.a-line{position:absolute;z-index:1;left:1.5rem;top:1.5rem;height:2px;background:var(--accent);width:0;transition:opacity .35s linear}
+.a-line{position:absolute;z-index:1;left:1.5rem;top:1.5rem;height:2px;background:var(--accent);width:0;transform:scaleX(0);transform-origin:left;transition:opacity .35s linear}
 .a-i{position:relative;display:flex;flex-direction:column;gap:.35rem}
 .a-node{position:relative;z-index:2;width:3rem;height:3rem;display:grid;place-items:center;background:#fff;border:var(--b2) solid var(--fg);margin-bottom:.75rem;transition:background-color .3s,border-color .3s,color .3s,transform .4s cubic-bezier(.25,1,.5,1)}
 .a-ico{width:1.35rem;height:1.35rem}
@@ -1256,8 +1256,10 @@ ol.fx{list-style:none;margin:0;padding:0}
   function setH(){ root.style.setProperty('--hdr-h',hdr.offsetHeight+'px') }
   setH(); window.addEventListener('resize',setH);
   var bar=document.getElementById('progress');
-  function prog(){ var h=root.scrollHeight-window.innerHeight; bar.style.width=(h>0?window.scrollY/h*100:0)+'%' }
-  window.addEventListener('scroll',prog,{passive:true}); prog();
+  var ph=0, pq=0; function pm(){ ph=root.scrollHeight-window.innerHeight } function prog(){ pq=0; bar.style.transform='scaleX('+(ph>0?Math.min(1,window.scrollY/ph):0)+')' }
+  bar.style.width='100%'; bar.style.transformOrigin='left'; bar.style.transform='scaleX(0)'; bar.style.willChange='transform'; pm(); window.addEventListener('resize',function(){ pm(); prog() }); window.addEventListener('load',function(){ pm(); prog() });
+  if('ResizeObserver' in window) new ResizeObserver(function(){ pm(); prog() }).observe(document.body);
+  window.addEventListener('scroll',function(){ if(!pq) pq=requestAnimationFrame(prog) },{passive:true}); prog();
   // Vorher/Heute: Durchstreichen beim Reinscrollen
   var va=document.querySelector('.va');
   if(va){ if(!('IntersectionObserver' in window)) va.classList.add('in'); else { var vio=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ va.classList.add('in'); vio.disconnect() } },{threshold:.45}); vio.observe(va) } }
@@ -1271,7 +1273,7 @@ ol.fx{list-style:none;margin:0;padding:0}
     function measure(){
       var r=rel.getBoundingClientRect();
       cx=items.map(function(x){ var n=x.querySelector('.a-node').getBoundingClientRect(); return n.left-r.left+n.width/2 });
-      if(line){ line.style.left=cx[0]+'px' }
+      if(line){ line.style.left=cx[0]+'px'; line.style.width=(cx[N-1]-cx[0])+'px'; line.style.transformOrigin='left'; line.style.willChange='transform' }
     }
     function ease(p){ return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2 }
     function setStep(k){
@@ -1284,7 +1286,7 @@ ol.fx{list-style:none;margin:0;padding:0}
       if(k>=N){ k=N; pos=N-1 } else { pos=(k-1)+(k===0?1:ease(Math.min(1,within/MOVE))) }
       setStep(within<MOVE&&k<N&&k>0?k-1:(k>=N?N:k));
       if(k>=N) setStep(N);
-      if(line&&cx.length){ var a=Math.max(0,pos), f=Math.floor(a), w=(f>=N-1?cx[N-1]:cx[f]+(cx[f+1]-cx[f])*(a-f))-cx[0]; line.style.width=Math.max(0,w)+'px' }
+      if(line&&cx.length){ var a=Math.max(0,pos), f=Math.floor(a), w=(f>=N-1?cx[N-1]:cx[f]+(cx[f+1]-cx[f])*(a-f))-cx[0]; line.style.transform='scaleX('+(Math.max(0,w)/Math.max(1,cx[N-1]-cx[0])).toFixed(4)+')' }
       if(line) line.style.opacity=(time>LOOP-FADE)?'0':'1';
       if(sig&&human>=0){
         var s0=human*STEP+MOVE, p=(time-s0)/(HOLD-200); p=Math.max(0,Math.min(1,p));
@@ -1300,7 +1302,7 @@ ol.fx{list-style:none;margin:0;padding:0}
     }
     function go(){ if(!raf&&vis&&!hover){ prev=0; raf=requestAnimationFrame(frame) } }
     measure(); window.addEventListener('resize',function(){ measure(); render(t) });
-    if(reduce){ setStep(N); if(line&&cx.length) line.style.width=(cx[N-1]-cx[0])+'px'; if(sig) sig.style.strokeDashoffset='0'; return }
+    if(reduce){ setStep(N); if(line&&cx.length) line.style.transform='scaleX(1)'; if(sig) sig.style.strokeDashoffset='0'; return }
     render(0);
     box.addEventListener('mouseenter',function(){ hover=true });
     box.addEventListener('mouseleave',function(){ hover=false; go() });
