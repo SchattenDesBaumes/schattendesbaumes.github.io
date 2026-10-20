@@ -728,7 +728,7 @@ body::after{ /* swiss-noise */
 
 /* ---------- ARBEITEN: Bühne mit Liste ---------- */
 .wb{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);border-top:var(--b) solid var(--border)}
-.wb-stage{position:relative;border-right:var(--b) solid var(--border);min-height:clamp(30rem,44vw,40rem);overflow:hidden;background:#fff}
+.wb-stage{position:relative;border-right:var(--b) solid var(--border);min-height:clamp(21rem,min(30vw,calc(100vh - 13rem)),29rem);overflow:hidden;background:#fff}
 .wb-slide{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;opacity:0;transition:opacity .45s ease}
 .wb-slide[hidden]{display:grid}
 .wb-slide.is-on{opacity:1;z-index:1}
@@ -739,17 +739,17 @@ body::after{ /* swiss-noise */
 @keyframes wbkb{from{transform:scale(1.05)}to{transform:none}}
 .wb-pic svg{position:absolute;left:50%;top:0;height:100%;width:auto;aspect-ratio:4/3;transform:translateX(-50%)}
 .wb-pic .todo{position:absolute;left:.75rem;bottom:.75rem;font-size:.625rem;background:#fff;z-index:1}
-.wb-info{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1.5rem;row-gap:.35rem;align-items:end;padding:clamp(1rem,2vw,1.5rem) var(--pad) clamp(1.25rem,2vw,1.75rem)}
+.wb-info{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1.5rem;row-gap:.25rem;align-items:end;padding:clamp(.8rem,1.4vw,1.1rem) var(--pad) clamp(.9rem,1.4vw,1.2rem)}
 .wb-info>*{grid-column:1;margin:0}
 .wb-n{font-size:.6875rem;font-weight:700;letter-spacing:.14em;color:var(--gray);font-variant-numeric:tabular-nums}
-.wb-name{font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;font-size:clamp(1.75rem,3.2vw,3rem)}
-.wb-teaser{font-size:.9375rem;line-height:1.5;max-width:48ch}
+.wb-name{font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;font-size:clamp(1.5rem,2.4vw,2.25rem)}
+.wb-teaser{font-size:.875rem;line-height:1.45;max-width:52ch}
 .wb-meta{font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.wb-info .wb-btn{grid-column:2;grid-row:1/5;align-self:end;white-space:nowrap}
+.wb-info .wb-btn{grid-column:2;grid-row:1/5;align-self:end;white-space:nowrap;min-height:2.75rem;padding-block:.6rem}
 .wb-list{list-style:none;margin:0;padding:0;background:#fff}
-.wb-tab{all:unset;box-sizing:border-box;cursor:pointer;position:relative;width:100%;display:grid;grid-template-columns:2.25rem minmax(0,1fr);column-gap:.5rem;row-gap:.15rem;padding:clamp(.75rem,1.2vw,1rem) 1.25rem;border-bottom:1px solid #e3e3e3;transition:background-color .2s}
+.wb-tab{all:unset;box-sizing:border-box;cursor:pointer;position:relative;width:100%;display:grid;grid-template-columns:2.25rem minmax(0,1fr);column-gap:.5rem;row-gap:.15rem;padding:clamp(.5rem,.8vw,.7rem) 1.1rem;border-bottom:1px solid #e3e3e3;transition:background-color .2s}
 .wb-tab .wb-n{grid-row:1/3;padding-top:.2rem}
-.wb-tn{font-weight:900;text-transform:uppercase;font-size:clamp(.9375rem,1.2vw,1.0625rem);letter-spacing:-.01em;color:#8a8a8a;transition:color .2s}
+.wb-tn{font-weight:900;text-transform:uppercase;font-size:clamp(.875rem,1vw,.9375rem);letter-spacing:-.01em;color:#8a8a8a;transition:color .2s}
 .wb-tm{font-size:.5625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a}
 .wb-tab:hover .wb-tn{color:var(--fg)}
 .wb-tab.is-on{background:var(--fg)}
@@ -764,7 +764,7 @@ body::after{ /* swiss-noise */
   .wb-stage{border-right:0;border-bottom:var(--b2) solid var(--border);min-height:0;aspect-ratio:auto}
   .wb-slide{position:relative;inset:auto}
   .wb-slide:not(.is-on){display:none}
-  .wb-pic{aspect-ratio:4/3}
+  .wb-pic{aspect-ratio:16/10}
   .wb-list{display:flex;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
   .wb-list::-webkit-scrollbar{display:none}
   .wb-list li{flex:0 0 auto;scroll-snap-align:start}
