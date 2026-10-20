@@ -774,6 +774,13 @@ body::after{ /* swiss-noise */
 }
 @media (max-width:640px){.wb-info{grid-template-columns:minmax(0,1fr)}.wb-info .wb-btn{grid-column:1;grid-row:auto;justify-self:start;margin-top:.6rem}}
 @media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-pic img{animation:none}.wb-tab.is-on .wb-bar{animation:none;width:100%}}
+/* Arbeiten-Abschluss auf Schwarz */
+.works-foot{background:var(--fg);color:#fff;border-top-color:var(--fg)}
+.works-foot .foot-q{color:#fff}
+.works-foot .btn--secondary{background:transparent;color:#fff;border-color:#fff}
+.works-foot .btn--secondary:hover{background:#fff;color:var(--fg)}
+.works-foot .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#arbeiten + .sec{margin-top:-1px;position:relative}
 /* Text nie über den Rand laufen lassen */
 .h1,.h2,.work__client,.cs-title,.wb-name{overflow-wrap:break-word}
 /* Fokus auch auf dunklen Flächen deutlich */
