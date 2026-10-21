@@ -1083,8 +1083,8 @@ ol.fx{list-style:none;margin:0;padding:0}
 
 
 /* ===== EMS LOCCUM ===== */
-.em-hero{margin:0;position:relative;border:var(--b2) solid var(--fg);background:#fff;max-width:1100px;width:100%;margin-inline:auto}
-.em-hero img{display:block;width:100%;height:auto}
+.em-hero{margin:0;position:relative;border:var(--b2) solid var(--fg);background:#fff;max-width:min(1100px,calc((100vh - 10rem) * 1.63));width:100%;margin-inline:auto;aspect-ratio:1600/980;overflow:hidden}
+.em-hero img{display:block;position:absolute;left:0;top:-11%;width:100%;height:auto;will-change:transform;transform:translate3d(0,var(--py,0px),0)}
 .em-hero figcaption,.em-zoom{position:absolute;right:.75rem;bottom:.75rem;font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:#fff;border:var(--b2) solid var(--fg);padding:.3rem .55rem}
 .em-logos{display:grid;grid-template-columns:1fr 1fr;border:var(--b2) solid var(--fg)}
 .em-logo{margin:0;display:grid;place-items:center;padding:clamp(1.5rem,4vw,3rem)}
@@ -1100,6 +1100,7 @@ ol.fx{list-style:none;margin:0;padding:0}
 .em-sw strong{font-weight:900;text-transform:uppercase;font-size:.9375rem}
 .sw__hex{font-size:.75rem;font-weight:700;letter-spacing:.08em;font-variant-numeric:tabular-nums}
 .sw__use{font-size:.75rem;color:#555}
+.em-wrap{max-width:min(100%,calc((100vh - 12rem) * 1.4144));width:100%;margin-inline:auto}
 .em-pages{display:flex;gap:0;margin-bottom:-2px}
 .em-tab{all:unset;cursor:pointer;padding:.7rem 1.2rem;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:var(--b2) solid var(--fg);background:#fff;transition:background-color .15s,color .15s}
 .em-tab+.em-tab{border-left:0}
@@ -1183,6 +1184,7 @@ ol.fx{list-style:none;margin:0;padding:0}
       <ul class="em-sw"><li><span class="sw" style="background:#C7D300"></span><strong>Limette</strong><span class="sw__hex">#C7D300</span><span class="sw__use">Logo und Akzente</span></li><li><span class="sw" style="background:#9FC20F"></span><strong>Hellgrün</strong><span class="sw__hex">#9FC20F</span><span class="sw__use">Flächen</span></li><li><span class="sw" style="background:#6DAF00"></span><strong>Grün</strong><span class="sw__hex">#6DAF00</span><span class="sw__use">Verlauf</span></li><li><span class="sw" style="background:#006F10"></span><strong>Dunkelgrün</strong><span class="sw__hex">#006F10</span><span class="sw__use">Verlauf</span></li><li><span class="sw" style="background:#0F1E27"></span><strong>Nachtblau</strong><span class="sw__hex">#0F1E27</span><span class="sw__use">Grund und Text</span></li></ul>
 
       <h2 class="label flow__label" id="pg-h">Die Seiten</h2>
+      <div class="em-wrap">
       <div class="em-pages" role="tablist" aria-labelledby="pg-h">
         <button type="button" class="em-tab is-on" role="tab" aria-selected="true" aria-controls="em-p-in" id="em-t-in">Innenseite</button>
         <button type="button" class="em-tab" role="tab" aria-selected="false" aria-controls="em-p-out" id="em-t-out">Außenseite</button>
@@ -1190,6 +1192,7 @@ ol.fx{list-style:none;margin:0;padding:0}
       <div class="em-panels">
         <a class="em-panel is-on" id="em-p-in" role="tabpanel" aria-labelledby="em-t-in" href="/assets/img/arbeiten/ems-loccum/innen-2000.webp" target="_blank" rel="noopener"><img src="/assets/img/arbeiten/ems-loccum/innen-1000.webp" srcset="/assets/img/arbeiten/ems-loccum/innen-1000.webp 1000w, /assets/img/arbeiten/ems-loccum/innen-2000.webp 2000w" sizes="(min-width:1100px) 1100px, 100vw" width="2000" height="1414" loading="lazy" alt="Innenseite der Broschüre: wie EMS-Training funktioniert, Angebote, Anwendungsbereiche"><span class="em-zoom">Groß ansehen</span></a>
         <a class="em-panel" id="em-p-out" role="tabpanel" aria-labelledby="em-t-out" href="/assets/img/arbeiten/ems-loccum/aussen-2000.webp" target="_blank" rel="noopener" hidden><img src="/assets/img/arbeiten/ems-loccum/aussen-1000.webp" srcset="/assets/img/arbeiten/ems-loccum/aussen-1000.webp 1000w, /assets/img/arbeiten/ems-loccum/aussen-2000.webp 2000w" sizes="(min-width:1100px) 1100px, 100vw" width="2000" height="1414" loading="lazy" alt="Außenseite der Broschüre: Über uns, Trainerinnen, Kontakt und Logo"><span class="em-zoom">Groß ansehen</span></a>
+      </div>
       </div>
     </div>
   </section>
@@ -1377,6 +1380,19 @@ ol.fx{list-style:none;margin:0;padding:0}
   var tabs=[].slice.call(document.querySelectorAll('.em-tab')); if(!tabs.length) return;
   function sel(t){ tabs.forEach(function(x){ var on=x===t; x.classList.toggle('is-on',on); x.setAttribute('aria-selected',on?'true':'false'); var p=document.getElementById(x.getAttribute('aria-controls')); if(on) p.removeAttribute('hidden'); else p.setAttribute('hidden','') }) }
   tabs.forEach(function(t,i){ t.addEventListener('click',function(){ sel(t) }); t.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length]; sel(n); n.focus() } }) });
+})();
+</script>
+<script>
+/* Parallax für das Broschüren-Mockup: Bild wandert beim Scrollen langsamer als die Seite */
+(function(){
+  var fig=document.querySelector('.em-hero'); if(!fig) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var img=fig.querySelector('img'), raf=0, vis=false;
+  function upd(){ raf=0; var r=fig.getBoundingClientRect(), vh=window.innerHeight; var p=(r.top+r.height/2-vh/2)/(vh/2+r.height/2); p=Math.max(-1,Math.min(1,p)); img.style.setProperty('--py',(p*r.height*0.1).toFixed(1)+'px') }
+  function req(){ if(vis&&!raf) raf=requestAnimationFrame(upd) }
+  window.addEventListener('scroll',req,{passive:true}); window.addEventListener('resize',req);
+  new IntersectionObserver(function(es){ vis=es[0].isIntersecting; req() }).observe(fig);
+  upd();
 })();
 </script>
 </body>
