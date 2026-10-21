@@ -10,6 +10,7 @@ Statische Website, gehostet über GitHub Pages.
 | `referenzen/index.html` | `/referenzen/`             |
 | `arbeiten/av-vertrags-bot/index.html` | `/arbeiten/av-vertrags-bot/` (Case Study) |
 | `arbeiten/nomo/index.html` | `/arbeiten/nomo/` (Case Study) |
+| `arbeiten/stroeer/index.html` | `/arbeiten/stroeer/` (Case Study, Video per YouTube erst nach Klick) |
 | `impressum/index.html`  | `/impressum/`              |
 | `datenschutz/index.html`| `/datenschutz/`            |
 | `404.html`              | jede unbekannte Adresse    |
@@ -23,9 +24,9 @@ Intern immer mit Schrägstrich am Anfang und Ende verlinken: `href="/leistungen/
 
 ## Livegang-Checkliste
 - [ ] `noindex`-Zeile in allen HTML-Dateien entfernen
-- [ ] In `referenzen/index.html`, `arbeiten/av-vertrags-bot/index.html` und `arbeiten/nomo/index.html` alle Links `/vorschau/` durch `/` ersetzen
+- [ ] In `referenzen/index.html`, `arbeiten/av-vertrags-bot/index.html`, `arbeiten/nomo/index.html` und `arbeiten/stroeer/index.html` alle Links `/vorschau/` durch `/` ersetzen
 - [ ] `robots.txt` auf `Allow: /` umstellen
 - [ ] `49NUMMER` durch echte WhatsApp-Nummer ersetzen
-- [ ] Impressum + Datenschutz befüllen
+- [ ] Impressum + Datenschutz befüllen (Datenschutz: YouTube-Einbindung auf /arbeiten/stroeer/ erwähnen, youtube-nocookie, Laden erst nach Klick)
 - [ ] Freigabe FairWilly / Stockwerk einholen
 - [ ] Alle `[VON SIDAR ERGÄNZEN]`-Stellen füllen
