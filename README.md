@@ -29,5 +29,5 @@ Intern immer mit Schrägstrich am Anfang und Ende verlinken: `href="/leistungen/
 - [ ] `robots.txt` auf `Allow: /` umstellen
 - [ ] `49NUMMER` durch echte WhatsApp-Nummer ersetzen
 - [ ] Impressum + Datenschutz befüllen (Datenschutz: YouTube-Einbindung auf /arbeiten/stroeer/ erwähnen, youtube-nocookie, Laden erst nach Klick)
-- [ ] Freigabe FairWilly / Stockwerk einholen
+- [ ] Freigaben einholen: Ströer, EMS Loccum, Dreamberry, fairwilly (AV-Bot, Nomo)
 - [ ] Alle `[VON SIDAR ERGÄNZEN]`-Stellen füllen
