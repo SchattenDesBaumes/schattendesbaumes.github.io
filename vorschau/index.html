@@ -727,7 +727,8 @@ body::after{ /* swiss-noise */
 }
 
 /* ---------- ARBEITEN: Bühne mit Liste ---------- */
-.wb{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);border-top:var(--b) solid var(--border)}
+.wb{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}
+.works-wrap.wb{border-top:0}
 .wb-stage{position:relative;border-right:var(--b) solid var(--border);min-height:clamp(21rem,min(30vw,calc(100vh - 13rem)),29rem);overflow:hidden;background:#fff}
 .wb-slide{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;opacity:0;transition:opacity .45s ease}
 .wb-slide[hidden]{display:grid}
