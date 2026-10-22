@@ -868,6 +868,19 @@ body::after{ /* swiss-noise */
   .hero__title{padding-top:1.5rem}
   .hero__h1{margin-top:.6rem}
 }
+/* Header auf Schwarz (22.10.2026) */
+.site-header{background:var(--fg);color:#fff}
+.site-header .brand,.site-header .nav a{color:#fff}
+.site-header .slide>span>span+span{color:var(--accent)}
+.site-header .nav a:hover,.site-header .nav a:focus-visible{color:var(--accent)}
+.site-header .btn--nav{background:var(--accent);border-color:var(--accent);color:var(--fg)}
+.site-header .btn--nav:hover,.site-header .btn--nav:focus-visible{background:#fff;border-color:#fff;color:var(--fg)}
+.site-header :focus-visible{outline-color:var(--accent)}
+.site-header .m1-btn{color:#fff}
+.site-header .m1-btn:hover{color:var(--accent)}
+.site-header .m1-btn__icon{background:var(--accent)}
+.site-header .m1-btn__icon i{background:var(--fg)}
+.menu-open .site-header .m1-btn__icon{background:#fff}
 </style>
 </head>
 <body>
