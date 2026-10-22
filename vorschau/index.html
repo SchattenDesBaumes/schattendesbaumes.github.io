@@ -756,6 +756,10 @@ body::after{ /* swiss-noise */
 .wb-pic--trio .wb-box img:nth-child(2){transform:translateY(-4cqh)}
 .wb-slide.is-on .wb-box{animation:wbin .6s cubic-bezier(.2,.7,.2,1) both}
 @keyframes wbin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.wb-pic--video{background:#c9c9c9}
+.wb-pic--video::after{display:none}
+.wb-pic--video::before{inset:-12%;width:auto;height:auto;left:-12%;top:-12%;border-radius:0;background:url(/assets/video/nomo-teaser-poster.webp) center/100% 100% no-repeat;filter:blur(36px);transform:translateZ(0)}
+.wb-vid{position:absolute;top:0;left:50%;height:100%;width:auto;aspect-ratio:1280/580;transform:translateX(-50%);object-fit:cover;display:block;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
 .wb-pic .todo{position:absolute;left:.75rem;bottom:.75rem;font-size:.625rem;background:#fff;z-index:1}
 .wb-info{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1.5rem;row-gap:.25rem;align-items:end;padding:clamp(.8rem,1.4vw,1.1rem) var(--pad) clamp(.9rem,1.4vw,1.2rem)}
 .wb-info>*{grid-column:1;margin:0}
@@ -775,7 +779,7 @@ body::after{ /* swiss-noise */
 .wb-tab.is-on .wb-tn{color:#fff}.wb-tab.is-on .wb-n{color:var(--accent)}.wb-tab.is-on .wb-tm{color:#bdbdbd}
 .wb-tab:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
 .wb-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
-.wb-tab.is-on .wb-bar{animation:wbbar 5s linear forwards}
+.wb-tab.is-on .wb-bar{animation:wbbar var(--dur,5s) linear forwards}
 .wb.is-paused .wb-tab.is-on .wb-bar{animation-play-state:paused}
 .wb.is-off .wb-bar,.wb.is-off .wb-box{animation-play-state:paused}
 @keyframes wbbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -1019,8 +1023,8 @@ body::after{ /* swiss-noise */
         <a class="btn btn--accent wb-btn" href="/arbeiten/av-vertrags-bot/">Case ansehen<span class="sr-only">: AV-Vertrags-Bot</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="wb-slide" id="wb-s-nomo" role="tabpanel" aria-labelledby="wb-t-nomo" hidden>
-      <div class="wb-pic wb-pic--obj"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/nomo-700.webp" srcset="/assets/img/arbeiten/buehne/nomo-700.webp 700w, /assets/img/arbeiten/buehne/nomo-1100.webp 1100w" sizes="(min-width:1024px) 30vw, 60vw" width="1100" height="1146" decoding="async" alt="Nomo, ein Roboter-Maskottchen mit Krawatte und Aktentasche"></div></div>
+    <div class="wb-slide" id="wb-s-nomo" data-dur="10000" role="tabpanel" aria-labelledby="wb-t-nomo" hidden>
+      <div class="wb-pic wb-pic--video"><video class="wb-vid" muted playsinline loop preload="none" poster="/assets/video/nomo-teaser-poster.webp" width="1280" height="580" aria-label="Animation: Nomo taucht auf, klopft an die Kamera und erschrickt"><source src="/assets/video/nomo-teaser.webm" type="video/webm"><source src="/assets/video/nomo-teaser.mp4" type="video/mp4"></video></div>
       <div class="wb-info">
         <span class="wb-n">03 / 05</span>
         <h3 class="wb-name">Nomo</h3>
@@ -1053,7 +1057,7 @@ body::after{ /* swiss-noise */
     <ul class="wb-list" role="tablist" aria-label="Ausgewählte Arbeiten">
       <li><button type="button" class="wb-tab is-on" id="wb-t-stroeer" role="tab" aria-selected="true" aria-controls="wb-s-stroeer"><span class="wb-n">01</span><span class="wb-tn">Ströer</span><span class="wb-tm">Motion Design · DOOH</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-av-vertrags-bot" role="tab" aria-selected="false" aria-controls="wb-s-av-vertrags-bot"><span class="wb-n">02</span><span class="wb-tn">AV-Vertrags-Bot</span><span class="wb-tm">Automatisierung · n8n</span><span class="wb-bar" aria-hidden="true"></span></button></li>
-      <li><button type="button" class="wb-tab" id="wb-t-nomo" role="tab" aria-selected="false" aria-controls="wb-s-nomo"><span class="wb-n">03</span><span class="wb-tn">Nomo</span><span class="wb-tm">KI · n8n · Webdesign</span><span class="wb-bar" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="wb-tab" id="wb-t-nomo" style="--dur:10s" role="tab" aria-selected="false" aria-controls="wb-s-nomo"><span class="wb-n">03</span><span class="wb-tn">Nomo</span><span class="wb-tm">KI · n8n · Webdesign</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-dreamberry" role="tab" aria-selected="false" aria-controls="wb-s-dreamberry"><span class="wb-n">04</span><span class="wb-tn">Dreamberry Studios</span><span class="wb-tm">Social Media · Content</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-ems-loccum" role="tab" aria-selected="false" aria-controls="wb-s-ems-loccum"><span class="wb-n">05</span><span class="wb-tn">EMS Loccum</span><span class="wb-tm">Branding · Print</span><span class="wb-bar" aria-hidden="true"></span></button></li>
     </ul>
@@ -2020,15 +2024,18 @@ body::after{ /* swiss-noise */
   var wb=document.getElementById('wb'); if(!wb) return;
   var tabs=[].slice.call(wb.querySelectorAll('.wb-tab')), slides=[].slice.call(wb.querySelectorAll('.wb-slide')), list=wb.querySelector('.wb-list');
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, i=0, t=0, vis=false, hold=false, user=false;
+  var last=-1;
+  function vids(){ slides.forEach(function(s,j){ var v=s.querySelector('video'); if(!v) return; if(j===i&&vis&&!reduce){ if(last!==i){ try{v.currentTime=0}catch(e){} } var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){}) } else v.pause() }); last=i }
   function show(k,focus){
     i=k;
     slides.forEach(function(s,j){ var on=j===k; s.classList.toggle('is-on',on); if(on) s.removeAttribute('hidden'); else s.setAttribute('hidden','') });
     tabs.forEach(function(b,j){ var on=j===k; b.classList.remove('is-on'); if(on){ void b.offsetWidth; b.classList.add('is-on') } b.setAttribute('aria-selected',on?'true':'false'); b.tabIndex=on?0:-1 });
     var b=tabs[k]; if(list.scrollWidth>list.clientWidth){ var l=b.offsetLeft-16; list.scrollTo({left:l,behavior:reduce?'auto':'smooth'}) }
     if(focus) b.focus();
+    vids();
     sched();
   }
-  function sched(){ clearTimeout(t); if(!reduce&&vis&&!hold&&!user) t=setTimeout(function(){ show((i+1)%slides.length) },5000) }
+  function sched(){ clearTimeout(t); if(!reduce&&vis&&!hold&&!user) t=setTimeout(function(){ show((i+1)%slides.length) },+slides[i].getAttribute('data-dur')||5000) }
   tabs.forEach(function(b,j){
     b.addEventListener('click',function(){ show(j) });
     b.addEventListener('keydown',function(e){
@@ -2040,7 +2047,7 @@ body::after{ /* swiss-noise */
   wb.addEventListener('mouseleave',function(){ hold=false; wb.classList.remove('is-paused'); show(i) });
   wb.addEventListener('focusin',function(){ hold=true; wb.classList.add('is-paused'); clearTimeout(t) });
   wb.addEventListener('focusout',function(e){ if(!wb.contains(e.relatedTarget)){ hold=false; wb.classList.remove('is-paused'); sched() } });
-  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis=es[0].isIntersecting; wb.classList.toggle('is-off',!vis); if(vis) show(i); else clearTimeout(t) },{threshold:.35}).observe(wb);
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis=es[0].isIntersecting; wb.classList.toggle('is-off',!vis); if(vis){ [].forEach.call(wb.querySelectorAll('video[preload="none"]'),function(v){ v.preload='auto' }); show(i) } else { clearTimeout(t); vids() } },{threshold:.35}).observe(wb);
   else { vis=true; sched() }
   tabs.forEach(function(b,j){ b.tabIndex=j===0?0:-1 });
 })();
