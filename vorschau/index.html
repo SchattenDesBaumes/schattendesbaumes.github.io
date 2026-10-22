@@ -733,11 +733,29 @@ body::after{ /* swiss-noise */
 .wb-slide[hidden]{display:grid}
 .wb-slide.is-on{opacity:1;z-index:1}
 .wb-slide:not(.is-on){visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
-.wb-pic{position:relative;overflow:hidden;border-bottom:var(--b2) solid var(--border)}
-.wb-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.wb-slide.is-on .wb-pic img{animation:wbkb 6s ease-out both}
-@keyframes wbkb{from{transform:scale(1.05)}to{transform:none}}
-.wb-pic svg{position:absolute;left:50%;top:0;height:100%;width:auto;aspect-ratio:4/3;transform:translateX(-50%)}
+.wb-pic{position:relative;overflow:hidden;border-bottom:var(--b2) solid var(--border);background:#f2f2f2;container-type:size}
+.wb-pic::before,.wb-pic::after{content:"";position:absolute;border-radius:50%;background:var(--accent);pointer-events:none}
+.wb-pic::before{width:52cqh;height:52cqh;left:-16cqh;top:-20cqh}
+.wb-pic::after{width:20cqh;height:20cqh;right:5cqw;bottom:9cqh}
+.wb-slide:nth-child(2) .wb-pic::before{left:auto;right:-14cqh;top:-24cqh}
+.wb-slide:nth-child(2) .wb-pic::after{right:auto;left:6cqw;bottom:10cqh}
+.wb-slide:nth-child(3) .wb-pic::before{top:auto;bottom:-22cqh;left:-10cqh}
+.wb-slide:nth-child(4) .wb-pic::before{left:auto;right:-18cqh;top:-14cqh}
+.wb-slide:nth-child(4) .wb-pic::after{right:auto;left:5cqw;bottom:auto;top:10cqh}
+.wb-pic--mock::before,.wb-pic--mock::after{z-index:2}
+.wb-slide:nth-child(5) .wb-pic::before{left:4cqw;top:8cqh;width:13cqh;height:13cqh}
+.wb-slide:nth-child(5) .wb-pic::after{right:3cqw;bottom:6cqh;width:18cqh;height:18cqh}
+.wb-box{position:absolute;inset:0;margin:auto;z-index:1;display:flex;align-items:center;justify-content:center}
+.wb-box img{display:block;width:100%;height:100%;object-fit:contain}
+.wb-pic--logo .wb-box{width:min(58cqw,30rem);height:42cqh}
+.wb-pic--obj .wb-box{width:80cqw;height:88cqh}
+.wb-pic--mock{background:#eaeaea}
+.wb-pic--mock .wb-box{inset:0;width:100%;height:100%}
+.wb-pic--trio .wb-box{gap:3cqh}
+.wb-pic--trio .wb-box img{width:auto;height:min(78cqh,calc((90cqw - 6cqh) / 3 * 1.25));aspect-ratio:4/5;object-fit:cover;flex:0 0 auto;border:var(--b2) solid var(--fg)}
+.wb-pic--trio .wb-box img:nth-child(2){transform:translateY(-4cqh)}
+.wb-slide.is-on .wb-box{animation:wbin .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes wbin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .wb-pic .todo{position:absolute;left:.75rem;bottom:.75rem;font-size:.625rem;background:#fff;z-index:1}
 .wb-info{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1.5rem;row-gap:.25rem;align-items:end;padding:clamp(.8rem,1.4vw,1.1rem) var(--pad) clamp(.9rem,1.4vw,1.2rem)}
 .wb-info>*{grid-column:1;margin:0}
@@ -759,7 +777,7 @@ body::after{ /* swiss-noise */
 .wb-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
 .wb-tab.is-on .wb-bar{animation:wbbar 5s linear forwards}
 .wb.is-paused .wb-tab.is-on .wb-bar{animation-play-state:paused}
-.wb.is-off .wb-bar,.wb.is-off .wb-pic img{animation-play-state:paused}
+.wb.is-off .wb-bar,.wb.is-off .wb-box{animation-play-state:paused}
 @keyframes wbbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (max-width:1023px){
   .wb{grid-template-columns:minmax(0,1fr)}
@@ -774,8 +792,8 @@ body::after{ /* swiss-noise */
   .wb-tab .wb-n{grid-row:auto;padding-top:0;align-self:center}
   .wb-tm{display:none}
 }
-@media (max-width:640px){.wb-info{grid-template-columns:minmax(0,1fr)}.wb-info .wb-btn{grid-column:1;grid-row:auto;justify-self:start;margin-top:.6rem}}
-@media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-pic img{animation:none}.wb-tab.is-on .wb-bar{animation:none;transform:scaleX(1)}}
+@media (max-width:640px){.wb-pic--mock::after,.wb-pic--trio::after{display:none}.wb-info{grid-template-columns:minmax(0,1fr)}.wb-info .wb-btn{grid-column:1;grid-row:auto;justify-self:start;margin-top:.6rem}}
+@media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-box{animation:none}.wb-tab.is-on .wb-bar{animation:none;transform:scaleX(1)}}
 /* Arbeiten-Abschluss auf Schwarz */
 .works-foot{background:var(--fg);color:#fff;border-top-color:var(--fg)}
 .works-foot .foot-q{color:#fff}
@@ -969,7 +987,7 @@ body::after{ /* swiss-noise */
   <div class="works-wrap wb" id="wb">
     <div class="wb-stage">
     <div class="wb-slide is-on" id="wb-s-stroeer" role="tabpanel" aria-labelledby="wb-t-stroeer">
-      <div class="wb-pic bg-muted"><img src="/assets/img/arbeiten/stroeer-motion-design-dooh.webp" srcset="/assets/img/arbeiten/stroeer-motion-design-dooh-400.webp 400w, /assets/img/arbeiten/stroeer-motion-design-dooh.webp 800w, /assets/img/arbeiten/stroeer-motion-design-dooh-1600.webp 1600w" sizes="(min-width:1024px) 62vw, 100vw" width="1600" height="1200" decoding="async" alt="Ströer Logo in Dunkelblau auf hellgrauem Grund"></div>
+      <div class="wb-pic wb-pic--logo"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/stroeer.svg" width="858" height="195" decoding="async" alt="Ströer Logo"></div></div>
       <div class="wb-info">
         <span class="wb-n">01 / 05</span>
         <h3 class="wb-name">Ströer</h3>
@@ -979,7 +997,7 @@ body::after{ /* swiss-noise */
       </div>
     </div>
     <div class="wb-slide" id="wb-s-av-vertrags-bot" role="tabpanel" aria-labelledby="wb-t-av-vertrags-bot" hidden>
-      <div class="wb-pic bg-muted"><img src="/assets/img/arbeiten/av-vertrags-bot.webp" srcset="/assets/img/arbeiten/av-vertrags-bot-400.webp 400w, /assets/img/arbeiten/av-vertrags-bot.webp 800w, /assets/img/arbeiten/av-vertrags-bot-1600.webp 1600w" sizes="(min-width:1024px) 62vw, 100vw" width="1600" height="1200" decoding="async" alt="Logo von fairwilly auf hellgrauem Grund"></div>
+      <div class="wb-pic wb-pic--logo"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/fairwilly.svg" width="834" height="185" decoding="async" alt="Logo von fairwilly"></div></div>
       <div class="wb-info">
         <span class="wb-n">02 / 05</span>
         <h3 class="wb-name">AV-Vertrags-Bot</h3>
@@ -989,7 +1007,7 @@ body::after{ /* swiss-noise */
       </div>
     </div>
     <div class="wb-slide" id="wb-s-nomo" role="tabpanel" aria-labelledby="wb-t-nomo" hidden>
-      <div class="wb-pic bg-muted"><img src="/assets/img/arbeiten/nomo.webp" srcset="/assets/img/arbeiten/nomo-400.webp 400w, /assets/img/arbeiten/nomo.webp 800w, /assets/img/arbeiten/nomo-1600.webp 1600w" sizes="(min-width:1024px) 62vw, 100vw" width="1600" height="1200" decoding="async" alt="Nomo, ein Roboter-Maskottchen mit Krawatte und Aktentasche"></div>
+      <div class="wb-pic wb-pic--obj"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/nomo-700.webp" srcset="/assets/img/arbeiten/buehne/nomo-700.webp 700w, /assets/img/arbeiten/buehne/nomo-1100.webp 1100w" sizes="(min-width:1024px) 30vw, 60vw" width="1100" height="1146" decoding="async" alt="Nomo, ein Roboter-Maskottchen mit Krawatte und Aktentasche"></div></div>
       <div class="wb-info">
         <span class="wb-n">03 / 05</span>
         <h3 class="wb-name">Nomo</h3>
@@ -999,7 +1017,7 @@ body::after{ /* swiss-noise */
       </div>
     </div>
     <div class="wb-slide" id="wb-s-dreamberry" role="tabpanel" aria-labelledby="wb-t-dreamberry" hidden>
-      <div class="wb-pic bg-muted"><img src="/assets/img/arbeiten/dreamberry-studios.webp" srcset="/assets/img/arbeiten/dreamberry-studios-400.webp 400w, /assets/img/arbeiten/dreamberry-studios.webp 800w, /assets/img/arbeiten/dreamberry-studios-1600.webp 1600w" sizes="(min-width:1024px) 62vw, 100vw" width="1600" height="1200" decoding="async" alt="Logo von Dreamberry Studios auf hellgrauem Grund"></div>
+      <div class="wb-pic wb-pic--trio"><div class="wb-box"><img src="/assets/img/referenzen/dreamberry/t/04.webp" srcset="/assets/img/referenzen/dreamberry/t/04.webp 480w, /assets/img/referenzen/dreamberry/l/04.webp 1080w" sizes="(min-width:1024px) 16vw, 30vw" width="1080" height="1350" decoding="async" alt="Instagram-Beitrag für Dreamberry Studios"><img src="/assets/img/referenzen/dreamberry/t/19.webp" srcset="/assets/img/referenzen/dreamberry/t/19.webp 480w, /assets/img/referenzen/dreamberry/l/19.webp 1080w" sizes="(min-width:1024px) 16vw, 30vw" width="1080" height="1350" decoding="async" alt="Instagram-Beitrag für Dreamberry Studios"><img src="/assets/img/referenzen/dreamberry/t/24.webp" srcset="/assets/img/referenzen/dreamberry/t/24.webp 480w, /assets/img/referenzen/dreamberry/l/24.webp 1080w" sizes="(min-width:1024px) 16vw, 30vw" width="1080" height="1350" decoding="async" alt="Instagram-Beitrag für Dreamberry Studios"></div></div>
       <div class="wb-info">
         <span class="wb-n">04 / 05</span>
         <h3 class="wb-name">Dreamberry Studios</h3>
@@ -1009,7 +1027,7 @@ body::after{ /* swiss-noise */
       </div>
     </div>
     <div class="wb-slide" id="wb-s-ems-loccum" role="tabpanel" aria-labelledby="wb-t-ems-loccum" hidden>
-      <div class="wb-pic bg-muted"><img src="/assets/img/arbeiten/ems-loccum.webp" srcset="/assets/img/arbeiten/ems-loccum-400.webp 400w, /assets/img/arbeiten/ems-loccum.webp 800w, /assets/img/arbeiten/ems-loccum-1600.webp 1600w" sizes="(min-width:1024px) 62vw, 100vw" width="1600" height="1200" decoding="async" alt="Logo von EMS Loccum auf hellgrauem Grund"></div>
+      <div class="wb-pic wb-pic--mock"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/ems-800.webp" srcset="/assets/img/arbeiten/buehne/ems-800.webp 800w, /assets/img/arbeiten/buehne/ems-1400.webp 1400w" sizes="(min-width:1024px) 50vw, 100vw" width="1400" height="939" decoding="async" alt="Mockup der Broschüre für EMS Loccum, aufgeklappt"></div></div>
       <div class="wb-info">
         <span class="wb-n">05 / 05</span>
         <h3 class="wb-name">EMS Loccum</h3>
