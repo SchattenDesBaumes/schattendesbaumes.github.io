@@ -764,6 +764,12 @@ body::after{ /* swiss-noise */
 .wb-pic--video::after{display:none}
 .wb-pic--video::before{inset:-12%;width:auto;height:auto;left:-12%;top:-12%;border-radius:0;background:url(/assets/video/nomo-teaser-poster.webp) center/100% 100% no-repeat;filter:blur(36px);transform:translateZ(0)}
 .wb-vid{position:absolute;top:0;left:50%;height:100%;width:auto;aspect-ratio:1280/580;transform:translateX(-50%);object-fit:cover;display:block;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.wb-pic--st .st-row{gap:clamp(1.25rem,8cqw,7rem)}
+.st-row .st-logo{display:block;width:min(30cqw,20rem);height:auto;flex:0 1 auto;object-fit:initial}
+.st-dev{display:flex;flex-direction:column;align-items:center;flex:0 0 auto}
+.st-screen{height:78cqh;aspect-ratio:9/16;background:var(--fg);padding:.8cqh;box-shadow:0 2cqh 5cqh rgba(0,0,0,.22)}
+.st-screen video{display:block;width:100%;height:100%;object-fit:cover;background:#fff}
+.st-foot{display:block;width:3cqh;height:6cqh;background:var(--fg)}
 .wb-pic .todo{position:absolute;left:.75rem;bottom:.75rem;font-size:.625rem;background:#fff;z-index:1}
 .wb-info{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1.5rem;row-gap:.25rem;align-items:end;padding:clamp(.8rem,1.4vw,1.1rem) var(--pad) clamp(.9rem,1.4vw,1.2rem)}
 .wb-info>*{grid-column:1;margin:0}
@@ -800,7 +806,7 @@ body::after{ /* swiss-noise */
   .wb-tab .wb-n{grid-row:auto;padding-top:0;align-self:center}
   .wb-tm{display:none}
 }
-@media (max-width:640px){.wb-pic--mock::after,.wb-pic--trio::after{display:none}.wb-info{grid-template-columns:minmax(0,1fr)}.wb-info .wb-btn{grid-column:1;grid-row:auto;justify-self:start;margin-top:.6rem}}
+@media (max-width:640px){.wb-pic--mock::after,.wb-pic--trio::after,.wb-pic--st::after{display:none}.wb-info{grid-template-columns:minmax(0,1fr)}.wb-info .wb-btn{grid-column:1;grid-row:auto;justify-self:start;margin-top:.6rem}}
 @media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-box{animation:none}.wb-tab.is-on .wb-bar{animation:none;transform:scaleX(1)}}
 /* Arbeiten-Abschluss auf Schwarz */
 .works-foot{background:var(--fg);color:#fff;border-top-color:var(--fg)}
@@ -1007,8 +1013,8 @@ body::after{ /* swiss-noise */
   <!-- Arbeiten als Bühne mit Liste (Variante B, 20.10.2026). Original-Kacheln: Git-Historie. -->
   <div class="works-wrap wb" id="wb">
     <div class="wb-stage">
-    <div class="wb-slide is-on" id="wb-s-stroeer" role="tabpanel" aria-labelledby="wb-t-stroeer">
-      <div class="wb-pic wb-pic--logo"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/stroeer.svg" width="858" height="195" decoding="async" alt="Ströer Logo"></div></div>
+    <div class="wb-slide is-on" id="wb-s-stroeer" data-dur="11300" role="tabpanel" aria-labelledby="wb-t-stroeer">
+      <div class="wb-pic wb-pic--st"><div class="wb-box st-row"><img class="st-logo" src="/assets/img/arbeiten/buehne/stroeer-logo.webp" width="811" height="171" decoding="async" alt="Ströer Logo"><div class="st-dev"><div class="st-screen"><video class="wb-vid-st" muted playsinline loop preload="none" poster="/assets/video/stroeer-teaser-poster.webp" width="406" height="720" aria-label="Ausschnitt aus dem Spot „Raus aus der Komfortzone“"><source src="/assets/video/stroeer-teaser.mp4" type="video/mp4"><source src="/assets/video/stroeer-teaser.webm" type="video/webm"></video></div><span class="st-foot" aria-hidden="true"></span></div></div></div>
       <div class="wb-info">
         <span class="wb-n">01 / 05</span>
         <h3 class="wb-name">Ströer</h3>
@@ -1070,7 +1076,7 @@ body::after{ /* swiss-noise */
     </div>
     </div>
     <ul class="wb-list" role="tablist" aria-label="Ausgewählte Arbeiten">
-      <li><button type="button" class="wb-tab is-on" id="wb-t-stroeer" role="tab" aria-selected="true" aria-controls="wb-s-stroeer"><span class="wb-n">01</span><span class="wb-tn">Ströer</span><span class="wb-tm">Motion Design · DOOH</span><span class="wb-bar" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="wb-tab is-on" id="wb-t-stroeer" style="--dur:11.3s" role="tab" aria-selected="true" aria-controls="wb-s-stroeer"><span class="wb-n">01</span><span class="wb-tn">Ströer</span><span class="wb-tm">Motion Design · DOOH</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-av-vertrags-bot" role="tab" aria-selected="false" aria-controls="wb-s-av-vertrags-bot"><span class="wb-n">02</span><span class="wb-tn">AV-Vertrags-Bot</span><span class="wb-tm">Automatisierung · n8n</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-nomo" style="--dur:10s" role="tab" aria-selected="false" aria-controls="wb-s-nomo"><span class="wb-n">03</span><span class="wb-tn">Nomo</span><span class="wb-tm">KI · n8n · Webdesign</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-dreamberry" role="tab" aria-selected="false" aria-controls="wb-s-dreamberry"><span class="wb-n">04</span><span class="wb-tn">Dreamberry Studios</span><span class="wb-tm">Social Media · Content</span><span class="wb-bar" aria-hidden="true"></span></button></li>
