@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sidar Avci — Mediendesign, Web & KI-Automatisierung</title>
-<meta name="description" content="Mediendesigner aus Ingolstadt: Marke, Website, Content und automatisierte Abläufe aus einer Hand. Projekte ansehen oder direkt schreiben.">
+<meta name="description" content="Mediendesigner aus der Region Ingolstadt: Marke, Website, Content und automatisierte Abläufe aus einer Hand. Projekte ansehen oder direkt schreiben.">
 <meta property="og:title" content="Sidar Avci — Design, Web und KI-Automatisierung">
 <meta property="og:description" content="Ich gestalte Marken und baue die Abläufe dahinter.">
 <meta property="og:type" content="website">
@@ -257,6 +257,7 @@ body::after{ /* swiss-noise */
 .hero__photo{position:relative;z-index:1;aspect-ratio:4/5;border:var(--b) solid var(--fg);overflow:hidden}
 /* Porträt in Farbe (alle anderen Bilder bleiben schwarz-weiß) */
 .hero__photo.ph>img{filter:none}
+.about__media.ph>img{filter:none}
 .hero__photo>.hero__wink{z-index:3;opacity:0}
 .hero__photo>.hero__wink.on{opacity:1}
 .hero__photo .todo{position:absolute;left:1rem;top:1rem;background:#fff;font-size:.75rem}
@@ -641,8 +642,10 @@ body::after{ /* swiss-noise */
 .plus::before{width:1rem;height:2px}
 .plus::after{width:2px;height:1rem}
 .qa summary:hover .plus{transform:rotate(90deg)}
-.qa[open] .plus{transform:rotate(90deg)}
+.qa[open] .plus,.qa[open] summary:hover .plus{transform:none}
 .qa[open] .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+.qa__a p+p,.qa__a ul+p{margin-top:.75rem}
+.qa__list{list-style:none;margin:.75rem 0;padding:0;border-top:1px solid rgba(0,0,0,.2)}.qa__list li{padding:.5rem 0;border-bottom:1px solid rgba(0,0,0,.2)}
 .qa__a{padding:1.5rem 1.25rem 1.75rem calc(1.25rem + 1.75rem + 1rem);max-width:62ch;font-size:1rem;line-height:1.6}
 @media (max-width:599px){.qa__a{padding-left:1.25rem}}
 
@@ -1404,16 +1407,8 @@ body::after{ /* swiss-noise */
 <!-- ======================= ÜBER MICH ======================= -->
 <section class="sec" id="ueber-mich" aria-labelledby="ueber-h">
   <div class="grid wrap about">
-    <figure class="about__media ph bg-muted swiss-diagonal">
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <rect x="0" y="300" width="400" height="200" fill="#000"/>
-        <circle cx="200" cy="200" r="110" fill="#fff" stroke="#000" stroke-width="4"/>
-        <rect class="r" x="290" y="60" width="56" height="56"/>
-        <line x1="40" y1="0" x2="40" y2="500" stroke="#000" stroke-width="1"/>
-        <line x1="0" y1="440" x2="400" y2="440" stroke="#fff" stroke-width="1"/>
-      </svg>
-      <span class="todo">[Porträtfoto]</span>
-      <img src="/assets/img/sidar-avci-ueber-mich.jpg" alt="Sidar Avci bei der Arbeit" onerror="this.remove()">
+    <figure class="about__media ph bg-muted">
+      <img src="/assets/img/sidar-avci-ueber-mich-800.webp" srcset="/assets/img/sidar-avci-ueber-mich-800.webp 800w, /assets/img/sidar-avci-ueber-mich-1200.webp 1198w" sizes="(min-width:1024px) 38vw, (min-width:520px) 30rem, 100vw" width="1198" height="1532" loading="lazy" decoding="async" alt="Sidar Avci von oben fotografiert, entspannt in einem roten Sessel unter einer großen runden Leuchte">
     </figure>
     <div class="about__text">
       <header class="sec-head">
@@ -1421,7 +1416,7 @@ body::after{ /* swiss-noise */
         <h2 class="h2 h2--side rv" id="ueber-h" style="margin-top:1.5rem">Über mich</h2>
       </header>
       <div class="body rv">
-        <p class="lead" style="max-width:none">Ich bin Sidar Avci, 24, Mediendesigner aus Ingolstadt. Seit 2023 arbeite ich selbstständig für Kunden im DACH-Raum, seit 2025 zusätzlich als Webdesigner und Programmierer.</p>
+        <p class="lead" style="max-width:none">Ich bin Sidar Avci, 24, Mediendesigner aus der Region Ingolstadt. Seit 2023 arbeite ich selbstständig für Kunden im DACH-Raum, seit 2025 zusätzlich als Webdesigner und Programmierer.</p>
         <p>Angefangen habe ich beim Zeichnen. Daraus wurde Grafikdesign, dann Social Media, dann Webentwicklung. Irgendwann ist mir aufgefallen, wie viele Arbeitsschritte bei meinen Kunden noch von Hand liefen. Seitdem baue ich auch die Technik dahinter.</p>
         <p>Gestaltung und Umsetzung liegen damit bei derselben Person. In der Übergabe zwischen Designer und Entwickler geht nichts verloren, und eine Abstimmungsrunde fällt weg.</p>
       </div>
@@ -1478,11 +1473,11 @@ body::after{ /* swiss-noise */
       <details class="qa"><summary><span class="qa__n">04</span><span>Was kostet das?</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="qa__a"><p>Das hängt vom Umfang ab, deshalb stehen hier keine Preise. Nach einem kurzen Gespräch bekommen Sie ein festes Angebot mit Umfang, Termin und Preis. Keine Stundenschätzung, die im Projekt wächst.</p></div></details>
       <details class="qa"><summary><span class="qa__n">05</span><span>Wie lange dauert ein Projekt?</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="qa__a"><p class="todo todo--block">[VON SIDAR ERGÄNZEN: realistische Spannen je Leistung, z. B. „Logo und Basis-Branding: 2–3 Wochen. Website: ab 4 Wochen. Automatisierung: je nach Anzahl der Systeme.“ Keine Zahl angeben, die Sie nicht halten können.]</p></div></details>
+        <div class="qa__a"><p>Das hängt vom Umfang ab. Als grobe Richtwerte:</p><ul class="qa__list"><li>Logo und Basis-Branding: 2–3 Wochen</li><li>Website: 4–6 Wochen</li><li>Social Media: Start nach 1–2 Wochen, danach laufend</li><li>Automatisierung: ab 2 Wochen, je nach Anzahl der Systeme</li></ul><p>Den genauen Zeitplan bekommen Sie mit dem Angebot.</p></div></details>
       <details class="qa"><summary><span class="qa__n">06</span><span>Wem gehören die Dateien am Ende?</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="qa__a"><p>Ihnen. Sie bekommen alle Endformate und die Quelldateien.</p><p class="todo todo--block" style="margin-top:1rem">[VON SIDAR ERGÄNZEN: Einschränkungen prüfen, z. B. bei lizenzierten Schriften oder gekauften Stockbildern. Die Lizenz läuft dann auf Sie, nicht über mich.]</p></div></details>
+        <div class="qa__a"><p>Ihnen. Nach vollständiger Bezahlung bekommen Sie alle Endformate, die Quelldateien und die Nutzungsrechte für Ihr Projekt.</p><p>Gekaufte Schriften oder Stockbilder lizenziere ich auf Ihren Namen. Damit liegen auch diese Rechte bei Ihnen und nicht bei mir.</p></div></details>
       <details class="qa"><summary><span class="qa__n">07</span><span>Wie viele Korrekturrunden sind drin?</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="qa__a"><p class="todo todo--block">[VON SIDAR ERGÄNZEN: Zahl festlegen. Weitere Runden werden nach Aufwand abgerechnet, das steht vorher im Angebot.]</p></div></details>
+        <div class="qa__a"><p>Zwei Korrekturrunden sind im Preis enthalten. Weitere Runden rechne ich nach Aufwand ab. Das steht vorher im Angebot, es gibt also keine Überraschung auf der Rechnung.</p></div></details>
       <details class="qa"><summary><span class="qa__n">08</span><span>Ist eine Anfrage verbindlich?</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="qa__a"><p>Nein. Gespräch und Angebot sind kostenlos und unverbindlich. Verbindlich wird es erst, wenn Sie das Angebot schriftlich bestätigen.</p></div></details>
       <details class="qa"><summary><span class="qa__n">09</span><span>Was brauchen Sie von mir, um anzufangen?</span><span class="plus" aria-hidden="true"></span></summary>
