@@ -939,6 +939,23 @@ body::after{ /* swiss-noise */
 @media (min-width:900px){.mgr.is-spread .mgr__pg{max-width:50%}}
 @media (max-width:599px){.mgr__stage{grid-template-columns:minmax(0,1fr);padding:0 .5rem}.mgr__nav{position:absolute;bottom:-3.6rem;z-index:3}.mgr__nav--prev{left:var(--pad)}.mgr__nav--next{right:var(--pad)}.mgr__copy{padding-bottom:4.5rem}}
 @media (prefers-reduced-motion:reduce){.mg-pg,.mg__lines,.mg__sfx{transition:none}.mgr__pg{animation:none}}
+
+/* Studienprojekte: ganze Kachel klickbar, Galerie im Manga-Leser-Stil */
+.work--gal{cursor:pointer}
+.work__open{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;margin-top:auto;padding-top:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.6875rem;min-height:36px}
+.work__open::after{content:"";position:absolute;inset:0;z-index:1}
+.work__open svg{width:1rem;height:1rem;transform:rotate(-45deg);transition:transform .2s var(--ease)}
+.work__open:focus-visible::after{outline:3px solid var(--accent);outline-offset:-3px}
+.works--own .work--gal:hover{background:var(--accent)}
+.work--gal:hover .work__open svg{transform:none}
+.work--gal:hover .work__img img{transform:scale(1.04)}
+@media (max-width:767px){.works--own>li:nth-child(3):last-child{grid-column:span 2}.works--own>li:nth-child(3):last-child .work__img{aspect-ratio:2/1}}
+.glr .mgr__bar{gap:1rem}
+.glr__t{font-weight:900;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(.8125rem,1.2vw,1rem);margin-right:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.glr__img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:#fff;animation:mgr-in .4s cubic-bezier(.2,.8,.2,1) both}
+.glr.is-back .glr__img{animation-name:mgr-in-back}
+.glr__cap{color:#d0d0d0}
+@media (prefers-reduced-motion:reduce){.glr__img{animation:none}}
 /* Header auf Schwarz (22.10.2026) */
 .site-header{background:var(--fg);color:#fff}
 .site-header .brand,.site-header .nav a{color:#fff}
@@ -1161,7 +1178,7 @@ body::after{ /* swiss-noise */
         <span class="works-switch__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" aria-hidden="true"><path d="M21 12H4M11 5l-7 7 7 7"/></svg></span>
       </button>
     </div>
-    <p class="sec-intro">Illustration und Comic, alles aus eigenem Antrieb. Daher kann ich zeichnen, wenn ein Projekt Bilder braucht, die es noch nicht gibt.</p>
+    <p class="sec-intro">Was neben Kundenprojekten entsteht: ein Manga aus eigenem Antrieb und ausgewählte Projekte aus meinem Mediendesign-Studium an der IU.</p>
   </header>
 
   <div class="mg" id="dokomi">
@@ -1180,6 +1197,20 @@ body::after{ /* swiss-noise */
       <span class="mg__sfx" aria-hidden="true">ドン!</span>
     </button>
   </div>
+
+  <dialog class="mgr glr" id="glr" aria-label="Projektbilder">
+    <div class="mgr__bar">
+      <span class="glr__t"></span>
+      <span class="mgr__count" aria-live="polite"></span>
+      <button class="mgr__x" type="button" data-glr-close aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    </div>
+    <div class="mgr__stage">
+      <button class="mgr__nav mgr__nav--prev" type="button" data-glr-step="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="mgr__pages"><img class="glr__img" alt=""></div>
+      <button class="mgr__nav mgr__nav--next" type="button" data-glr-step="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <p class="mgr__copy glr__cap"></p>
+  </dialog>
   <dialog class="mgr" id="mgr" aria-label="Manga DoKomi, 4 Seiten">
     <div class="mgr__bar">
       <span class="mgr__count" aria-live="polite">1 / 4</span>
@@ -1194,34 +1225,31 @@ body::after{ /* swiss-noise */
   </dialog>
   <div class="works-wrap">
   <ul class="works works--own">
-    <li><article class="work">
-      <div class="work__img bg-muted swiss-grid-pattern">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect x="110" y="60" width="180" height="180" fill="#fff" stroke="#000" stroke-width="4"/>
-          <path d="M132 200 C 170 120, 220 220, 268 110" fill="none" stroke="#000" stroke-width="4"/>
-          <g transform="rotate(35 270 120)"><rect x="258" y="40" width="24" height="120" fill="#000"/><polygon points="258,160 282,160 270,186" class="r"/></g>
-        </svg>
-        <span class="todo">[Bild ergänzen]</span>
-      </div>
+    <li><article class="work work--gal">
+      <div class="work__img bg-muted"><img src="/assets/img/frei/iu/sonnenwerk-kachel.webp" width="1200" height="900" loading="lazy" decoding="async" alt="Flyer der Sonnenwerk Photovoltaik GmbH als Mockup"></div>
       <div class="work__body">
-        <h3 class="work__client"><span class="todo" style="font-size:.4em">[Titel ergänzen]</span></h3>
-        <p class="work__meta">Illustration</p>
-        <p class="work__teaser"><span class="todo">[VON SIDAR ERGÄNZEN: Ein Satz zur Zeichnung.]</span></p>
+        <h3 class="work__client">Sonnenwerk</h3>
+        <p class="work__meta">Studienprojekt · IU · Corporate Design</p>
+        <p class="work__teaser">Komplettes Corporate Design für einen fiktiven Photovoltaik-Betrieb: Logo, Farben, Hausschrift, Geschäftsausstattung, Flyer, Fahrzeug und Design-Manual. Grün und Gold statt des branchenüblichen Blaus.</p>
+        <button class="work__open arrow-link" type="button" data-gal="sonnenwerk">Projekt ansehen<span class="sr-only">: Sonnenwerk</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
       </div>
     </article></li>
-    <li><article class="work">
-      <div class="work__img bg-muted swiss-diagonal">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <circle cx="170" cy="150" r="80" fill="#000"/>
-          <circle class="r" cx="250" cy="120" r="44"/>
-          <path d="M90 250 Q 200 200 320 250" fill="none" stroke="#000" stroke-width="4"/>
-        </svg>
-        <span class="todo">[Bild ergänzen]</span>
-      </div>
+    <li><article class="work work--gal">
+      <div class="work__img bg-muted"><img src="/assets/img/frei/iu/misch-mit-kachel.webp" width="1200" height="900" loading="lazy" decoding="async" alt="Drei Plakate der Serie „Mehr als …“ an einer Wand"></div>
       <div class="work__body">
-        <h3 class="work__client"><span class="todo" style="font-size:.4em">[Titel ergänzen]</span></h3>
-        <p class="work__meta">Illustration</p>
-        <p class="work__teaser"><span class="todo">[VON SIDAR ERGÄNZEN: Ein Satz zur Zeichnung.]</span></p>
+        <h3 class="work__client">Misch mit.</h3>
+        <p class="work__meta">Studienprojekt · IU · Plakatserie</p>
+        <p class="work__teaser">Plakatserie „Mehr als …“ für „stories around“, den Pop-up-Container der IU auf der Munich Creative Business Week 2026 am Viktualienmarkt. Thema Vielfalt, mit der Kartoffel als Metapher.</p>
+        <button class="work__open arrow-link" type="button" data-gal="misch-mit">Projekt ansehen<span class="sr-only">: Misch mit.</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </article></li>
+    <li><article class="work work--gal">
+      <div class="work__img bg-muted"><img src="/assets/img/frei/iu/magazin-kachel.webp" width="1200" height="900" loading="lazy" decoding="async" alt="Titelseite und eine Doppelseite des Magazins Generation Entrepreneur"></div>
+      <div class="work__body">
+        <h3 class="work__client">Generation Entrepreneur</h3>
+        <p class="work__meta">Studienprojekt · IU · Editorial</p>
+        <p class="work__teaser">Magazin über Gen Z und Selbstständigkeit, 24 Seiten plus Umschlag. Text selbst recherchiert und geschrieben, Layout, Typografie und Druckdaten von mir.</p>
+        <button class="work__open arrow-link" type="button" data-gal="magazin">Projekt ansehen<span class="sr-only">: Generation Entrepreneur</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
       </div>
     </article></li>
   </ul>
@@ -2180,6 +2208,25 @@ body::after{ /* swiss-noise */
   var x0=null; d.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX },{passive:true});
   d.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) step(dx<0?1:-1); x0=null },{passive:true});
   if(mq.addEventListener) mq.addEventListener('change',function(){ if(d.open) render() });
+})();
+</script>
+<script>
+/* Studienprojekte: Galerie. Pfeiltasten, Wischen, Esc. */
+(function(){
+  var d=document.getElementById('glr'); if(!d||!d.showModal) return;
+  var G={"sonnenwerk": {"t": "Sonnenwerk · Corporate Design", "i": [["/assets/img/frei/iu/sonnenwerk-1.webp", "Flyer im Wickelfalz"], ["/assets/img/frei/iu/sonnenwerk-2.webp", "Fahrzeugbeschriftung (Mockup KI-generiert)"], ["/assets/img/frei/iu/sonnenwerk-3.webp", "Visitenkarten"], ["/assets/img/frei/iu/sonnenwerk-4.webp", "Briefpapier nach DIN 5008"], ["/assets/img/frei/iu/sonnenwerk-5.webp", "Give-away: Solar-Powerbank (Mockup KI-generiert)"], ["/assets/img/frei/iu/sonnenwerk-6.webp", "Design-Manual, Titel"], ["/assets/img/frei/iu/sonnenwerk-7.webp", "Design-Manual, Logo und Farben"]]}, "misch-mit": {"t": "Misch mit. · Plakatserie „Mehr als …“", "i": [["/assets/img/frei/iu/misch-mit-1.webp", "Die Serie an einer Wand (Mockup)"], ["/assets/img/frei/iu/misch-mit-2.webp", "Mehr als eine Tüte"], ["/assets/img/frei/iu/misch-mit-3.webp", "Mehr als ein Gesicht"], ["/assets/img/frei/iu/misch-mit-4.webp", "Mehr als eine Kartoffel"], ["/assets/img/frei/iu/misch-mit-5.webp", "Die Serie im Ausstellungsraum (Mockup)"]]}, "magazin": {"t": "Generation Entrepreneur · Magazin", "i": [["/assets/img/frei/iu/magazin-1.webp", "Titelseite"], ["/assets/img/frei/iu/magazin-2.webp", "Vorwort und Inhalt"], ["/assets/img/frei/iu/magazin-3.webp", "Kapitel 1: Boss, Gründer, Solopreneur"], ["/assets/img/frei/iu/magazin-4.webp", "Kapitel 3: Früher Garage, heute Laptop"], ["/assets/img/frei/iu/magazin-5.webp", "Kapitel 5: (Gen)eration selbstständig"]]}};
+  var img=d.querySelector('.glr__img'), cap=d.querySelector('.glr__cap'), tt=d.querySelector('.glr__t'), cnt=d.querySelector('.mgr__count'), prev=d.querySelector('.mgr__nav--prev'), next=d.querySelector('.mgr__nav--next'), cur=null, i=0;
+  function render(back){ var it=cur.i[i]; d.classList.toggle('is-back',!!back); img.style.animation='none'; img.src=it[0]; img.alt=it[1]; void img.offsetWidth; img.style.animation=''; cap.textContent=it[1]; cnt.textContent=(i+1)+' / '+cur.i.length; prev.disabled=i===0; next.disabled=i===cur.i.length-1;
+    var n=cur.i[i+1]; if(n){ var p=new Image(); p.src=n[0] } }
+  function step(k){ var j=i+k; if(!cur||j<0||j>=cur.i.length) return; i=j; render(k<0) }
+  [].forEach.call(document.querySelectorAll('[data-gal]'),function(b){ b.addEventListener('click',function(){ cur=G[b.getAttribute('data-gal')]; if(!cur) return; i=0; tt.textContent=cur.t; d.showModal(); document.documentElement.style.overflow='hidden'; render(); next.focus() }) });
+  d.addEventListener('close',function(){ document.documentElement.style.overflow='' });
+  d.querySelector('[data-glr-close]').addEventListener('click',function(){ d.close() });
+  [].forEach.call(d.querySelectorAll('[data-glr-step]'),function(b){ b.addEventListener('click',function(){ step(+b.getAttribute('data-glr-step')) }) });
+  d.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){ e.preventDefault(); step(1) } if(e.key==='ArrowLeft'){ e.preventDefault(); step(-1) } });
+  d.addEventListener('click',function(e){ if(e.target===d) d.close() });
+  var x0=null; d.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX },{passive:true});
+  d.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) step(dx<0?1:-1); x0=null },{passive:true});
 })();
 </script>
 </body>
