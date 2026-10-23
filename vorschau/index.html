@@ -956,6 +956,28 @@ body::after{ /* swiss-noise */
 .glr.is-back .glr__img{animation-name:mgr-in-back}
 .glr__cap{color:#d0d0d0}
 @media (prefers-reduced-motion:reduce){.glr__img{animation:none}}
+
+/* Magazin: Blätterbuch */
+.mz{background:radial-gradient(ellipse at 50% 45%,#2a2a2a 0,#0b0b0b 60%,#000 100%)}
+.mz::before{display:none}
+.mz__sub{font-weight:700;letter-spacing:.12em;font-size:.625rem;color:#9a9a9a;margin-left:.6rem;text-transform:uppercase}
+.mz__zoom{display:inline-flex;align-items:center;gap:.45rem;min-height:3rem;padding:0 .9rem;border:var(--b2) solid #fff;color:#fff;text-decoration:none;font-weight:700;font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;transition:background-color .15s,color .15s}
+.mz__zoom svg{width:1.1rem;height:1.1rem}
+.mz__zoom:hover{background:var(--accent);border-color:var(--accent);color:var(--fg)}
+.mz__zoom:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.mz__stage{min-height:0}
+.mz__wrap{height:100%;min-height:0;display:flex;align-items:center;justify-content:center}
+.mz__book{max-width:100%;margin:0 auto;filter:drop-shadow(0 1.5rem 2.5rem rgba(0,0,0,.6))}
+.mz-pg{background:#fff;overflow:hidden}
+.mz-pg img{display:block;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.mz__hint{color:#9a9a9a}
+.mz__count{white-space:nowrap}
+@media (max-width:719px){
+  .mz__sub{display:none}
+  .mz__zoom{padding:0 .7rem;font-size:0;gap:0}.mz__zoom svg{width:1.3rem;height:1.3rem}
+  .mz__hint{visibility:hidden}
+  .mz .glr__t{font-size:.75rem}
+}
 /* Header auf Schwarz (22.10.2026) */
 .site-header{background:var(--fg);color:#fff}
 .site-header .brand,.site-header .nav a{color:#fff}
@@ -1198,6 +1220,21 @@ body::after{ /* swiss-noise */
     </button>
   </div>
 
+
+  <dialog class="mgr mz" id="mz" aria-label="Magazin Generation Entrepreneur, 28 Seiten">
+    <div class="mgr__bar">
+      <span class="glr__t">Generation Entrepreneur <span class="mz__sub">Magazin · 28 Seiten</span></span>
+      <span class="mgr__count mz__count" aria-live="polite"></span>
+      <a class="mz__zoom" href="#" target="_blank" rel="noopener">Seite groß <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M10.5 8v5M8 10.5h5"/></svg></a>
+      <button class="mgr__x" type="button" data-mz-close aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    </div>
+    <div class="mgr__stage mz__stage">
+      <button class="mgr__nav mgr__nav--prev" type="button" data-mz-step="-1" aria-label="Zurückblättern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="mz__wrap"><div class="mz__book" id="mz-book"></div></div>
+      <button class="mgr__nav mgr__nav--next" type="button" data-mz-step="1" aria-label="Weiterblättern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <p class="mgr__copy mz__hint">Zum Blättern an der Ecke ziehen, tippen oder Pfeiltasten nutzen · Bildquellen im Magazin</p>
+  </dialog>
   <dialog class="mgr glr" id="glr" aria-label="Projektbilder">
     <div class="mgr__bar">
       <span class="glr__t"></span>
@@ -1249,7 +1286,7 @@ body::after{ /* swiss-noise */
         <h3 class="work__client">Generation Entrepreneur</h3>
         <p class="work__meta">Studienprojekt · IU · Editorial</p>
         <p class="work__teaser">Magazin über Gen Z und Selbstständigkeit, 24 Seiten plus Umschlag. Text selbst recherchiert und geschrieben, Layout, Typografie und Druckdaten von mir.</p>
-        <button class="work__open arrow-link" type="button" data-gal="magazin">Projekt ansehen<span class="sr-only">: Generation Entrepreneur</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+        <button class="work__open arrow-link" type="button" data-mz-open>Magazin lesen<span class="sr-only">: Generation Entrepreneur</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
       </div>
     </article></li>
   </ul>
@@ -2227,6 +2264,47 @@ body::after{ /* swiss-noise */
   d.addEventListener('click',function(e){ if(e.target===d) d.close() });
   var x0=null; d.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX },{passive:true});
   d.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) step(dx<0?1:-1); x0=null },{passive:true});
+})();
+</script>
+<script>
+/* Magazin: Blätterbuch mit page-flip (selbst gehostet). Bilder laden erst beim Öffnen, jeweils die nächsten Seiten vorweg. */
+(function(){
+  var d=document.getElementById('mz'); if(!d||!d.showModal) return;
+  var N=28, B='/assets/img/frei/iu/magazin/', book=document.getElementById('mz-book'), cnt=d.querySelector('.mz__count'), zoom=d.querySelector('.mz__zoom'), pf=null, imgs=[];
+  function n2(i){ return (i<10?'0':'')+i }
+  function load(from,to){ for(var i=Math.max(0,from);i<=Math.min(N-1,to);i++){ var im=imgs[i]; if(im&&!im.getAttribute('src')){ im.srcset=B+n2(i+1)+'-700.webp 700w, '+B+n2(i+1)+'.webp 993w'; im.src=B+n2(i+1)+'.webp' } } }
+  function label(i){
+    var land=pf&&pf.getOrientation()==='landscape';
+    if(land&&i>0&&i<N-1){ var a=i%2? i : i-1; return 'Seite '+(a+1)+'–'+(a+2)+' / '+N }
+    return (land?'Seite ':'')+(i+1)+' / '+N;
+  }
+  function upd(i){ cnt.textContent=label(i); zoom.href=B+n2(i+1)+'.webp'; load(i-2,i+5);
+    d.querySelector('.mgr__nav--prev').disabled=i<=0; d.querySelector('.mgr__nav--next').disabled=i>=N-1 }
+  function build(){
+    var alts=['Titelseite','Vorwort','Inhalt'];
+    for(var i=0;i<N;i++){ var pg=document.createElement('div'); pg.className='mz-pg'; if(i===0||i===N-1) pg.setAttribute('data-density','hard');
+      var im=document.createElement('img'); im.alt=alts[i]||('Seite '+(i+1)); im.sizes='(min-width:1100px) 45vw, 90vw'; im.decoding='async'; pg.appendChild(im); imgs.push(im); book.appendChild(pg) }
+    load(0,5);
+    var st=d.querySelector('.mz__wrap');
+    function fit(){ book.style.width=st.clientWidth+'px'; book.style.height=Math.max(220,st.clientHeight-8)+'px' }
+    fit(); window.addEventListener('resize',function(){ if(d.open&&pf){ fit(); pf.update&&pf.update() } });
+    pf=new St.PageFlip(book,{width:495,height:700,size:'stretch',minWidth:300,maxWidth:1000,minHeight:200,maxHeight:1414,autoSize:false,showCover:true,usePortrait:true,mobileScrollSupport:false,maxShadowOpacity:.45,flippingTime:850,drawShadow:true});
+    pf.loadFromHTML(book.querySelectorAll('.mz-pg'));
+    pf.on('flip',function(e){ upd(e.data) });
+    pf.on('changeOrientation',function(){ upd(pf.getCurrentPageIndex()) });
+    upd(0);
+  }
+  function open(){
+    d.showModal(); document.documentElement.style.overflow='hidden';
+    if(!pf){ if(window.St&&St.PageFlip) requestAnimationFrame(build); else if(!document.getElementById('pf-js')){ var sc=document.createElement('script'); sc.id='pf-js'; sc.src='/assets/js/page-flip.browser.js'; sc.onload=function(){ requestAnimationFrame(build) }; document.head.appendChild(sc) } }
+    d.querySelector('.mgr__nav--next').focus();
+  }
+  [].forEach.call(document.querySelectorAll('[data-mz-open]'),function(b){ b.addEventListener('click',open) });
+  d.addEventListener('close',function(){ document.documentElement.style.overflow='' });
+  d.querySelector('[data-mz-close]').addEventListener('click',function(){ d.close() });
+  [].forEach.call(d.querySelectorAll('[data-mz-step]'),function(b){ b.addEventListener('click',function(){ if(!pf) return; +b.getAttribute('data-mz-step')>0?pf.flipNext():pf.flipPrev() }) });
+  d.addEventListener('keydown',function(e){ if(!pf) return; if(e.key==='ArrowRight'){ e.preventDefault(); pf.flipNext() } if(e.key==='ArrowLeft'){ e.preventDefault(); pf.flipPrev() } });
+  d.addEventListener('click',function(e){ if(e.target===d) d.close() });
 })();
 </script>
 </body>
