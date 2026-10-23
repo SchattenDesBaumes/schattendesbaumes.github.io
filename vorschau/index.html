@@ -817,7 +817,7 @@ body::after{ /* swiss-noise */
 .works-foot .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 #arbeiten + .sec{margin-top:-1px;position:relative}
 /* Performance: Schein im Kontakt nur animieren, solange er sichtbar ist */
-.glow-off .glow-ring{animation-play-state:paused}
+.glow-off .glow-ring{animation:none}
 /* Text nie über den Rand laufen lassen */
 .h1,.h2,.work__client,.cs-title,.wb-name{overflow-wrap:break-word}
 /* Fokus auch auf dunklen Flächen deutlich */
@@ -2049,7 +2049,7 @@ body::after{ /* swiss-noise */
 (function(){
   var sec=document.querySelector('.contact'), circle=sec&&sec.querySelector('.contact__circle'), svg=sec&&sec.querySelector('.contact__glow');
   if(!circle||!svg) return;
-  var NS='http://www.w3.org/2000/svg', holes=svg.querySelector('.glow-holes'), rings=[].slice.call(svg.querySelectorAll('.glow-ring')), GAP=26;
+  var NS='http://www.w3.org/2000/svg', holes=svg.querySelector('.glow-holes'), rings=[].slice.call(svg.querySelectorAll('.glow-ring')), GAP=26; var grp=svg.querySelector('g[mask]');
   function textRects(){
     var out=[], rg=document.createRange();
     sec.querySelectorAll('.h2, .contact__body p, .sec-label').forEach(function(el){
@@ -2074,6 +2074,15 @@ body::after{ /* swiss-noise */
       h.setAttribute('width',r.width+GAP*2); h.setAttribute('height',r.height+GAP*2);
       h.setAttribute('rx',GAP); holes.appendChild(h);
     });
+    // Performance: Maske einmal als statisches Bild rendern statt in jedem Animations-Frame neu (SVG-Maske mit Weichzeichner)
+    var W=Math.round(s.width), H=Math.round(s.height), rs='';
+    [].forEach.call(holes.childNodes,function(h){ rs+='<rect x="'+h.getAttribute('x')+'" y="'+h.getAttribute('y')+'" width="'+h.getAttribute('width')+'" height="'+h.getAttribute('height')+'" rx="'+GAP+'"/>' });
+    var m='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><filter id="b" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter><mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="'+W+'" height="'+H+'"><rect width="100%" height="100%" fill="#fff"/><g fill="#000" filter="url(#b)">'+rs+'</g></mask><rect width="100%" height="100%" fill="#fff" mask="url(#m)"/></svg>';
+    var u='url("data:image/svg+xml,'+encodeURIComponent(m)+'")';
+    svg.style.webkitMaskImage=u; svg.style.maskImage=u;
+    svg.style.webkitMaskSize=svg.style.maskSize='100% 100%';
+    svg.style.webkitMaskRepeat=svg.style.maskRepeat='no-repeat';
+    if(grp) grp.removeAttribute('mask');
   }
   layout();
   (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(layout);
