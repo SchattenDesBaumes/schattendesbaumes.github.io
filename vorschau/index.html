@@ -983,6 +983,18 @@ body::after{ /* swiss-noise */
   .mz__hint{visibility:hidden}
   .mz .glr__t{font-size:.75rem}
 }
+
+/* Plattencover-Kachel: Platte dreht sich, Hülle bleibt */
+.vinyl{container-type:size;background:#f2f2f2}
+.vinyl__in{position:absolute;left:50%;top:50%;width:max(100cqw,133.334cqh);aspect-ratio:4/3;transform:translate(-50%,-50%)}
+.work__img .vinyl__in img{position:absolute;inset:auto;display:block;transition:none}
+.work__img .vinyl__in .vinyl__bg,.work__img .vinyl__in .vinyl__cover{left:0;top:0;width:100%;height:100%}
+.work__img .vinyl__in .vinyl__disc{left:50.833%;top:18.889%;width:46.667%;height:auto;aspect-ratio:1;animation:vinyl-spin 3.6s linear infinite;will-change:transform}
+@keyframes vinyl-spin{to{transform:rotate(360deg)}}
+.work--gal:hover .vinyl__in img{transform:none}
+.work--gal:hover .vinyl__in .vinyl__disc{animation-duration:1.8s}
+.works-panel.is-off .vinyl__in .vinyl__disc{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.work__img .vinyl__in .vinyl__disc{animation:none}}
 /* Header auf Schwarz (22.10.2026) */
 .site-header{background:var(--fg);color:#fff}
 .site-header .brand,.site-header .nav a{color:#fff}
@@ -1268,7 +1280,7 @@ body::after{ /* swiss-noise */
   <div class="works-wrap">
   <ul class="works works--own">
     <li><article class="work work--gal">
-      <div class="work__img bg-muted"><img src="/assets/img/frei/iu/platte-kachel.webp" width="1200" height="900" loading="lazy" decoding="async" alt="Plattencover „Alles auf Rot“ mit herausragender Schallplatte im Roulette-Design"></div>
+      <div class="work__img bg-muted vinyl"><div class="vinyl__in"><img class="vinyl__bg" src="/assets/img/frei/iu/platte-kachel-bg.webp" width="1200" height="900" loading="lazy" decoding="async" alt=""><img class="vinyl__disc" src="/assets/img/frei/iu/platte-kachel-disc.webp" width="800" height="800" loading="lazy" decoding="async" alt=""><img class="vinyl__cover" src="/assets/img/frei/iu/platte-kachel-cover.webp" width="1200" height="900" loading="lazy" decoding="async" alt="Plattencover „Alles auf Rot“ mit herausragender Schallplatte im Roulette-Design"></div></div>
       <div class="work__body">
         <h3 class="work__client">Alles auf Rot</h3>
         <p class="work__meta">Studienprojekt · IU · Plattencover</p>
