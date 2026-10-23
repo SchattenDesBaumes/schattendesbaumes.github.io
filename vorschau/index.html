@@ -883,6 +883,62 @@ body::after{ /* swiss-noise */
   .hero__title{padding-top:1.5rem}
   .hero__h1{margin-top:.6rem}
 }
+
+/* ---------- Freie Arbeiten: DoKomi als Manga ---------- */
+.mg{position:relative;display:grid;grid-template-columns:minmax(0,1fr);border-top:var(--b) solid var(--border);background:#fff;overflow:hidden}
+.mg__text{position:relative;padding:clamp(2rem,4vw,3.5rem) var(--pad);display:flex;flex-direction:column;gap:.9rem;align-items:flex-start;z-index:1}
+.mg__text::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(#000 1.1px,transparent 1.5px) 0 0/7px 7px;-webkit-mask-image:linear-gradient(160deg,rgba(0,0,0,.28),transparent 55%);mask-image:linear-gradient(160deg,rgba(0,0,0,.28),transparent 55%)}
+.mg__jp{position:absolute;top:clamp(1rem,2.5vw,2rem);left:clamp(1rem,2.5vw,2rem);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.08em;font-weight:900;font-size:clamp(1.25rem,2vw,1.75rem);line-height:1.05;color:#fff;background:var(--accent);border:var(--b2) solid var(--fg);padding:.45em .35em;transform:rotate(-4deg);pointer-events:none;user-select:none}
+.mg__jp b{font-weight:900}
+.mg__kick{font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.mg__title{font-weight:900;text-transform:uppercase;letter-spacing:-.05em;line-height:.85;font-size:clamp(3.5rem,9vw,8rem);margin:0;transform:skewX(-6deg);text-shadow:.06em .06em 0 var(--accent)}
+.mg__sub{font-weight:900;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1rem,1.6vw,1.375rem);background:var(--fg);color:#fff;padding:.25em .55em;transform:rotate(-2deg);margin:.2rem 0 .4rem}
+.mg__p{max-width:52ch;font-size:1rem;line-height:1.6;margin:0}
+.mg__open{margin-top:.6rem}
+.mg__yomu{font-size:1.15em;line-height:1;margin-left:.15rem}
+.mg__stack{all:unset;box-sizing:border-box;cursor:pointer;position:relative;overflow:hidden;display:grid;place-items:center;min-height:clamp(22rem,34vw,34rem);padding:2.5rem var(--pad);background:var(--muted);isolation:isolate}
+.mg__stack:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.mg__lines{position:absolute;inset:-20%;z-index:-1;background:repeating-conic-gradient(from 0deg at 50% 50%,#000 0 .7deg,transparent .7deg 5.5deg);-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent 0 30%,#000 75%);mask-image:radial-gradient(circle at 50% 50%,transparent 0 30%,#000 75%);opacity:.9;transition:transform 1.2s var(--ease)}
+.mg-pg{grid-area:1/1;display:block;width:min(56%,15rem);height:auto;aspect-ratio:706/1000;background:#fff;border:var(--b2) solid var(--fg);box-shadow:.5rem .5rem 0 var(--fg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.mg-pg--4{transform:rotate(9deg) translate(14%,3%)}
+.mg-pg--3{transform:rotate(5deg) translate(7%,1%)}
+.mg-pg--2{transform:rotate(-4deg) translate(-6%,1%)}
+.mg-pg--1{transform:rotate(-1deg)}
+.mg__stack:hover .mg-pg--4,.mg__stack:focus-visible .mg-pg--4{transform:rotate(16deg) translate(48%,4%)}
+.mg__stack:hover .mg-pg--3,.mg__stack:focus-visible .mg-pg--3{transform:rotate(8deg) translate(22%,0)}
+.mg__stack:hover .mg-pg--2,.mg__stack:focus-visible .mg-pg--2{transform:rotate(-9deg) translate(-26%,2%)}
+.mg__stack:hover .mg-pg--1,.mg__stack:focus-visible .mg-pg--1{transform:rotate(-2deg) translateY(-3%) scale(1.03)}
+.mg__stack:hover .mg__lines{transform:rotate(8deg) scale(1.05)}
+.mg__sfx{position:absolute;top:12%;right:12%;z-index:2;font-weight:900;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1;color:var(--accent);-webkit-text-stroke:3px var(--fg);paint-order:stroke fill;transform:rotate(12deg);transition:transform .35s cubic-bezier(.34,1.6,.5,1)}
+.mg__stack:hover .mg__sfx{transform:rotate(4deg) scale(1.25)}
+@media (min-width:900px){
+  .mg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .mg__stack{border-left:var(--b) solid var(--border)}
+}
+@media (max-width:899px){.mg__stack{border-top:var(--b) solid var(--border);min-height:0;padding:2.5rem var(--pad) 3rem}.mg-pg{width:min(46%,13rem)}.mg__sfx{top:8%;right:8%;font-size:2.25rem;-webkit-text-stroke-width:2.5px}}
+/* Reader */
+.mgr{width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}
+.mgr[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.mgr::backdrop{background:#000}
+.mgr::before{content:"";position:absolute;inset:-30%;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.07) 0 .6deg,transparent .6deg 5deg);pointer-events:none}
+.mgr__bar{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:.75rem var(--pad)}
+.mgr__count{font-weight:700;letter-spacing:.14em;font-size:.75rem;font-variant-numeric:tabular-nums}
+.mgr__x,.mgr__nav{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;width:3rem;height:3rem;border:var(--b2) solid #fff;transition:background-color .15s,color .15s}
+.mgr__x:hover,.mgr__nav:hover{background:var(--accent);border-color:var(--accent);color:var(--fg)}
+.mgr__x:focus-visible,.mgr__nav:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.mgr__x svg,.mgr__nav svg{width:1.4rem;height:1.4rem}
+.mgr__nav[disabled]{opacity:.25;pointer-events:none}
+.mgr__stage{position:relative;z-index:1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(.5rem,2vw,2rem);padding:0 var(--pad);min-height:0}
+.mgr__pages{display:flex;justify-content:center;align-items:center;gap:0;height:100%;min-height:0;touch-action:pan-y}
+.mgr__pg{display:block;height:auto;max-height:100%;width:auto;max-width:100%;aspect-ratio:706/1000;background:#fff;object-fit:contain;animation:mgr-in .4s cubic-bezier(.2,.8,.2,1) both}
+.mgr__pg[hidden]{display:none}
+.mgr.is-back .mgr__pg{animation-name:mgr-in-back}
+@keyframes mgr-in{from{opacity:0;transform:translateX(40px) rotate(1.5deg)}to{opacity:1;transform:none}}
+@keyframes mgr-in-back{from{opacity:0;transform:translateX(-40px) rotate(-1.5deg)}to{opacity:1;transform:none}}
+.mgr__copy{position:relative;z-index:2;margin:0;padding:.6rem var(--pad) .9rem;font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-align:center}
+@media (min-width:900px){.mgr.is-spread .mgr__pg{max-width:50%}}
+@media (max-width:599px){.mgr__stage{grid-template-columns:minmax(0,1fr);padding:0 .5rem}.mgr__nav{position:absolute;bottom:-3.6rem;z-index:3}.mgr__nav--prev{left:var(--pad)}.mgr__nav--next{right:var(--pad)}.mgr__copy{padding-bottom:4.5rem}}
+@media (prefers-reduced-motion:reduce){.mg-pg,.mg__lines,.mg__sfx{transition:none}.mgr__pg{animation:none}}
 /* Header auf Schwarz (22.10.2026) */
 .site-header{background:var(--fg);color:#fff}
 .site-header .brand,.site-header .nav a{color:#fff}
@@ -1107,29 +1163,37 @@ body::after{ /* swiss-noise */
     </div>
     <p class="sec-intro">Illustration und Comic, alles aus eigenem Antrieb. Daher kann ich zeichnen, wenn ein Projekt Bilder braucht, die es noch nicht gibt.</p>
   </header>
+
+  <div class="mg" id="dokomi">
+    <div class="mg__text">
+      <p class="mg__kick">Manga · 4 Seiten · Wettbewerbsbeitrag</p>
+      <h3 class="mg__title">DoKomi</h3>
+      <p class="mg__sub">Doujinshi-Wettbewerb</p>
+      <p class="mg__p">Die DoKomi ist eine Anime- und Japan-Expo. Für ihren Doujinshi-Wettbewerb zeichnen Künstlerinnen und Künstler einen eigenen Manga auf vier Seiten zu einem vorgegebenen Thema. Die besten Beiträge werden auf der Messe ausgestellt und vor Jury und Publikum präsentiert.</p>
+      <p class="mg__p">Meine Geschichte: Filmfan Hiko Eiga, Eiga heißt auf Japanisch Film, will nur den neuesten Blockbuster sehen. Stattdessen stürzt er durch drei Filmwelten, bis ihn ein Krankenwagen wieder einsammelt.</p>
+      <button class="btn btn--accent mg__open" type="button" data-mg-open="0">Manga lesen <span class="mg__yomu" aria-hidden="true">読</span></button>
+    </div>
+    <button class="mg__stack" type="button" data-mg-open="0" aria-label="Manga DoKomi lesen, 4 Seiten">
+      <span class="mg__lines" aria-hidden="true"></span>
+      <span class="mg__jp" aria-hidden="true"><b>同</b><b>人</b><b>誌</b></span>
+      <img class="mg-pg mg-pg--4" src="/assets/img/frei/dokomi/seite-4-400.webp" srcset="/assets/img/frei/dokomi/seite-4-400.webp 353w, /assets/img/frei/dokomi/seite-4.webp 706w" sizes="(min-width:900px) 22vw, 50vw" width="706" height="1000" loading="lazy" decoding="async" alt=""><img class="mg-pg mg-pg--3" src="/assets/img/frei/dokomi/seite-3-400.webp" srcset="/assets/img/frei/dokomi/seite-3-400.webp 353w, /assets/img/frei/dokomi/seite-3.webp 706w" sizes="(min-width:900px) 22vw, 50vw" width="706" height="1000" loading="lazy" decoding="async" alt=""><img class="mg-pg mg-pg--2" src="/assets/img/frei/dokomi/seite-2-400.webp" srcset="/assets/img/frei/dokomi/seite-2-400.webp 353w, /assets/img/frei/dokomi/seite-2.webp 706w" sizes="(min-width:900px) 22vw, 50vw" width="706" height="1000" loading="lazy" decoding="async" alt=""><img class="mg-pg mg-pg--1" src="/assets/img/frei/dokomi/seite-1-400.webp" srcset="/assets/img/frei/dokomi/seite-1-400.webp 353w, /assets/img/frei/dokomi/seite-1.webp 706w" sizes="(min-width:900px) 22vw, 50vw" width="706" height="1000" loading="lazy" decoding="async" alt="">
+      <span class="mg__sfx" aria-hidden="true">ドン!</span>
+    </button>
+  </div>
+  <dialog class="mgr" id="mgr" aria-label="Manga DoKomi, 4 Seiten">
+    <div class="mgr__bar">
+      <span class="mgr__count" aria-live="polite">1 / 4</span>
+      <button class="mgr__x" type="button" data-mg-close aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    </div>
+    <div class="mgr__stage">
+      <button class="mgr__nav mgr__nav--prev" type="button" data-mg-step="-1" aria-label="Vorherige Seite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="mgr__pages"><img class="mgr__pg" data-src="/assets/img/frei/dokomi/seite-1.webp" width="706" height="1000" alt="Seite 1: Filmfan Hiko Eiga freut sich vor dem Kino auf den neuesten Blockbuster." hidden><img class="mgr__pg" data-src="/assets/img/frei/dokomi/seite-2.webp" width="706" height="1000" alt="Seite 2: Hiko fällt in die Wüste von Arrakis, ein Sandwurm taucht auf." hidden><img class="mgr__pg" data-src="/assets/img/frei/dokomi/seite-3.webp" width="706" height="1000" alt="Seite 3: Auf dem Todesstern drückt Hiko den Selbstzerstörungsknopf." hidden><img class="mgr__pg" data-src="/assets/img/frei/dokomi/seite-4.webp" width="706" height="1000" alt="Seite 4: Rote oder blaue Pille, danach wacht Hiko im Krankenwagen auf. Ende." hidden></div>
+      <button class="mgr__nav mgr__nav--next" type="button" data-mg-step="1" aria-label="Nächste Seite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <p class="mgr__copy">© Sidar Avci</p>
+  </dialog>
   <div class="works-wrap">
   <ul class="works works--own">
-    <li><article class="work">
-      <div class="work__img bg-muted swiss-dots">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <g fill="#fff" stroke="#000" stroke-width="4">
-            <rect x="96" y="40" width="100" height="104"/><rect x="204" y="40" width="100" height="104"/>
-            <rect x="96" y="152" width="100" height="104"/><rect x="204" y="152" width="100" height="104"/>
-          </g>
-          <circle cx="146" cy="96" r="22" fill="#000"/>
-          <path d="M222 62 h62 a10 10 0 0 1 10 10 v20 a10 10 0 0 1 -10 10 h-34 l-12 12 v-12 h-16 a10 10 0 0 1 -10 -10 v-20 a10 10 0 0 1 10 -10z" fill="#fff" stroke="#000" stroke-width="4"/>
-          <path d="M104 244 L150 176 L188 244 Z" fill="#000"/>
-          <rect class="r" x="212" y="160" width="84" height="88"/>
-          <path d="M228 230 L254 176 L280 230" fill="none" stroke="#000" stroke-width="4"/>
-        </svg>
-        <span class="todo">[Bild ergänzen]</span>
-      </div>
-      <div class="work__body">
-        <h3 class="work__client">DoKomi</h3>
-        <p class="work__meta">Kurzcomic · Wettbewerbsbeitrag</p>
-        <p class="work__teaser">Vierseitiger Kurzcomic, Wettbewerbsbeitrag zum DoKomi Doujinshi-Wettbewerb.</p>
-      </div>
-    </article></li>
     <li><article class="work">
       <div class="work__img bg-muted swiss-grid-pattern">
         <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -2081,6 +2145,32 @@ body::after{ /* swiss-noise */
   var svg=g.closest('svg'), box=svg.parentElement;
   box.classList.add('glow-off');
   new IntersectionObserver(function(es){ box.classList.toggle('glow-off',!es[0].isIntersecting) },{rootMargin:'100px'}).observe(svg);
+})();
+</script>
+<script>
+/* DoKomi: Manga-Leser. Desktop zeigt Doppelseiten (1–2, 3–4), Handy einzelne Seiten. Pfeiltasten, Wischen, Esc. */
+(function(){
+  var d=document.getElementById('mgr'); if(!d||!d.showModal) return;
+  var pgs=[].slice.call(d.querySelectorAll('.mgr__pg')), cnt=d.querySelector('.mgr__count'), prev=d.querySelector('.mgr__nav--prev'), next=d.querySelector('.mgr__nav--next');
+  var mq=window.matchMedia('(min-width:900px) and (min-aspect-ratio:1/1)'), i=0;
+  function per(){ return mq.matches?2:1 }
+  function render(back){
+    var n=per(); i=Math.floor(i/n)*n;
+    d.classList.toggle('is-spread',n===2); d.classList.toggle('is-back',!!back);
+    pgs.forEach(function(p,j){ var on=j>=i&&j<i+n; if(on&&!p.src) p.src=p.getAttribute('data-src'); if(on){ p.hidden=false; p.style.animation='none'; void p.offsetWidth; p.style.animation='' } else p.hidden=true });
+    cnt.textContent=(n===2?(i+1)+'–'+Math.min(i+2,pgs.length):(i+1))+' / '+pgs.length;
+    prev.disabled=i===0; next.disabled=i+n>=pgs.length;
+  }
+  function step(k){ var n=per(), j=i+k*n; if(j<0||j>=pgs.length) return; i=j; render(k<0) }
+  [].forEach.call(document.querySelectorAll('[data-mg-open]'),function(b){ b.addEventListener('click',function(){ i=+b.getAttribute('data-mg-open')||0; pgs.forEach(function(p){ if(!p.src) p.src=p.getAttribute('data-src') }); d.showModal(); document.documentElement.style.overflow='hidden'; render(); next.focus() }) });
+  d.addEventListener('close',function(){ document.documentElement.style.overflow='' });
+  d.querySelector('[data-mg-close]').addEventListener('click',function(){ d.close() });
+  [].forEach.call(d.querySelectorAll('[data-mg-step]'),function(b){ b.addEventListener('click',function(){ step(+b.getAttribute('data-mg-step')) }) });
+  d.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){ e.preventDefault(); step(1) } if(e.key==='ArrowLeft'){ e.preventDefault(); step(-1) } });
+  d.addEventListener('click',function(e){ if(e.target===d) d.close() });
+  var x0=null; d.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX },{passive:true});
+  d.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) step(dx<0?1:-1); x0=null },{passive:true});
+  if(mq.addEventListener) mq.addEventListener('change',function(){ if(d.open) render() });
 })();
 </script>
 </body>
