@@ -763,8 +763,8 @@ body::after{ /* swiss-noise */
 @keyframes wbin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .wb-pic--video{background:#c9c9c9}
 .wb-pic--video::after{display:none}
-.wb-pic--video::before{inset:-12%;width:auto;height:auto;left:-12%;top:-12%;border-radius:0;background:url(/assets/video/nomo-teaser-poster.webp) center/100% 100% no-repeat;filter:blur(36px);transform:translateZ(0)}
-.wb-vid{position:absolute;top:0;left:50%;height:100%;width:auto;aspect-ratio:1280/580;transform:translateX(-50%);object-fit:cover;display:block;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.wb-pic--video::before{inset:-12%;width:auto;height:auto;left:-12%;top:-12%;border-radius:0;background:url(/assets/video/nomo-teaser-bg.webp) center/100% 100% no-repeat;filter:blur(36px);transform:translateZ(0)}
+.wb-vid{position:absolute;top:0;left:50%;height:100%;width:auto;aspect-ratio:16/9;transform:translateX(-50%);object-fit:cover;display:block;z-index:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
 .wb-pic--st .st-row{gap:clamp(1.25rem,8cqw,7rem)}
 .st-row .st-logo{display:block;width:min(30cqw,20rem);height:auto;flex:0 1 auto;object-fit:initial}
 .st-dev{display:flex;flex-direction:column;align-items:center;flex:0 0 auto}
@@ -1134,8 +1134,8 @@ body::after{ /* swiss-noise */
         <a class="btn btn--accent wb-btn" href="/arbeiten/av-vertrags-bot/">Case ansehen<span class="sr-only">: AV-Vertrags-Bot</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="wb-slide" id="wb-s-nomo" data-dur="10000" role="tabpanel" aria-labelledby="wb-t-nomo" hidden>
-      <div class="wb-pic wb-pic--video"><video class="wb-vid" muted playsinline loop preload="none" poster="/assets/video/nomo-teaser-poster.webp" width="1280" height="580" aria-label="Animation: Nomo taucht auf, klopft an die Kamera und erschrickt"><source src="/assets/video/nomo-teaser.webm" type="video/webm"><source src="/assets/video/nomo-teaser.mp4" type="video/mp4"></video></div>
+    <div class="wb-slide" id="wb-s-nomo" data-dur="7100" role="tabpanel" aria-labelledby="wb-t-nomo" hidden>
+      <div class="wb-pic wb-pic--video"><video class="wb-vid" muted playsinline loop preload="none" poster="/assets/video/nomo-teaser-poster.webp" width="1280" height="720" aria-label="Animation: Nomo taucht auf, klopft an die Kamera, erschrickt und wird in den Laptop gesaugt"><source src="/assets/video/nomo-teaser.webm" type="video/webm"><source src="/assets/video/nomo-teaser.mp4" type="video/mp4"></video></div>
       <div class="wb-info">
         <span class="wb-n">03 / 05</span>
         <h3 class="wb-name">Nomo</h3>
@@ -1179,7 +1179,7 @@ body::after{ /* swiss-noise */
     <ul class="wb-list" role="tablist" aria-label="Ausgewählte Arbeiten">
       <li><button type="button" class="wb-tab is-on" id="wb-t-stroeer" style="--dur:11.3s" role="tab" aria-selected="true" aria-controls="wb-s-stroeer"><span class="wb-n">01</span><span class="wb-tn">Ströer</span><span class="wb-tm">Motion Design · DOOH</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-av-vertrags-bot" role="tab" aria-selected="false" aria-controls="wb-s-av-vertrags-bot"><span class="wb-n">02</span><span class="wb-tn">AV-Vertrags-Bot</span><span class="wb-tm">Automatisierung · n8n</span><span class="wb-bar" aria-hidden="true"></span></button></li>
-      <li><button type="button" class="wb-tab" id="wb-t-nomo" style="--dur:10s" role="tab" aria-selected="false" aria-controls="wb-s-nomo"><span class="wb-n">03</span><span class="wb-tn">Nomo</span><span class="wb-tm">KI · n8n · Webdesign</span><span class="wb-bar" aria-hidden="true"></span></button></li>
+      <li><button type="button" class="wb-tab" id="wb-t-nomo" style="--dur:7.1s" role="tab" aria-selected="false" aria-controls="wb-s-nomo"><span class="wb-n">03</span><span class="wb-tn">Nomo</span><span class="wb-tm">KI · n8n · Webdesign</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-dreamberry" role="tab" aria-selected="false" aria-controls="wb-s-dreamberry"><span class="wb-n">04</span><span class="wb-tn">Dreamberry Studios</span><span class="wb-tm">Social Media · Content</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li><button type="button" class="wb-tab" id="wb-t-ems-loccum" role="tab" aria-selected="false" aria-controls="wb-s-ems-loccum"><span class="wb-n">05</span><span class="wb-tn">EMS Loccum</span><span class="wb-tm">Branding · Print</span><span class="wb-bar" aria-hidden="true"></span></button></li>
     </ul>
