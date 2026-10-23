@@ -475,23 +475,24 @@ body::after{ /* swiss-noise */
 @keyframes sx-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 @keyframes sx-pop{from{transform:scale(0)}to{transform:scale(1)}}
 
-/* Handy: wie Variante C */
+/* Handy: gleiche Index-Optik wie am Desktop, nur einspaltig */
 @media (max-width:767px){
-  .sx summary{grid-template-columns:2.75rem minmax(0,1fr) 2rem;gap:.75rem;padding:1.15rem var(--pad)}
-  .sx__t{font-size:clamp(1.375rem,6vw,1.75rem)}
-  .sx__p,.sx__i,.sx .plus{display:none}
-  .sx__a svg{width:1.5rem;height:1.5rem;transform:rotate(90deg);transition:transform .3s var(--ease)}
-  .sx[open] summary{background:var(--accent)}
-  .sx[open] .sx__n{color:var(--fg)}
-  .sx[open] .sx__a svg{transform:rotate(-90deg)}
-  .sx__body{padding:0 0 2rem}
-  .sx__art{position:relative;aspect-ratio:21/9;border-top:var(--b2) solid var(--fg);border-bottom:var(--b2) solid var(--fg);overflow:hidden;display:flex;align-items:flex-end;padding:1.25rem var(--pad)}
-  .sx__icon{position:relative;z-index:1;display:block;width:3.5rem}
-  .sx__icon svg{width:100%;height:auto}
-  .sx__dot{position:absolute;top:1.25rem;right:var(--pad);width:1.5rem;aspect-ratio:1;border-radius:50%;background:var(--accent);animation:sx-pop .5s cubic-bezier(.34,1.5,.5,1) .1s both}
-  .sx__big{position:absolute;right:calc(var(--pad) - .1em);bottom:-.18em;font-weight:900;font-size:7rem;line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:2px var(--fg)}
-  .sx__lead,.sx__body .plus-list,.sx__ex{margin-inline:var(--pad)}
-  .sx__lead{font-size:1.0625rem;line-height:1.5;margin-top:.4rem}
+  .sx summary{grid-template-columns:2.25rem minmax(0,1fr) 2.75rem 2.75rem;column-gap:.75rem;padding:1.15rem var(--pad)}
+  .sx__t{font-size:clamp(1.2rem,5.6vw,1.75rem);overflow-wrap:anywhere}
+  .sx__p,.sx__a,.sx__art{display:none}
+  .sx__i{display:grid;place-items:center;width:2.75rem;height:2.75rem;border:var(--b2) solid currentColor}
+  .sx__i svg{width:1.4rem;height:1.4rem}
+  .sx[open] summary{background:var(--fg);color:#fff}
+  .sx[open] .sx__n{color:var(--accent)}
+  .sx[open] .plus::after{transform:translate(-50%,-50%) scaleY(0)}
+  .sx__body{padding:1.25rem var(--pad) 2rem}
+  .sx__lead{font-size:1rem;line-height:1.55}
+  .sx__body .plus-list{border-top:0}
+  .sx__body .plus-list li{border-top:1px solid rgba(0,0,0,.25);border-bottom:0}
+}
+@media (max-width:419px){
+  .sx summary{grid-template-columns:2rem minmax(0,1fr) 2.75rem}
+  .sx__i{display:none}
 }
 
 /* Tablet und Desktop: wie Variante B */
@@ -1177,7 +1178,7 @@ body::after{ /* swiss-noise */
     <p class="sec-intro rv">Vier Bereiche, jeder davon einzeln buchbar.</p>
   </header>
 
-  <!-- Desktop: Index zum Aufklappen. Handy: rote Kopfzeile + Bildfläche (Kurztext steht dort im Detail). -->
+  <!-- Index zum Aufklappen, am Handy gleiche Optik einspaltig (Kurztext steht dort im aufgeklappten Teil). -->
   <div class="svcx">
     <details class="sx" name="leistung">
       <summary>
@@ -1227,7 +1228,7 @@ body::after{ /* swiss-noise */
     <details class="sx" name="leistung">
       <summary>
         <span class="sx__n">04</span>
-        <span class="sx__t">KI &amp; Automatisierung</span>
+        <span class="sx__t">KI &amp; Automati&shy;sierung</span>
         <span class="sx__p">Die wiederkehrenden Handgriffe zwischen den Aufgaben: Angebote, Verträge, Freigaben, Ablage. Ich schaue mir den Ablauf an und automatisiere die Stellen, an denen Zeit verloren geht.</span>
         <span class="sx__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="2" y="9" width="6" height="6"/><rect x="16" y="3" width="6" height="6"/><rect x="16" y="15" width="6" height="6"/><path d="M8 12h4V6h4M12 12v6h4"/></svg></span>
         <span class="plus" aria-hidden="true"></span>
@@ -2032,11 +2033,10 @@ body::after{ /* swiss-noise */
 })();
 </script>
 <script>
-/* ---------- Leistungen: immer nur ein Bereich offen. Am Handy ist der erste beim Laden offen. ---------- */
+/* ---------- Leistungen: immer nur ein Bereich offen. ---------- */
 (function(){
   var d=[].slice.call(document.querySelectorAll('.sx')); if(!d.length) return;
   d.forEach(function(x){ x.addEventListener('toggle',function(){ if(x.open) d.forEach(function(y){ if(y!==x) y.open=false }) }) });
-  if(window.matchMedia('(max-width:767px)').matches) d[0].open=true;
 })();
 </script>
 <script>
