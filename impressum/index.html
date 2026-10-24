@@ -8,22 +8,59 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ccircle cx='22' cy='10' r='6' fill='%23ff3000'/%3E%3C/svg%3E">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#000;background:#fff;line-height:1.6}
-header{border-bottom:4px solid #000;padding:1.25rem clamp(1.25rem,4vw,3rem)}
-header a{font-weight:900;text-transform:uppercase;text-decoration:none;color:#000;display:inline-flex;gap:.6rem;align-items:center}
-header i{width:.85rem;height:.85rem;border-radius:50%;background:#ff3000;display:inline-block}
-main{padding:clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,3rem);max-width:60rem}
-h1{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.95;font-size:clamp(2.5rem,9vw,6rem);margin:0 0 2rem}
-h1 span{color:#ff3000}p{max-width:60ch}a{color:#000}
-.back{display:inline-block;margin-top:2rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.8125rem}
+@font-face{font-family:"Inter";src:url(/assets/fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{--fg:#000;--accent:#ff3000;--accent-ink:#d42a00;--pad:clamp(1.25rem,4vw,3rem)}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Inter",system-ui,sans-serif;color:var(--fg);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+header{background:var(--fg);padding:1.35rem var(--pad)}
+header a{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;text-decoration:none;color:#fff;display:inline-flex;gap:.6rem;align-items:center;font-size:1.125rem}
+header a:hover{color:var(--accent)}
+header i{width:.85rem;height:.85rem;border-radius:50%;background:var(--accent);display:inline-block}
+main{padding:clamp(3rem,8vw,6rem) var(--pad);max-width:52rem}
+h1{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.95;font-size:clamp(2.5rem,9vw,6rem);margin:0 0 2.5rem;overflow-wrap:anywhere}
+h1 span{color:var(--accent)}
+h2{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.1;font-size:clamp(1.25rem,2.4vw,1.625rem);margin:3rem 0 .75rem;padding-top:1.25rem;border-top:4px solid var(--fg)}
+h3{font-weight:800;font-size:1.0625rem;margin:1.75rem 0 .4rem}
+p,li{max-width:68ch}
+p{margin:.5rem 0}
+ul{padding-left:1.2rem;margin:.5rem 0}
+li{margin:.2rem 0}
+a{color:var(--fg);text-underline-offset:.15em}
+a:hover{color:var(--accent-ink)}
+address{font-style:normal;margin:.5rem 0}
+.todo{background:#fff3ef;outline:2px dashed var(--accent);padding:0 .3em}
+.lead{font-size:1.125rem}
+.small{font-size:.875rem;color:#5c5c5c}
+.back{display:inline-block;margin-top:3rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.8125rem;text-decoration:none;border-bottom:2px solid var(--fg)}
+footer{border-top:4px solid var(--fg);padding:1.25rem var(--pad);font-size:.8125rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+footer a{text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
 </style>
 </head>
 <body>
-<header><a href="/"><i></i>Sidar Avci</a></header>
+<header><a href="/vorschau/" aria-label="Sidar Avci, zur Startseite"><i aria-hidden="true"></i>Sidar Avci</a></header>
 <main>
 <h1>Impressum<span>.</span></h1>
-<p>[VON SIDAR ERGÄNZEN: Pflichtangaben nach § 5 DDG: Name, ladungsfähige Anschrift, E-Mail, ggf. USt-IdNr.]</p>
-<a class="back" href="/">← Zur Startseite</a>
+<h2>Angaben gemäß § 5 DDG</h2>
+<address>
+Sidar Avci<br>
+<span class="todo">[Straße und Hausnummer – VON SIDAR ERGÄNZEN]</span><br>
+<span class="todo">[PLZ und Ort – VON SIDAR ERGÄNZEN]</span><br>
+Deutschland
+</address>
+<p>Mediendesign, Webentwicklung und Automatisierung</p>
+<h2>Kontakt</h2>
+<p>Telefon und WhatsApp: <a href="tel:+4917631758293">+49 176 31758293</a><br>
+E-Mail: <a href="mailto:sidar.arbeit@gmail.com">sidar.arbeit@gmail.com</a></p>
+<h2>Umsatzsteuer</h2>
+<p><span class="todo">[Falls vorhanden: Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE… – sonst diesen Abschnitt löschen]</span></p>
+<h2>Verantwortlich für den Inhalt</h2>
+<p>Sidar Avci, Anschrift wie oben</p>
+<h2>Verbraucherstreitbeilegung</h2>
+<p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+<h2>Bildnachweise</h2>
+<p>Alle Arbeiten auf dieser Website stammen von mir oder sind gemeinsam mit den genannten Kunden entstanden. Einzelne Mockups und Bildelemente sind mit KI erzeugt und an der jeweiligen Stelle gekennzeichnet. Die Quellen der Bilder im Magazin „Generation Entrepreneur“ stehen im Quellenverzeichnis des Magazins.</p>
+<a class="back" href="/vorschau/">← Zur Startseite</a>
 </main>
+<footer><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a></footer>
 </body>
 </html>

@@ -8,22 +8,138 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ccircle cx='22' cy='10' r='6' fill='%23ff3000'/%3E%3C/svg%3E">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#000;background:#fff;line-height:1.6}
-header{border-bottom:4px solid #000;padding:1.25rem clamp(1.25rem,4vw,3rem)}
-header a{font-weight:900;text-transform:uppercase;text-decoration:none;color:#000;display:inline-flex;gap:.6rem;align-items:center}
-header i{width:.85rem;height:.85rem;border-radius:50%;background:#ff3000;display:inline-block}
-main{padding:clamp(3rem,8vw,6rem) clamp(1.25rem,4vw,3rem);max-width:60rem}
-h1{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.95;font-size:clamp(2.5rem,9vw,6rem);margin:0 0 2rem}
-h1 span{color:#ff3000}p{max-width:60ch}a{color:#000}
-.back{display:inline-block;margin-top:2rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.8125rem}
+@font-face{font-family:"Inter";src:url(/assets/fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{--fg:#000;--accent:#ff3000;--accent-ink:#d42a00;--pad:clamp(1.25rem,4vw,3rem)}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Inter",system-ui,sans-serif;color:var(--fg);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+header{background:var(--fg);padding:1.35rem var(--pad)}
+header a{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;text-decoration:none;color:#fff;display:inline-flex;gap:.6rem;align-items:center;font-size:1.125rem}
+header a:hover{color:var(--accent)}
+header i{width:.85rem;height:.85rem;border-radius:50%;background:var(--accent);display:inline-block}
+main{padding:clamp(3rem,8vw,6rem) var(--pad);max-width:52rem}
+h1{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.95;font-size:clamp(2.5rem,9vw,6rem);margin:0 0 2.5rem;overflow-wrap:anywhere}
+h1 span{color:var(--accent)}
+h2{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.1;font-size:clamp(1.25rem,2.4vw,1.625rem);margin:3rem 0 .75rem;padding-top:1.25rem;border-top:4px solid var(--fg)}
+h3{font-weight:800;font-size:1.0625rem;margin:1.75rem 0 .4rem}
+p,li{max-width:68ch}
+p{margin:.5rem 0}
+ul{padding-left:1.2rem;margin:.5rem 0}
+li{margin:.2rem 0}
+a{color:var(--fg);text-underline-offset:.15em}
+a:hover{color:var(--accent-ink)}
+address{font-style:normal;margin:.5rem 0}
+.todo{background:#fff3ef;outline:2px dashed var(--accent);padding:0 .3em}
+.lead{font-size:1.125rem}
+.small{font-size:.875rem;color:#5c5c5c}
+.back{display:inline-block;margin-top:3rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.8125rem;text-decoration:none;border-bottom:2px solid var(--fg)}
+footer{border-top:4px solid var(--fg);padding:1.25rem var(--pad);font-size:.8125rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+footer a{text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
 </style>
 </head>
 <body>
-<header><a href="/"><i></i>Sidar Avci</a></header>
+<header><a href="/vorschau/" aria-label="Sidar Avci, zur Startseite"><i aria-hidden="true"></i>Sidar Avci</a></header>
 <main>
-<h1>Datenschutz<span>.</span></h1>
-<p>[VON SIDAR ERGÄNZEN: Datenschutzerklärung, u. a. Hosting über GitHub Pages (Server in den USA, IP-Adressen in Logfiles), WhatsApp-Link, Instagram-Link.]</p>
-<a class="back" href="/">← Zur Startseite</a>
+<h1>Daten&shy;schutz<span>.</span></h1>
+<p class="lead">Diese Website kommt ohne Cookies, ohne Tracking und ohne Analyse-Tools aus. Hier steht, welche Daten trotzdem anfallen und welche Rechte Sie haben.</p>
+
+<h2>1. Verantwortlicher</h2>
+<p>Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+<address>
+Sidar Avci<br>
+<span class="todo">[Straße und Hausnummer – VON SIDAR ERGÄNZEN]</span><br>
+<span class="todo">[PLZ und Ort – VON SIDAR ERGÄNZEN]</span><br>
+Deutschland
+</address>
+<p>Telefon: <a href="tel:+4917631758293">+49 176 31758293</a><br>E-Mail: <a href="mailto:sidar.arbeit@gmail.com">sidar.arbeit@gmail.com</a></p>
+
+<h2>2. Allgemeines zur Datenverarbeitung</h2>
+<h3>Umfang</h3>
+<p>Ich verarbeite personenbezogene Daten nur, soweit das nötig ist, um diese Website bereitzustellen oder Ihre Anfrage zu beantworten.</p>
+<h3>Rechtsgrundlagen</h3>
+<ul>
+<li>Einwilligung: Art. 6 Abs. 1 lit. a DSGVO</li>
+<li>Vertrag und vorvertragliche Maßnahmen, zum Beispiel eine Projektanfrage: Art. 6 Abs. 1 lit. b DSGVO</li>
+<li>Rechtliche Pflichten, zum Beispiel steuerliche Aufbewahrung: Art. 6 Abs. 1 lit. c DSGVO</li>
+<li>Berechtigtes Interesse, zum Beispiel der sichere Betrieb der Website: Art. 6 Abs. 1 lit. f DSGVO</li>
+</ul>
+<h3>Löschung und Speicherdauer</h3>
+<p>Ich lösche personenbezogene Daten, sobald der Zweck der Speicherung entfällt. Länger gespeichert wird nur, wenn ein Gesetz das verlangt, etwa handels- und steuerrechtliche Aufbewahrungsfristen von bis zu zehn Jahren.</p>
+
+<h2>3. Hosting und Server-Logfiles</h2>
+<h3>Beschreibung und Umfang</h3>
+<p>Diese Website wird bei GitHub Pages gehostet, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Bei jedem Aufruf verarbeitet GitHub technisch notwendige Daten, insbesondere:</p>
+<ul>
+<li>IP-Adresse des aufrufenden Geräts</li>
+<li>Datum und Uhrzeit des Zugriffs</li>
+<li>aufgerufene Seite und Datei</li>
+<li>Browsertyp, Version und Betriebssystem</li>
+<li>die zuvor besuchte Seite (Referrer), sofern vom Browser übermittelt</li>
+</ul>
+<p>Laut GitHub wird die IP-Adresse von Besuchern einer GitHub-Pages-Seite aus Sicherheitsgründen protokolliert und gespeichert. Ich selbst habe keinen Zugriff auf diese Logfiles und werte sie nicht aus.</p>
+<h3>Rechtsgrundlage und Zweck</h3>
+<p>Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt in der zuverlässigen und sicheren Auslieferung der Website.</p>
+<h3>Übermittlung in die USA</h3>
+<p>Dabei können Daten in die USA übermittelt werden. Für Übermittlungen in die USA hat die EU-Kommission einen Angemessenheitsbeschluss für Unternehmen erlassen, die nach dem EU-US Data Privacy Framework zertifiziert sind. <span class="todo">[VOR LIVEGANG PRÜFEN: Zertifizierung von GitHub auf dataprivacyframework.gov; falls nicht gelistet, Satz ersetzen durch: „GitHub stützt die Übermittlung auf EU-Standardvertragsklauseln.“]</span></p>
+<p>Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+<h3>Widerspruch</h3>
+<p>Die Verarbeitung ist für den Betrieb der Website zwingend nötig. Ein Widerspruch ist daher nicht möglich, ohne auf den Besuch der Seite zu verzichten.</p>
+
+<h2>4. Verschlüsselung</h2>
+<p>Die Website wird ausschließlich über HTTPS ausgeliefert. Daten, die Sie an die Seite übertragen, können so nicht von Dritten mitgelesen werden.</p>
+
+<h2>5. Cookies und lokale Speicherung</h2>
+<p>Diese Website setzt keine Cookies und speichert nichts im Browser. Deshalb gibt es auch kein Cookie-Banner.</p>
+
+<h2>6. Schriften und Medien</h2>
+<p>Schriften, Bilder und Videos liegen auf demselben Server wie die Website. Beim Aufruf werden keine Daten an Google Fonts, Content-Delivery-Netzwerke oder ähnliche Drittanbieter übertragen. Das gilt auch für die Blätter-Funktion des Magazins: Die dafür genutzte Open-Source-Bibliothek liegt ebenfalls auf meinem Server.</p>
+
+<h2>7. YouTube-Video auf der Ströer-Seite</h2>
+<h3>Beschreibung und Umfang</h3>
+<p>Auf der Seite <a href="/arbeiten/stroeer/">Ströer</a> kann ein Video von YouTube abgespielt werden. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Das Video ist im erweiterten Datenschutzmodus (youtube-nocookie.com) eingebunden und wird erst geladen, wenn Sie auf „Spot abspielen“ klicken. Vorher wird keine Verbindung zu YouTube aufgebaut.</p>
+<p>Nach dem Klick erhält YouTube unter anderem Ihre IP-Adresse und die Information, welche Seite Sie besucht haben. YouTube kann dabei Cookies oder vergleichbare Technologien einsetzen. Sind Sie bei Google eingeloggt, kann der Aufruf Ihrem Konto zugeordnet werden. Daten können dabei auch in die USA übermittelt werden.</p>
+<h3>Rechtsgrundlage</h3>
+<p>Ihre Einwilligung durch den Klick, Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Sie können sie jederzeit widerrufen, indem Sie das Video nicht weiter abspielen und die Seite neu laden.</p>
+<p>Weitere Informationen: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+
+<h2>8. Kontakt per E-Mail, Telefon oder WhatsApp</h2>
+<h3>Beschreibung und Umfang</h3>
+<p>Wenn Sie mich per E-Mail, Telefon oder WhatsApp kontaktieren, verarbeite ich die Angaben, die Sie mir dabei geben: in der Regel Name, Kontaktdaten und den Inhalt Ihrer Nachricht.</p>
+<ul>
+<li><strong>E-Mail:</strong> Mein E-Mail-Postfach wird von Google (Gmail) betrieben. Ihre Nachricht wird dort gespeichert.</li>
+<li><strong>WhatsApp:</strong> Die WhatsApp-Buttons sind normale Links. Erst wenn Sie darauf klicken, öffnet sich WhatsApp. Anbieter ist die WhatsApp Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland. Für die Nutzung von WhatsApp gelten deren Bedingungen und deren <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener">Datenschutzrichtlinie</a>. Wenn Sie WhatsApp nicht nutzen möchten, schreiben Sie mir gern eine E-Mail.</li>
+</ul>
+<h3>Rechtsgrundlage und Zweck</h3>
+<p>Art. 6 Abs. 1 lit. b DSGVO, wenn Ihre Anfrage auf ein Projekt oder einen Vertrag zielt, sonst Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt darin, Ihre Anfrage zu beantworten.</p>
+<h3>Speicherdauer und Widerspruch</h3>
+<p>Ich lösche Ihre Anfrage, sobald sie abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Sie können der Speicherung jederzeit widersprechen. Dann kann die Unterhaltung allerdings nicht fortgeführt werden.</p>
+
+<h2>9. Links zu anderen Websites</h2>
+<p>Diese Website enthält einfache Links, zum Beispiel zu Instagram oder zu Websites von Kunden. Es handelt sich nicht um eingebundene Inhalte. Daten werden erst übertragen, wenn Sie einen Link anklicken. Ab dann gelten die Datenschutzbestimmungen der jeweiligen Seite.</p>
+
+<h2>10. Ihre Rechte</h2>
+<p>Sie haben gegenüber mir folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+<ul>
+<li>Auskunft (Art. 15 DSGVO)</li>
+<li>Berichtigung (Art. 16 DSGVO)</li>
+<li>Löschung (Art. 17 DSGVO)</li>
+<li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+<li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+<li>Widerruf einer Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+</ul>
+<h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+<p>Beruht eine Verarbeitung auf meinem berechtigten Interesse (Art. 6 Abs. 1 lit. f DSGVO), können Sie aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen.</p>
+<p>Für all das genügt eine formlose E-Mail an <a href="mailto:sidar.arbeit@gmail.com">sidar.arbeit@gmail.com</a>.</p>
+<h3>Beschwerderecht</h3>
+<p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Für mich zuständig ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach, <a href="https://www.lda.bayern.de" target="_blank" rel="noopener">www.lda.bayern.de</a>.</p>
+
+<h2>11. Pflicht zur Bereitstellung und automatisierte Entscheidungen</h2>
+<p>Sie sind nicht verpflichtet, mir Daten zu geben. Ohne Kontaktdaten kann ich eine Anfrage aber nicht beantworten. Eine automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt.</p>
+
+<h2>12. Änderungen</h2>
+<p>Ich passe diese Datenschutzerklärung an, wenn sich die Website oder die Rechtslage ändert.</p>
+<p class="small">Stand: Oktober 2026</p>
+<a class="back" href="/vorschau/">← Zur Startseite</a>
 </main>
+<footer><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a></footer>
 </body>
 </html>
