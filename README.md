@@ -23,11 +23,13 @@ Ordner mit kleinem, sprechendem Namen ohne Umlaute/Leerzeichen anlegen
 (z. B. `leistungen/`), darin `index.html`. Ergebnis: `deinedomain.de/leistungen/`.
 Intern immer mit Schrägstrich am Anfang und Ende verlinken: `href="/leistungen/"`.
 
-## Livegang-Checkliste
-- [ ] `noindex`-Zeile in allen HTML-Dateien entfernen
-- [ ] In `referenzen/index.html`, `arbeiten/av-vertrags-bot/index.html`, `arbeiten/nomo/index.html` `arbeiten/stroeer/index.html` und `arbeiten/ems-loccum/index.html` alle Links `/vorschau/` durch `/` ersetzen
-- [ ] `robots.txt` auf `Allow: /` umstellen
-- [ ] `49NUMMER` durch echte WhatsApp-Nummer ersetzen
-- [ ] Impressum + Datenschutz befüllen (Datenschutz: YouTube-Einbindung auf /arbeiten/stroeer/ erwähnen, youtube-nocookie, Laden erst nach Klick)
-- [ ] Freigaben einholen: Ströer, EMS Loccum, Dreamberry, fairwilly (AV-Bot, Nomo)
-- [ ] Alle `[VON SIDAR ERGÄNZEN]`-Stellen füllen
+## Livegang (25.10.2026)
+- [x] Startseite von `/vorschau/` nach `/` übernommen, `/vorschau/` leitet auf `/` weiter
+- [x] `/arbeiten/` leitet auf `/#arbeiten` weiter (Übersichtsseite gibt es nicht)
+- [x] Alle Links `/vorschau/` → `/`, `noindex` entfernt (außer 404 und Weiterleitungen)
+- [x] `robots.txt` erlaubt alles, `sitemap.xml` angelegt, Canonical- und Linkvorschau-Tags (`og.png`) auf allen Seiten
+- [x] Hero-Fotos und Schrift als Dateien statt Base64
+- [x] Impressum und Datenschutz befüllt, Freigaben liegen vor
+- [ ] USt-IdNr. ins Impressum, sobald vorhanden
+- [ ] GitHub → Settings → Pages: „Enforce HTTPS“ an
+- [ ] Google Search Console: Domain bestätigen, `sitemap.xml` einreichen

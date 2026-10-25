@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /
-# Zum Livegang ersetzen durch:
-# User-agent: *
-# Allow: /
+Allow: /
+
+Sitemap: https://www.sidaravci-portfolio.de/sitemap.xml
