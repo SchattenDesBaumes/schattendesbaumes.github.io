@@ -992,6 +992,58 @@ body::after{ /* swiss-noise */
 .work--gal:hover .vinyl__in .vinyl__disc{animation-duration:1.8s}
 .works-panel.is-off .vinyl__in .vinyl__disc{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.work__img .vinyl__in .vinyl__disc{animation:none}}
+
+/* ---------- Mobil aufgeräumt (Variante A, 25.10.2026) ---------- */
+.m-only{display:none}
+@media (max-width:767px){
+  .m-only{display:revert}
+  /* Hero: ein Button, darunter Textlink */
+  .hero .btn-row .btn--secondary,.hero .micro,.hero .hero__bottom>.small{display:none}
+  .hero__bottom{gap:1.25rem}
+  .hero-link{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--fg);border-bottom:2px solid var(--fg);width:fit-content;padding-bottom:.2rem;margin-top:-.25rem;min-height:32px}
+  /* Arbeiten: Abschluss-Block weg, Umschalter kompakter */
+  .works-foot{display:none}
+  .works-head{padding-block:.75rem 1.25rem}
+  .works-switch__circle{width:2.75rem;height:2.75rem}
+  .works-switch{gap:.75rem}
+  /* Leistungen: Band als Satz mit Textlink */
+  #leistungen .band{padding:1.5rem var(--pad);gap:.75rem}
+  #leistungen .band__text{font-size:1.0625rem}
+  #leistungen .band__cta .btn{all:unset;color:#fff;font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:.2rem;cursor:pointer;display:inline-flex;gap:.5rem;align-items:center;min-height:32px}
+  #leistungen .band__cta .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  #leistungen .band__cta .btn svg{width:1rem;height:1rem}
+  #leistungen .band__cta .small{display:none}
+  /* Über mich: Foto flach */
+  .about__media{aspect-ratio:16/11;max-width:none}
+  .about__media img{object-position:50% 72%}
+  .about{row-gap:1.5rem}
+  .about__text{gap:1.25rem}
+  /* Ablauf: kompakte Liste zum Aufklappen */
+  #ablauf .sec-intro{display:none}
+  .step{grid-template-columns:2.75rem minmax(0,1fr) 1.5rem;gap:.25rem .75rem;align-items:center;padding:1rem var(--pad);cursor:pointer}
+  .step:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+  .step__num{font-size:1.5rem;line-height:1;letter-spacing:-.04em;color:var(--accent-ink)}
+  .step:hover .step__num{transform:none}
+  .step .h3{font-size:1.125rem;margin:0}
+  .step p{grid-column:2/-1;display:none;margin:.25rem 0}
+  .step.is-open p{display:block}
+  .step::after{content:"+";font-weight:700;font-size:1.25rem;grid-column:3;grid-row:1;justify-self:end}
+  .step.is-open::after{content:"–"}
+  .steps-track{display:none!important}
+  /* FAQ: 5 Fragen, Rest auf Wunsch */
+  .faq__list:not(.is-all) .qa:nth-child(n+6){display:none}
+  .faq-cta{display:none}
+  .faq-more{grid-column:1/-1;display:flex;justify-content:center;align-items:center;gap:.5rem;width:100%;min-height:3.25rem;margin-top:.75rem;background:none;border:2px solid var(--fg);font:700 .75rem/1 var(--font);letter-spacing:.12em;text-transform:uppercase;color:var(--fg);cursor:pointer}
+  .faq-more:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .faq__list.is-all+.faq-more{display:none}
+  /* Kontakt und Footer kompakt */
+  .contact .small{font-size:.8125rem}
+  .footer .grid{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;align-items:center;padding-block:1.5rem 1.25rem}
+  .footer__brand,.footer__col .label,.footer__col:first-of-type{display:none}
+  .footer__col{grid-column:auto;display:flex;gap:1.25rem;align-items:center}
+  .footer__col a{min-height:40px;font-size:.875rem}
+  .footer__bottom{width:100%;border-top:1px solid #d0d0d0;padding-top:.75rem;margin-top:.25rem}
+}
 /* Header auf Schwarz (22.10.2026) */
 .site-header{background:var(--fg);color:#fff}
 .site-header .frame{border-top:var(--b) solid var(--fg)}
@@ -1061,6 +1113,7 @@ body::after{ /* swiss-noise */
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
           </a>
         </div>
+        <a class="hero-link m-only" href="#arbeiten">Arbeiten ansehen <span aria-hidden="true">↓</span></a>
         <p class="micro">Kurz schildern, was ansteht. Sie bekommen eine Einschätzung zu Aufwand, Dauer und Preis, auch wenn wir am Ende nicht zusammenarbeiten.</p>
         <p class="small">Lieber per Mail? <a class="tlink" href="mailto:sidar.arbeit@gmail.com">sidar.arbeit@gmail.com</a></p>
       </div>
@@ -1452,7 +1505,7 @@ body::after{ /* swiss-noise */
       <p class="label sec-label"><span class="num"></span><span>FAQ</span></p>
       <h2 class="h2 h2--side" id="faq-h">Häufige Fragen</h2>
     </header>
-    <div class="faq__list">
+    <div class="faq__list" id="faq-list">
       <details class="qa"><summary><span class="qa__n">01</span><span>Arbeiten Sie auch mit kleinen Unternehmen und Selbstständigen?</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="qa__a"><p>Ja, das ist der Normalfall. Entscheidend ist nicht die Größe, sondern ob die Aufgabe klar genug ist, dass wir beide wissen, woran wir arbeiten.</p></div></details>
       <details class="qa"><summary><span class="qa__n">02</span><span>Kann ich einzelne Leistungen buchen, zum Beispiel nur ein Logo?</span><span class="plus" aria-hidden="true"></span></summary>
@@ -1472,6 +1525,7 @@ body::after{ /* swiss-noise */
       <details class="qa"><summary><span class="qa__n">09</span><span>Was brauchen Sie von mir, um anzufangen?</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="qa__a"><p>Ziel, Zielgruppe und eine grobe visuelle Richtung. Dazu alles, was schon existiert: Logo, Texte, Bilder, Zugänge. Wenn davon nichts da ist, fangen wir genau damit an.</p></div></details>
     </div>
+    <button type="button" class="faq-more m-only" aria-controls="faq-list" aria-expanded="false">Alle 9 Fragen anzeigen <span aria-hidden="true">+</span></button>
     <div class="faq-cta">
       <p class="foot-q">Ihre Frage ist nicht dabei?</p>
       <a class="btn btn--accent" href="https://wa.me/4917631758293?text=Hallo%20Sidar%2C%0A%0AProjekt%3A%0ABis%20wann%3A%0AWas%20schon%20da%20ist%3A" target="_blank" rel="noopener">Direkt per WhatsApp fragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
@@ -2308,6 +2362,19 @@ body::after{ /* swiss-noise */
   [].forEach.call(d.querySelectorAll('[data-mz-step]'),function(b){ b.addEventListener('click',function(){ if(!pf) return; +b.getAttribute('data-mz-step')>0?pf.flipNext():pf.flipPrev() }) });
   d.addEventListener('keydown',function(e){ if(!pf) return; if(e.key==='ArrowRight'){ e.preventDefault(); pf.flipNext() } if(e.key==='ArrowLeft'){ e.preventDefault(); pf.flipPrev() } });
   d.addEventListener('click',function(e){ if(e.target===d) d.close() });
+})();
+</script>
+<script>
+/* Mobil: Ablauf-Schritte aufklappen, FAQ „Alle anzeigen“ */
+(function(){
+  var mq=window.matchMedia('(max-width:767px)');
+  var steps=[].slice.call(document.querySelectorAll('.step'));
+  function setup(){ steps.forEach(function(s){ if(mq.matches){ s.setAttribute('role','button'); s.tabIndex=0; s.setAttribute('aria-expanded',s.classList.contains('is-open')?'true':'false') } else { s.removeAttribute('role'); s.removeAttribute('tabindex'); s.removeAttribute('aria-expanded'); s.classList.remove('is-open') } }) }
+  function tog(s){ if(!mq.matches) return; var o=s.classList.toggle('is-open'); s.setAttribute('aria-expanded',o?'true':'false') }
+  steps.forEach(function(s){ s.addEventListener('click',function(){ tog(s) }); s.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); tog(s) } }) });
+  setup(); if(mq.addEventListener) mq.addEventListener('change',setup);
+  var b=document.querySelector('.faq-more'), l=document.getElementById('faq-list');
+  if(b&&l) b.addEventListener('click',function(){ l.classList.add('is-all'); b.setAttribute('aria-expanded','true'); var q=l.querySelectorAll('.qa')[5]; if(q) q.querySelector('summary').focus() });
 })();
 </script>
 </body>
