@@ -1134,6 +1134,12 @@ ol.fx{list-style:none;margin:0;padding:0}
 @media (max-width:1023px){.menu-open .m1-list li:nth-child(5) a{transition-delay:.39s}}
 
 .m1-list a[aria-current] .m1-list__t{color:var(--accent)}
+/* Inhaltsbereich auf Schwarz mit orangem Raster (Parallax) */
+.flowsec--dark{position:relative;overflow:hidden;isolation:isolate;background-color:var(--fg)}
+.flowsec--dark::before{content:"";position:absolute;left:0;right:0;top:-24px;bottom:-24px;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,48,0,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,48,0,.28) 1px,transparent 1px);background-size:24px 24px;transform:translate3d(0,var(--gy,0px),0);will-change:transform}
+.flowsec--dark .flow__label{color:#fff}
+.flowsec--dark .yt{border-color:#fff}
+.flowsec--dark .guards{color:var(--fg)}
 /* Header auf Schwarz (22.10.2026) */
 .site-header{background:var(--fg);color:#fff}
 .site-header .frame{border-top:var(--b) solid var(--fg)}
@@ -1201,7 +1207,7 @@ ol.fx{list-style:none;margin:0;padding:0}
     </div>
   </header>
 
-  <section class="flowsec bg-muted swiss-grid-pattern" aria-labelledby="chat-h">
+  <section class="flowsec flowsec--dark" aria-labelledby="chat-h">
     <div class="wrap flowwrap">
       <h2 class="label flow__label" id="chat-h">Ein Gespräch, wie es auf der Website läuft</h2>
       <div class="chatdemo">
@@ -1435,6 +1441,16 @@ ol.fx{list-style:none;margin:0;padding:0}
   document.querySelectorAll('[data-menu] a, [data-menu-backdrop]').forEach(function(a){ a.addEventListener('click',function(){ set(false) }) });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false) });
   window.matchMedia('(min-width:1024px)').addEventListener('change',function(e){ if(e.matches) set(false) });
+})();
+</script>
+<script>
+/* Raster im dunklen Inhaltsbereich mit Parallax (läuft langsamer als die Seite). Nur solange sichtbar. */
+(function(){
+  var sec=document.querySelector('.flowsec--dark'); if(!sec||window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var on=false, q=0;
+  function f(){ q=0; var y=-sec.getBoundingClientRect().top*0.35; sec.style.setProperty('--gy',(((y%24)+24)%24-24).toFixed(2)+'px') }
+  window.addEventListener('scroll',function(){ if(on&&!q) q=requestAnimationFrame(f) },{passive:true});
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ on=es[0].isIntersecting; if(on) f() }).observe(sec); else { on=true; f() }
 })();
 </script>
 </body>

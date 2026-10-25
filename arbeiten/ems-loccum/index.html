@@ -1120,6 +1120,14 @@ ol.fx{list-style:none;margin:0;padding:0}
 .em-panel img{display:block;width:100%;height:auto}
 .em-panel:hover .em-zoom{background:var(--accent);border-color:var(--accent)}
 @media (max-width:800px){.em-logos{grid-template-columns:1fr}.em-logo--light{border-right:0;border-bottom:var(--b2) solid var(--fg)}.em-sw{grid-template-columns:repeat(2,minmax(0,1fr))}.em-sw li{border-bottom:var(--b2) solid var(--fg)}.em-sw li:nth-child(2n){border-right:0}.em-sw li:last-child{grid-column:1/-1;border-bottom:0}}
+/* Inhaltsbereich auf Schwarz mit orangem Raster (Parallax) */
+.flowsec--dark{position:relative;overflow:hidden;isolation:isolate;background-color:var(--fg)}
+.flowsec--dark::before{content:"";position:absolute;left:0;right:0;top:-24px;bottom:-24px;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,48,0,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,48,0,.28) 1px,transparent 1px);background-size:24px 24px;transform:translate3d(0,var(--gy,0px),0);will-change:transform}
+.flowsec--dark .flow__label{color:#fff}
+.flowsec--dark .yt{border-color:#fff}
+.flowsec--dark .guards{color:var(--fg)}
+.flowsec--dark .em-tab{border-color:#fff}
+.flowsec--dark .em-tab.is-on{background:var(--accent);border-color:var(--accent);color:var(--fg)}
 /* Header auf Schwarz (22.10.2026) */
 .site-header{background:var(--fg);color:#fff}
 .site-header .frame{border-top:var(--b) solid var(--fg)}
@@ -1187,7 +1195,7 @@ ol.fx{list-style:none;margin:0;padding:0}
     </div>
   </header>
 
-  <section class="flowsec bg-muted swiss-grid-pattern" aria-labelledby="mk-h">
+  <section class="flowsec flowsec--dark" aria-labelledby="mk-h">
     <div class="wrap flowwrap">
       <h2 class="label flow__label" id="mk-h">Die Broschüre</h2>
       <figure class="em-hero">
@@ -1415,6 +1423,16 @@ ol.fx{list-style:none;margin:0;padding:0}
   window.addEventListener('scroll',req,{passive:true}); window.addEventListener('resize',req);
   new IntersectionObserver(function(es){ vis=es[0].isIntersecting; req() }).observe(fig);
   upd();
+})();
+</script>
+<script>
+/* Raster im dunklen Inhaltsbereich mit Parallax (läuft langsamer als die Seite). Nur solange sichtbar. */
+(function(){
+  var sec=document.querySelector('.flowsec--dark'); if(!sec||window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var on=false, q=0;
+  function f(){ q=0; var y=-sec.getBoundingClientRect().top*0.35; sec.style.setProperty('--gy',(((y%24)+24)%24-24).toFixed(2)+'px') }
+  window.addEventListener('scroll',function(){ if(on&&!q) q=requestAnimationFrame(f) },{passive:true});
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ on=es[0].isIntersecting; if(on) f() }).observe(sec); else { on=true; f() }
 })();
 </script>
 </body>
