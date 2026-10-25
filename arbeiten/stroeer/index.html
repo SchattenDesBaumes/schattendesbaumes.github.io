@@ -1105,7 +1105,8 @@ ol.fx{list-style:none;margin:0;padding:0}
 @media (max-width:1100px){.guards--3{grid-template-columns:repeat(3,minmax(0,1fr))}.guards--3 li{border-bottom:0}.guards--3 li:nth-child(2n){border-right:var(--b2) solid var(--fg)}.guards--3 li:last-child{grid-column:auto}.guards--3 li:nth-child(3){border-right:0}}
 @media (max-width:700px){.guards--3{grid-template-columns:1fr}.guards--3 li{border-right:0!important;border-bottom:var(--b2) solid var(--fg)}.guards--3 li:last-child{border-bottom:0}.yt__btn{padding:.8rem 1rem;font-size:.6875rem}.yt__note{font-size:.625rem;padding:.45rem .7rem}}
 /* Spot-Bereich auf Schwarz mit orangem Raster */
-.flowsec--dark{background-color:var(--fg);color:#fff;background-image:linear-gradient(rgba(255,48,0,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,48,0,.28) 1px,transparent 1px);background-size:24px 24px}
+.flowsec--dark{position:relative;overflow:hidden;isolation:isolate;background-color:var(--fg);color:#fff}
+.flowsec--dark::before{content:"";position:absolute;left:0;right:0;top:-24px;bottom:-24px;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,48,0,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,48,0,.28) 1px,transparent 1px);background-size:24px 24px;transform:translate3d(0,var(--gy,0px),0);will-change:transform}
 .flowsec--dark .flow__label{color:#fff}
 .flowsec--dark .yt{border-color:#fff}
 .flowsec--dark .guards{color:var(--fg)}
@@ -1381,6 +1382,16 @@ ol.fx{list-style:none;margin:0;padding:0}
     f.title='Ströer Spot'; f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true;
     y.innerHTML=''; y.appendChild(f);
   });
+})();
+</script>
+<script>
+/* Ströer: Raster im Spot-Bereich mit Parallax (läuft langsamer als die Seite). Nur solange sichtbar. */
+(function(){
+  var sec=document.querySelector('.flowsec--dark'); if(!sec||window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var on=false, q=0;
+  function f(){ q=0; var y=-sec.getBoundingClientRect().top*0.35; sec.style.setProperty('--gy',(((y%24)+24)%24-24).toFixed(2)+'px') }
+  window.addEventListener('scroll',function(){ if(on&&!q) q=requestAnimationFrame(f) },{passive:true});
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ on=es[0].isIntersecting; if(on) f() }).observe(sec); else { on=true; f() }
 })();
 </script>
 </body>
