@@ -161,8 +161,15 @@ body::after{ /* swiss-noise */
 .site-header .frame{border-bottom:var(--b) solid var(--border);position:relative}
 .hdr{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:4.25rem}
 .brand{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;font-size:1.125rem;text-decoration:none;display:flex;align-items:center;gap:.6rem;min-height:44px}
-.brand__mark{height:2.125rem;width:auto;display:block;flex:none;transition:transform .2s var(--ease);transform-origin:left center}
-.brand:hover .brand__mark{transform:scale(1.06)}
+.brand__mark{height:2.125rem;width:auto;display:block;flex:none;overflow:visible;--sp:8.394px}
+.brand__face{fill:#fff}
+.brand__flank use{fill:var(--accent);transform:translate(calc(var(--i) * var(--sp)),calc(var(--i) * var(--sp)));transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.brand:hover .brand__flank use,.brand:focus-visible .brand__flank use{transform:translate(calc(var(--i) * var(--sp) * 1.85),calc(var(--i) * var(--sp) * 1.85))}
+.brand__mark.is-build .brand__face{animation:bmFace .45s linear backwards}
+.brand__mark.is-build .brand__flank use{animation:bmFade .4s linear backwards;animation-delay:calc(.25s + var(--i) * .03s)}
+@keyframes bmFace{from{opacity:0}to{opacity:1}}
+@keyframes bmFade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.brand__mark.is-build .brand__face,.brand__mark.is-build .brand__flank use{animation:none}.brand__flank use{transition:none}}
 .nav ul{display:flex}
 .nav a{white-space:nowrap;display:flex;align-items:center;justify-content:center;height:100%;min-height:44px;text-decoration:none;
   font-size:.8125rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
@@ -1168,7 +1175,7 @@ ol.fx{list-style:none;margin:0;padding:0}
 <header class="site-header" id="hdr">
   <div class="frame">
     <div class="hdr wrap">
-      <a class="brand" href="/" aria-label="Sidar Avci, zur Startseite"><img class="brand__mark" src="/assets/img/logo-s.svg" width="29" height="34" alt="" decoding="async">Sidar Avci</a>
+      <a class="brand" href="/" aria-label="Sidar Avci, zur Startseite"><svg class="brand__mark" viewBox="0 0 743.68 880.39" width="29" height="34" aria-hidden="true" focusable="false"><defs><path id="bm" d="M342.7734375 8.7890625Q248.046875 8.7890625 177.490234375 -19.287109375Q106.93359375 -47.36328125 67.87109375 -105.95703125Q28.80859375 -164.55078125 28.3203125 -255.859375H215.8203125Q217.7734375 -222.65625 232.666015625 -199.70703125Q247.55859375 -176.7578125 274.658203125 -165.0390625Q301.7578125 -153.3203125 339.84375 -153.3203125Q371.58203125 -153.3203125 393.06640625 -161.1328125Q414.55078125 -168.9453125 425.537109375 -182.861328125Q436.5234375 -196.77734375 436.5234375 -214.84375Q436.5234375 -231.4453125 426.025390625 -243.896484375Q415.52734375 -256.34765625 391.6015625 -266.6015625Q367.67578125 -276.85546875 327.1484375 -285.15625L253.90625 -300.78125Q157.71484375 -321.2890625 102.294921875 -370.849609375Q46.875 -420.41015625 46.875 -505.859375Q46.875 -575.1953125 84.47265625 -627.197265625Q122.0703125 -679.19921875 188.232421875 -708.251953125Q254.39453125 -737.3046875 340.8203125 -737.3046875Q429.19921875 -737.3046875 493.408203125 -707.763671875Q557.6171875 -678.22265625 592.529296875 -624.755859375Q627.44140625 -571.2890625 627.9296875 -500.0H438.4765625Q436.03515625 -535.64453125 412.353515625 -555.419921875Q388.671875 -575.1953125 340.8203125 -575.1953125Q310.546875 -575.1953125 291.015625 -568.115234375Q271.484375 -561.03515625 262.20703125 -548.33984375Q252.9296875 -535.64453125 252.9296875 -519.53125Q252.9296875 -502.44140625 262.939453125 -489.501953125Q272.94921875 -476.5625 294.677734375 -467.041015625Q316.40625 -457.51953125 350.5859375 -450.1953125L410.15625 -437.5Q470.21484375 -424.8046875 513.427734375 -403.80859375Q556.640625 -382.8125 584.228515625 -354.736328125Q611.81640625 -326.66015625 624.755859375 -291.50390625Q637.6953125 -256.34765625 637.6953125 -214.84375Q637.6953125 -143.06640625 602.294921875 -93.017578125Q566.89453125 -42.96875 500.9765625 -17.08984375Q435.05859375 8.7890625 342.7734375 8.7890625Z"/></defs><g transform="translate(-28.32,737.30)"><g class="brand__flank"><use href="#bm" style="--i:16"/><use href="#bm" style="--i:15"/><use href="#bm" style="--i:14"/><use href="#bm" style="--i:13"/><use href="#bm" style="--i:12"/><use href="#bm" style="--i:11"/><use href="#bm" style="--i:10"/><use href="#bm" style="--i:9"/><use href="#bm" style="--i:8"/><use href="#bm" style="--i:7"/><use href="#bm" style="--i:6"/><use href="#bm" style="--i:5"/><use href="#bm" style="--i:4"/><use href="#bm" style="--i:3"/><use href="#bm" style="--i:2"/><use href="#bm" style="--i:1"/></g><use href="#bm" class="brand__face"/></g></svg><script>(function(){var m=document.currentScript.previousElementSibling;if(!m||!m.classList)return;m.classList.add("is-build");setTimeout(function(){m.classList.remove("is-build")},1400)})();</script>Sidar Avci</a>
       <nav class="nav" aria-label="Hauptnavigation">
         <ul>
           <li><a href="/#arbeiten" aria-current="true"><span class="slide"><span><span>Arbeiten</span><span aria-hidden="true">Arbeiten</span></span></span></a></li><li><a href="/referenzen/"><span class="slide"><span><span>Referenzen</span><span aria-hidden="true">Referenzen</span></span></span></a></li>
