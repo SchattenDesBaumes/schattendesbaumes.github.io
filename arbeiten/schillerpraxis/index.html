@@ -1154,20 +1154,34 @@ ol.fx{list-style:none;margin:0;padding:0}
 .menu-open .site-header .m1-btn__icon{background:#fff}
 
 /* =================== CASE: SCHILLERPRAXIS =================== */
-.spc-win{margin:0 auto;max-width:1100px}
+.spc-row{display:grid;gap:clamp(1rem,3vw,2.25rem);align-items:start;margin-bottom:clamp(1.5rem,4vw,3rem)}
+@media (min-width:880px){.spc-row{grid-template-columns:minmax(0,1fr) auto}}
+.spc-win{margin:0;min-width:0}
 .spc-frame{background:#fff;border:3px solid #fff}
-.spc-top{display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;border-bottom:3px solid var(--fg);background:#fff}
-.spc-dots{display:flex;gap:.3rem;flex:none}
-.spc-dots i{display:block;width:.55rem;height:.55rem;background:var(--fg)}
-.spc-url{flex:1;min-width:0;text-align:center;font-size:.75rem;color:#4a4a4a;background:var(--muted);border:1px solid #dcdcdc;padding:.2rem .5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.spc-view{height:min(68vh,620px);overflow-y:auto;overscroll-behavior:contain;background:#fff;-webkit-overflow-scrolling:touch}
+.spc-top{display:flex;align-items:center;gap:.5rem;padding:.45rem .6rem;border-bottom:3px solid var(--fg);background:#fff}
+.spc-dots{display:flex;gap:.28rem;flex:none}
+.spc-dots i{display:block;width:.5rem;height:.5rem;background:var(--fg)}
+.spc-url{flex:1;min-width:0;text-align:center;font-size:.6875rem;color:#4a4a4a;background:var(--muted);border:1px solid #dcdcdc;padding:.15rem .45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spc-view{height:clamp(17rem,42vh,25rem);overflow-y:auto;overscroll-behavior:contain;background:#fff;-webkit-overflow-scrolling:touch}
 .spc-view img{display:block;width:100%;height:auto}
-.spc-win figcaption{padding:.9rem .2rem 0;font-size:.875rem;line-height:1.5;color:#d6d6d6}
-.spc-phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,4vw,3rem);max-width:720px;margin:0 auto}
-.spc-phone{margin:0}
+.spc-phone{margin:0;width:min(13.5rem,52vw);justify-self:center}
 .spc-phone img{display:block;width:100%;height:auto;border:3px solid #fff;background:#fff}
-.spc-phone figcaption{margin-top:.7rem;font-size:.6875rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;text-align:center}
-@media (max-width:520px){.spc-phones{grid-template-columns:1fr;max-width:20rem}}
+.spc-cap{margin:.7rem 0 0;font-size:.8125rem;line-height:1.5;color:#d6d6d6}
+.spc-cap b{color:#fff;font-weight:700}
+.spc-ls{display:grid;gap:clamp(.75rem,2vw,1.25rem);grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.spc-ls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.spc-ls div{border:2px solid #fff;padding:clamp(.9rem,2vw,1.25rem)}
+.spc-ls p{margin:0;font-size:.9375rem;line-height:1.55;color:#fff}
+.spc-ls p+p{margin-top:.5rem}
+.spc-ls .lbl{display:block;font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;margin-bottom:.6rem}
+.spc-ls--acc{border-color:var(--accent) !important}
+.spc-ls--acc .lbl{color:var(--accent)}
+.spc-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem clamp(.75rem,2vw,1.25rem)}
+@media (min-width:880px){.spc-times{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.spc-time{margin:0}
+.spc-time img{display:block;width:100%;height:auto;border:2px solid #fff}
+.spc-time figcaption{margin-top:.45rem;font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.spc-time figcaption span{display:block;font-weight:400;letter-spacing:0;text-transform:none;color:#9a9a9a;font-size:.6875rem;margin-top:.15rem}
 </style>
 </head>
 <body>
@@ -1223,20 +1237,43 @@ ol.fx{list-style:none;margin:0;padding:0}
 
   <section class="flowsec flowsec--dark" aria-labelledby="shot-h">
     <div class="wrap flowwrap">
-      <h2 class="label flow__label" id="shot-h">Die Startseite</h2>
-      <figure class="spc-win">
-        <div class="spc-frame">
-        <div class="spc-top"><span class="spc-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="spc-url">die-schillerpraxis.de</span></div>
-        <div class="spc-view"><img src="/assets/img/arbeiten/buehne/schiller-desktop-1229.webp" srcset="/assets/img/arbeiten/buehne/schiller-desktop-640.webp 640w, /assets/img/arbeiten/buehne/schiller-desktop-1229.webp 1229w" sizes="(min-width:1100px) 1100px, 100vw" width="1229" height="4385" loading="lazy" decoding="async" alt="Startseite der Schillerpraxis: Kopfbereich mit Marktplatz-Bild, Sprechzeit und Telefonnummer, vier Wege zum Anliegen, &Uuml;bersicht der Fachbereiche und Fu&szlig;bereich"></div>
-        </div>
-        <figcaption>Die ganze Startseite, von oben bis unten. Im Fenster scrollen.</figcaption>
-      </figure>
-
-      <h2 class="label flow__label">Auf dem Handy</h2>
-      <div class="spc-phones">
-        <figure class="spc-phone"><img src="/assets/img/arbeiten/schillerpraxis/start-mobile-489.webp" width="489" height="992" loading="lazy" decoding="async" alt="Startseite am Handy, unten eine feste Leiste mit Anrufen und Route"><figcaption>Startseite</figcaption></figure>
-        <figure class="spc-phone"><img src="/assets/img/arbeiten/schillerpraxis/leichte-sprache-489.webp" width="489" height="992" loading="lazy" decoding="async" alt="Dieselbe Praxis in Leichter Sprache, mit kurzen S&auml;tzen und getrennten W&ouml;rtern"><figcaption>Leichte Sprache</figcaption></figure>
+      <h2 class="label flow__label" id="shot-h">Die Seite</h2>
+      <div class="spc-row">
+        <figure class="spc-win">
+          <div class="spc-frame">
+            <div class="spc-top"><span class="spc-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="spc-url">die-schillerpraxis.de</span></div>
+            <div class="spc-view"><img src="/assets/img/arbeiten/buehne/schiller-desktop-1229.webp" srcset="/assets/img/arbeiten/buehne/schiller-desktop-640.webp 640w, /assets/img/arbeiten/buehne/schiller-desktop-1229.webp 1229w" sizes="(min-width:880px) 60vw, 100vw" width="1229" height="4385" loading="lazy" decoding="async" alt="Startseite der Schillerpraxis: Kopfbereich mit Marktplatz-Bild, Sprechzeit und Telefonnummer, vier Wege zum Anliegen, &Uuml;bersicht der Fachbereiche und Fu&szlig;bereich"></div>
+          </div>
+          <figcaption class="spc-cap">Die ganze Startseite, von oben bis unten. Im Fenster scrollen.</figcaption>
+        </figure>
+        <figure class="spc-phone">
+          <img src="/assets/img/arbeiten/schillerpraxis/start-mobile-489.webp" width="489" height="992" loading="lazy" decoding="async" alt="Startseite am Handy, unten eine feste Leiste mit Anrufen und Route">
+          <figcaption class="spc-cap">Am Handy liegt unten eine feste Leiste mit Anrufen und Route.</figcaption>
+        </figure>
       </div>
+
+      <h2 class="label flow__label">Der Kopf wechselt mit der Tageszeit</h2>
+      <div class="spc-times">
+        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-morgen-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Morgen, der Marktplatz im weichen Morgenlicht"><figcaption>Morgen<span>nach Sonnenaufgang</span></figcaption></figure>
+        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-mittag-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Mittag, der Marktplatz bei hellem Tageslicht"><figcaption>Mittag<span>heller Tag</span></figcaption></figure>
+        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-abend-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Abend, der Marktplatz in warmem Abendlicht"><figcaption>Abend<span>vor Sonnenuntergang</span></figcaption></figure>
+        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-nacht-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite bei Nacht, der Marktplatz mit beleuchteten Fenstern"><figcaption>Nacht<span>nach Sonnenuntergang</span></figcaption></figure>
+      </div>
+      <p class="spc-cap" style="max-width:62ch">Vier Fassungen desselben Motivs. Welche zu sehen ist, entscheidet die Seite im Browser des Besuchers &mdash; aus Sonnenauf- und Sonnenuntergang f&uuml;r Eichst&auml;tt, nicht aus festen Uhrzeiten. Wer abends einen Termin sucht, sieht denselben Platz, den er drau&szlig;en vor der T&uuml;r hat.</p>
+
+      <h2 class="label flow__label" style="margin-top:clamp(1.5rem,4vw,3rem)">Alles auch in Leichter Sprache</h2>
+      <div class="spc-ls">
+        <div>
+          <span class="lbl">Normal</span>
+          <p>Als Hausarztpraxis in Eichst&auml;tt sind wir Ihre erste Anlaufstelle, wenn Sie krank sind oder gesundheitliche Fragen haben. Wir behandeln akute Erkrankungen und begleiten Sie bei chronischen Beschwerden &uuml;ber l&auml;ngere Zeit.</p>
+        </div>
+        <div class="spc-ls--acc">
+          <span class="lbl">In Leichter Sprache</span>
+          <p>Wir sind eine Arzt&middot;praxis in Eichst&auml;tt. Bei uns arbeiten 3 &Auml;rztinnen.</p>
+          <p>Eine Haus&middot;&auml;rztin hilft bei vielen Krankheiten. Zum Beispiel bei Fieber, Husten oder Schmerzen.</p>
+        </div>
+      </div>
+      <p class="spc-cap" style="max-width:62ch">Dieselbe Praxis, zweimal erkl&auml;rt. Kurze S&auml;tze, getrennte W&ouml;rter, keine Fachbegriffe &mdash; f&uuml;r Patienten, die sonst anrufen m&uuml;ssten, um zu verstehen, was auf der Seite steht. Jede wichtige Information der Praxis gibt es in beiden Fassungen, dazu eine eigene Barrierefreiheitserkl&auml;rung.</p>
     </div>
   </section>
 
