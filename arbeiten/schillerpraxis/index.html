@@ -1153,30 +1153,70 @@ ol.fx{list-style:none;margin:0;padding:0}
 .site-header .m1-btn__icon i{background:var(--fg)}
 .menu-open .site-header .m1-btn__icon{background:#fff}
 
-/* =================== CASE: SCHILLERPRAXIS =================== */
-.spc-row{--mh:clamp(15rem,36vh,20rem);display:grid;gap:clamp(1rem,2.5vw,1.75rem);align-items:start;margin-bottom:clamp(1.25rem,3vw,2.25rem);max-width:64rem}
-@media (min-width:880px){.spc-row{grid-template-columns:minmax(0,1fr) auto}}
-.spc-win{margin:0;min-width:0}
-.spc-frame{background:#fff;border:3px solid #fff;height:var(--mh);display:flex;flex-direction:column}
-.spc-top{display:flex;align-items:center;gap:.5rem;padding:.45rem .6rem;border-bottom:3px solid var(--fg);background:#fff}
+/* =================== CASE: SCHILLERPRAXIS ===================
+   Eine Bühne mit vier Ansichten statt vier Blöcken untereinander:
+   hält den dunklen Bereich auf rund einer Bildschirmhöhe. */
+.spt{max-width:64rem}
+.spt input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.spt-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.spt-tabs label{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 .9rem;cursor:pointer;
+  font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bdbdbd;
+  border:2px solid #4a4a4a;transition:color .15s linear,background-color .15s linear,border-color .15s linear}
+.spt-tabs label:hover{color:#fff;border-color:#fff}
+.spt-stage{position:relative}
+.spt-p{display:none;height:100%}
+.spt-cap{margin:.7rem 0 0;font-size:.8125rem;line-height:1.45;color:#c9c9c9;max-width:70ch;min-height:2.6rem}
+.spt-cap b{color:#fff;font-weight:700}
+.spt input:nth-of-type(1):checked~.spt-tabs label:nth-child(1),
+.spt input:nth-of-type(2):checked~.spt-tabs label:nth-child(2),
+.spt input:nth-of-type(3):checked~.spt-tabs label:nth-child(3),
+.spt input:nth-of-type(4):checked~.spt-tabs label:nth-child(4){background:#fff;border-color:#fff;color:#000}
+.spt input:nth-of-type(1):checked~.spt-stage .spt-p:nth-child(1),
+.spt input:nth-of-type(2):checked~.spt-stage .spt-p:nth-child(2),
+.spt input:nth-of-type(3):checked~.spt-stage .spt-p:nth-child(3),
+.spt input:nth-of-type(4):checked~.spt-stage .spt-p:nth-child(4){display:block}
+.spt input:focus-visible~.spt-tabs label{outline:none}
+.spt input:nth-of-type(1):focus-visible~.spt-tabs label:nth-child(1),
+.spt input:nth-of-type(2):focus-visible~.spt-tabs label:nth-child(2),
+.spt input:nth-of-type(3):focus-visible~.spt-tabs label:nth-child(3),
+.spt input:nth-of-type(4):focus-visible~.spt-tabs label:nth-child(4){outline:3px solid var(--accent);outline-offset:2px}
+
+/* Ansicht 1: Browser-Fenster */
+.spc-frame{background:#fff;border:3px solid #fff;height:clamp(16rem,38vh,21rem);display:flex;flex-direction:column;max-width:48rem}
+.spc-top{display:flex;align-items:center;gap:.5rem;padding:.4rem .6rem;border-bottom:3px solid var(--fg);background:#fff;flex:none}
 .spc-dots{display:flex;gap:.28rem;flex:none}
 .spc-dots i{display:block;width:.5rem;height:.5rem;background:var(--fg)}
 .spc-url{flex:1;min-width:0;text-align:center;font-size:.6875rem;color:#4a4a4a;background:var(--muted);border:1px solid #dcdcdc;padding:.15rem .45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .spc-view{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;background:#fff;-webkit-overflow-scrolling:touch}
 .spc-view img{display:block;width:100%;height:auto}
-.spc-phone{margin:0;justify-self:center}
-.spc-phone img{display:block;height:var(--mh,20rem);width:auto;max-width:100%;border:3px solid #fff;background:#fff}
-@media (max-width:879px){.spc-phone img{height:auto;width:min(13rem,48vw)}}
-.spc-cap{margin:.6rem 0 0;font-size:.8125rem;line-height:1.45;color:#d6d6d6;max-width:34ch}
-.spc-cap b{color:#fff;font-weight:700}
-.spc-ls{display:grid;gap:clamp(.75rem,2vw,1.25rem);grid-template-columns:minmax(0,1fr);max-width:64rem}
-@media (min-width:760px){.spc-ls{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.spc-ls div{border:2px solid #fff;padding:clamp(.9rem,2vw,1.25rem)}
-.spc-ls p{margin:0;font-size:.9375rem;line-height:1.55;color:#fff}
-.spc-ls p+p{margin-top:.5rem}
-.spc-ls .lbl{display:block;font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;margin-bottom:.6rem}
-.spc-ls--acc{border-color:var(--accent) !important}
-.spc-ls--acc .lbl{color:var(--accent)}
+
+/* Ansicht 2: Handy */
+.spt-phone{display:flex;gap:clamp(1rem,3vw,2rem);align-items:center}
+.spt-phone img{display:block;height:clamp(13rem,30vh,17rem);width:auto;border:3px solid #fff;background:#fff;flex:none}
+.spt-phone p{margin:0;font-size:.875rem;line-height:1.5;color:#e0e0e0;max-width:38ch}
+.spt-phone p b{color:#fff}
+
+/* Ansicht 3: Tageszeiten */
+.spt-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem clamp(.6rem,1.5vw,1rem)}
+@media (min-width:760px){.spt-times{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.spt-times figure{margin:0;min-width:0}
+.spt-times img{display:block;width:100%;height:auto;border:2px solid #fff}
+.spt-times figcaption{margin-top:.35rem;font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.spt-times figcaption span{display:block;font-weight:400;letter-spacing:0;text-transform:none;color:#9a9a9a;font-size:.6875rem;margin-top:.1rem}
+
+/* Ansicht 4: Leichte Sprache */
+.spt-ls{display:grid;gap:clamp(.6rem,1.5vw,1rem);grid-template-columns:minmax(0,1fr)}
+@media (min-width:700px){.spt-ls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.spt-ls div{border:2px solid #fff;padding:clamp(.8rem,1.6vw,1.1rem)}
+.spt-ls p{margin:0;font-size:.875rem;line-height:1.5;color:#fff}
+.spt-ls p+p{margin-top:.45rem}
+.spt-ls .lbl{display:block;font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;margin-bottom:.5rem}
+.spt-ls .acc{border-color:var(--accent)}
+.spt-ls .acc .lbl{color:var(--accent)}
+@media (max-width:759px){
+  .spt-phone{flex-direction:column;align-items:flex-start}
+  .spt-phone img{height:auto;width:min(12rem,46vw);align-self:center}
+}
 .spc-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem clamp(.75rem,2vw,1.25rem);max-width:64rem}
 @media (min-width:880px){.spc-times{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .spc-time{margin:0}
@@ -1239,42 +1279,52 @@ ol.fx{list-style:none;margin:0;padding:0}
   <section class="flowsec flowsec--dark" aria-labelledby="shot-h">
     <div class="wrap flowwrap">
       <h2 class="label flow__label" id="shot-h">Die Seite</h2>
-      <div class="spc-row">
-        <figure class="spc-win">
-          <div class="spc-frame">
-            <div class="spc-top"><span class="spc-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="spc-url">die-schillerpraxis.de</span></div>
-            <div class="spc-view"><img src="/assets/img/arbeiten/buehne/schiller-desktop-1229.webp" srcset="/assets/img/arbeiten/buehne/schiller-desktop-640.webp 640w, /assets/img/arbeiten/buehne/schiller-desktop-1229.webp 1229w" sizes="(min-width:880px) 60vw, 100vw" width="1229" height="4385" loading="lazy" decoding="async" alt="Startseite der Schillerpraxis: Kopfbereich mit Marktplatz-Bild, Sprechzeit und Telefonnummer, vier Wege zum Anliegen, &Uuml;bersicht der Fachbereiche und Fu&szlig;bereich"></div>
+      <div class="spt">
+        <input type="radio" name="spt" id="spt1" checked>
+        <input type="radio" name="spt" id="spt2">
+        <input type="radio" name="spt" id="spt3">
+        <input type="radio" name="spt" id="spt4">
+        <div class="spt-tabs">
+          <label for="spt1">Startseite</label>
+          <label for="spt2">Am Handy</label>
+          <label for="spt3">Tageszeiten</label>
+          <label for="spt4">Leichte Sprache</label>
+        </div>
+        <div class="spt-stage">
+
+          <div class="spt-p">
+            <div class="spc-frame">
+              <div class="spc-top"><span class="spc-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="spc-url">die-schillerpraxis.de</span></div>
+              <div class="spc-view"><img src="/assets/img/arbeiten/buehne/schiller-desktop-1229.webp" srcset="/assets/img/arbeiten/buehne/schiller-desktop-640.webp 640w, /assets/img/arbeiten/buehne/schiller-desktop-1229.webp 1229w" sizes="(min-width:760px) 48rem, 100vw" width="1229" height="4385" loading="lazy" decoding="async" alt="Startseite der Schillerpraxis: Kopfbereich mit Marktplatz-Bild, Sprechzeit und Telefonnummer, vier Wege zum Anliegen, &Uuml;bersicht der Fachbereiche und Fu&szlig;bereich"></div>
+            </div>
           </div>
-          <figcaption class="spc-cap">Die ganze Startseite, von oben bis unten. Im Fenster scrollen.</figcaption>
-        </figure>
-        <figure class="spc-phone">
-          <img src="/assets/img/arbeiten/schillerpraxis/start-mobile-489.webp" width="489" height="992" loading="lazy" decoding="async" alt="Startseite am Handy, unten eine feste Leiste mit Anrufen und Route">
-          <figcaption class="spc-cap">Am Handy liegt unten eine feste Leiste mit Anrufen und Route.</figcaption>
-        </figure>
-      </div>
 
-      <h2 class="label flow__label">Der Kopf wechselt mit der Tageszeit</h2>
-      <div class="spc-times">
-        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-morgen-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Morgen, der Marktplatz im weichen Morgenlicht"><figcaption>Morgen<span>nach Sonnenaufgang</span></figcaption></figure>
-        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-mittag-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Mittag, der Marktplatz bei hellem Tageslicht"><figcaption>Mittag<span>heller Tag</span></figcaption></figure>
-        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-abend-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Abend, der Marktplatz in warmem Abendlicht"><figcaption>Abend<span>vor Sonnenuntergang</span></figcaption></figure>
-        <figure class="spc-time"><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-nacht-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite bei Nacht, der Marktplatz mit beleuchteten Fenstern"><figcaption>Nacht<span>nach Sonnenuntergang</span></figcaption></figure>
-      </div>
-      <p class="spc-cap" style="max-width:62ch">Vier Fassungen desselben Motivs. Welche zu sehen ist, entscheidet die Seite im Browser des Besuchers &mdash; aus Sonnenauf- und Sonnenuntergang f&uuml;r Eichst&auml;tt, nicht aus festen Uhrzeiten. Wer abends einen Termin sucht, sieht denselben Platz, den er drau&szlig;en vor der T&uuml;r hat.</p>
+          <div class="spt-p">
+            <div class="spt-phone">
+              <img src="/assets/img/arbeiten/schillerpraxis/start-mobile-489.webp" width="489" height="992" loading="lazy" decoding="async" alt="Startseite am Handy, unten eine feste Leiste mit Anrufen und Route">
+              <p><b>Unten liegt eine feste Leiste mit Anrufen und Route.</b> Sie scrollt nicht mit, der wichtigste Weg ist also immer einen Daumen entfernt. Die Inhalte dar&uuml;ber sind dieselben wie am Rechner, nur untereinander statt nebeneinander.</p>
+            </div>
+          </div>
 
-      <h2 class="label flow__label" style="margin-top:clamp(1.5rem,4vw,3rem)">Alles auch in Leichter Sprache</h2>
-      <div class="spc-ls">
-        <div>
-          <span class="lbl">Normal</span>
-          <p>Als Hausarztpraxis in Eichst&auml;tt sind wir Ihre erste Anlaufstelle, wenn Sie krank sind oder gesundheitliche Fragen haben. Wir behandeln akute Erkrankungen und begleiten Sie bei chronischen Beschwerden &uuml;ber l&auml;ngere Zeit.</p>
+          <div class="spt-p">
+            <div class="spt-times">
+              <figure><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-morgen-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Morgen, der Marktplatz im weichen Morgenlicht"><figcaption>Morgen<span>nach Sonnenaufgang</span></figcaption></figure>
+              <figure><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-mittag-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Mittag, der Marktplatz bei hellem Tageslicht"><figcaption>Mittag<span>heller Tag</span></figcaption></figure>
+              <figure><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-abend-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite am Abend, der Marktplatz in warmem Abendlicht"><figcaption>Abend<span>vor Sonnenuntergang</span></figcaption></figure>
+              <figure><img src="/assets/img/arbeiten/schillerpraxis/tageszeit-nacht-900.webp" width="900" height="456" loading="lazy" decoding="async" alt="Startseite bei Nacht, der Marktplatz mit beleuchteten Fenstern"><figcaption>Nacht<span>nach Sonnenuntergang</span></figcaption></figure>
+            </div>
+          </div>
+
+          <div class="spt-p">
+            <div class="spt-ls">
+              <div><span class="lbl">Normal</span><p>Als Hausarztpraxis in Eichst&auml;tt sind wir Ihre erste Anlaufstelle, wenn Sie krank sind oder gesundheitliche Fragen haben. Wir behandeln akute Erkrankungen und begleiten Sie bei chronischen Beschwerden &uuml;ber l&auml;ngere Zeit.</p></div>
+              <div class="acc"><span class="lbl">In Leichter Sprache</span><p>Wir sind eine Arzt&middot;praxis in Eichst&auml;tt. Bei uns arbeiten 3 &Auml;rztinnen.</p><p>Eine Haus&middot;&auml;rztin hilft bei vielen Krankheiten. Zum Beispiel bei Fieber, Husten oder Schmerzen.</p></div>
+            </div>
+          </div>
+
         </div>
-        <div class="spc-ls--acc">
-          <span class="lbl">In Leichter Sprache</span>
-          <p>Wir sind eine Arzt&middot;praxis in Eichst&auml;tt. Bei uns arbeiten 3 &Auml;rztinnen.</p>
-          <p>Eine Haus&middot;&auml;rztin hilft bei vielen Krankheiten. Zum Beispiel bei Fieber, Husten oder Schmerzen.</p>
-        </div>
+        <p class="spt-cap">Vier Ansichten derselben Seite. <b>Tageszeiten:</b> Der Kopf wechselt mit dem Stand der Sonne &uuml;ber Eichst&auml;tt, berechnet aus Sonnenauf- und -untergang statt aus festen Uhrzeiten. <b>Leichte Sprache:</b> Jede wichtige Information gibt es ein zweites Mal in kurzen S&auml;tzen, dazu eine eigene Barrierefreiheitserkl&auml;rung.</p>
       </div>
-      <p class="spc-cap" style="max-width:62ch">Dieselbe Praxis, zweimal erkl&auml;rt. Kurze S&auml;tze, getrennte W&ouml;rter, keine Fachbegriffe &mdash; f&uuml;r Patienten, die sonst anrufen m&uuml;ssten, um zu verstehen, was auf der Seite steht. Jede wichtige Information der Praxis gibt es in beiden Fassungen, dazu eine eigene Barrierefreiheitserkl&auml;rung.</p>
     </div>
   </section>
 
