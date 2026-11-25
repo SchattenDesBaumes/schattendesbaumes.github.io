@@ -1154,21 +1154,22 @@ ol.fx{list-style:none;margin:0;padding:0}
 .menu-open .site-header .m1-btn__icon{background:#fff}
 
 /* =================== CASE: SCHILLERPRAXIS =================== */
-.spc-row{display:grid;gap:clamp(1rem,3vw,2.25rem);align-items:start;margin-bottom:clamp(1.5rem,4vw,3rem)}
+.spc-row{--mh:clamp(15rem,36vh,20rem);display:grid;gap:clamp(1rem,2.5vw,1.75rem);align-items:start;margin-bottom:clamp(1.25rem,3vw,2.25rem);max-width:64rem}
 @media (min-width:880px){.spc-row{grid-template-columns:minmax(0,1fr) auto}}
 .spc-win{margin:0;min-width:0}
-.spc-frame{background:#fff;border:3px solid #fff}
+.spc-frame{background:#fff;border:3px solid #fff;height:var(--mh);display:flex;flex-direction:column}
 .spc-top{display:flex;align-items:center;gap:.5rem;padding:.45rem .6rem;border-bottom:3px solid var(--fg);background:#fff}
 .spc-dots{display:flex;gap:.28rem;flex:none}
 .spc-dots i{display:block;width:.5rem;height:.5rem;background:var(--fg)}
 .spc-url{flex:1;min-width:0;text-align:center;font-size:.6875rem;color:#4a4a4a;background:var(--muted);border:1px solid #dcdcdc;padding:.15rem .45rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.spc-view{height:clamp(17rem,42vh,25rem);overflow-y:auto;overscroll-behavior:contain;background:#fff;-webkit-overflow-scrolling:touch}
+.spc-view{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;background:#fff;-webkit-overflow-scrolling:touch}
 .spc-view img{display:block;width:100%;height:auto}
-.spc-phone{margin:0;width:min(13.5rem,52vw);justify-self:center}
-.spc-phone img{display:block;width:100%;height:auto;border:3px solid #fff;background:#fff}
-.spc-cap{margin:.7rem 0 0;font-size:.8125rem;line-height:1.5;color:#d6d6d6}
+.spc-phone{margin:0;justify-self:center}
+.spc-phone img{display:block;height:var(--mh,20rem);width:auto;max-width:100%;border:3px solid #fff;background:#fff}
+@media (max-width:879px){.spc-phone img{height:auto;width:min(13rem,48vw)}}
+.spc-cap{margin:.6rem 0 0;font-size:.8125rem;line-height:1.45;color:#d6d6d6;max-width:34ch}
 .spc-cap b{color:#fff;font-weight:700}
-.spc-ls{display:grid;gap:clamp(.75rem,2vw,1.25rem);grid-template-columns:minmax(0,1fr)}
+.spc-ls{display:grid;gap:clamp(.75rem,2vw,1.25rem);grid-template-columns:minmax(0,1fr);max-width:64rem}
 @media (min-width:760px){.spc-ls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .spc-ls div{border:2px solid #fff;padding:clamp(.9rem,2vw,1.25rem)}
 .spc-ls p{margin:0;font-size:.9375rem;line-height:1.55;color:#fff}
@@ -1176,7 +1177,7 @@ ol.fx{list-style:none;margin:0;padding:0}
 .spc-ls .lbl{display:block;font-size:.625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;margin-bottom:.6rem}
 .spc-ls--acc{border-color:var(--accent) !important}
 .spc-ls--acc .lbl{color:var(--accent)}
-.spc-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem clamp(.75rem,2vw,1.25rem)}
+.spc-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem clamp(.75rem,2vw,1.25rem);max-width:64rem}
 @media (min-width:880px){.spc-times{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .spc-time{margin:0}
 .spc-time img{display:block;width:100%;height:auto;border:2px solid #fff}
