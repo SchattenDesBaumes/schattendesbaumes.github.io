@@ -161,8 +161,8 @@ body::after{ /* swiss-noise */
 .site-header .frame{border-bottom:var(--b) solid var(--border);position:relative}
 .hdr{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:4.25rem}
 .brand{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;font-size:1.125rem;text-decoration:none;display:flex;align-items:center;gap:.6rem;min-height:44px}
-.brand i{width:.85rem;height:.85rem;background:var(--accent);border-radius:50%;display:inline-block;transition:transform .2s var(--ease)}
-.brand:hover i{transform:scale(1.25)}
+.brand__mark{height:2.125rem;width:auto;display:block;flex:none;transition:transform .2s var(--ease);transform-origin:left center}
+.brand:hover .brand__mark{transform:scale(1.06)}
 .nav ul{display:flex}
 .nav a{white-space:nowrap;display:flex;align-items:center;justify-content:center;height:100%;min-height:44px;text-decoration:none;
   font-size:.8125rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
@@ -958,7 +958,7 @@ html{scroll-padding-top:calc(var(--hdr-h,72px) + var(--idx-h,56px) + 8px)}
 <header class="site-header" id="hdr">
   <div class="frame">
     <div class="hdr wrap">
-      <a class="brand" href="/" aria-label="Sidar Avci, zur Startseite"><i aria-hidden="true"></i>Sidar Avci</a>
+      <a class="brand" href="/" aria-label="Sidar Avci, zur Startseite"><img class="brand__mark" src="/assets/img/logo-s.svg" width="29" height="34" alt="" decoding="async">Sidar Avci</a>
       <nav class="nav" aria-label="Hauptnavigation">
         <ul>
           <li><a href="/#arbeiten"><span class="slide"><span><span>Arbeiten</span><span aria-hidden="true">Arbeiten</span></span></span></a></li><li><a href="/referenzen/" aria-current="true"><span class="slide"><span><span>Referenzen</span><span aria-hidden="true">Referenzen</span></span></span></a></li>
