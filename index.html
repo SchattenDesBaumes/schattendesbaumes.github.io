@@ -740,8 +740,30 @@ body::after{ /* swiss-noise */
 .wb-slide:nth-child(4) .wb-pic::before{left:auto;right:-18cqh;top:-14cqh}
 .wb-slide:nth-child(4) .wb-pic::after{right:auto;left:5cqw;bottom:auto;top:10cqh}
 .wb-pic--mock::before,.wb-pic--mock::after{z-index:2}
-.wb-slide:nth-child(5) .wb-pic::before{left:4cqw;top:8cqh;width:13cqh;height:13cqh}
-.wb-slide:nth-child(5) .wb-pic::after{right:3cqw;bottom:6cqh;width:18cqh;height:18cqh}
+.wb-slide:nth-child(6) .wb-pic::before{left:4cqw;top:8cqh;width:13cqh;height:13cqh}
+.wb-slide:nth-child(6) .wb-pic::after{right:3cqw;bottom:6cqh;width:18cqh;height:18cqh}
+/* Bühne Schillerpraxis: Browser und Handy, beide scrollen durch die echte Seite.
+   Scrollweg steht in --sp-d, wird unten per Skript aus den echten Maßen gesetzt. */
+.wb-pic--sp{background:#eceae6}
+.wb-pic--sp::before{width:46cqh;height:46cqh;left:-18cqh;top:-16cqh}
+.wb-pic--sp::after{width:16cqh;height:16cqh;right:4cqw;bottom:8cqh}
+.sp-win{position:absolute;z-index:2;left:2cqw;top:5cqh;width:84cqw;height:84cqh;background:#fff;border:3px solid var(--fg);display:grid;grid-template-rows:auto minmax(0,1fr);box-shadow:0 2.5cqh 6cqh rgba(0,0,0,.28)}
+.sp-top{display:flex;align-items:center;gap:.45rem;padding:.35rem .5rem;border-bottom:3px solid var(--fg)}
+.sp-dots{display:flex;gap:.22rem;flex:none}
+.sp-dots i{display:block;width:.42rem;height:.42rem;background:var(--fg)}
+.sp-url{flex:1;min-width:0;text-align:center;font-size:.5625rem;letter-spacing:.06em;color:#4a4a4a;background:var(--muted);border:1px solid #dcdcdc;padding:.15rem .4rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-view{position:relative;overflow:hidden;background:#fff}
+.sp-shot{position:absolute;top:0;left:0;width:100%;height:auto;display:block}
+.sp-phone{position:absolute;z-index:3;right:8cqw;bottom:3cqh;height:80cqh;aspect-ratio:1/1.984;background:#fff;border:3px solid var(--fg);overflow:hidden;display:grid;grid-template-rows:minmax(0,1fr) 7.6%;box-shadow:0 2cqh 6cqh rgba(0,0,0,.4)}
+.sp-bar{width:100%;height:100%;object-fit:fill;display:block;border-top:1px solid #e6e6e6}
+.wb-slide.is-on .sp-shot{animation:spscroll 11s cubic-bezier(.5,0,.5,1) forwards}
+.wb-slide.is-on .sp-shot--p{animation-delay:.9s}
+.wb.is-paused .sp-shot,.wb.is-off .sp-shot{animation-play-state:paused}
+@keyframes spscroll{from{transform:translateY(0)}to{transform:translateY(calc(var(--sp-d,0px) * -1))}}
+@container (max-aspect-ratio: 2/1){
+  .sp-win{left:1.5cqw;top:5cqh;width:78cqw;height:82cqh}
+  .sp-phone{right:3.5cqw;bottom:3.5cqh;height:76cqh}
+}
 .wb-box{position:absolute;inset:0;margin:auto;z-index:1;display:flex;align-items:center;justify-content:center}
 .wb-box img{display:block;width:100%;height:100%;object-fit:contain}
 .wb-pic--logo .wb-box{width:min(58cqw,30rem);height:42cqh}
@@ -803,7 +825,7 @@ body::after{ /* swiss-noise */
   .wb-tm{display:none}
 }
 @media (max-width:640px){.wb-pic--mock::after,.wb-pic--trio::after,.wb-pic--st::after{display:none}.wb-info{grid-template-columns:minmax(0,1fr)}.wb-info .wb-btn{grid-column:1;grid-row:auto;justify-self:start;margin-top:.6rem}}
-@media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-box{animation:none}.wb-tab.is-on .wb-bar{animation:none;transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.wb-slide,.wb-tn{transition:none}.wb-slide.is-on .wb-box,.wb-slide.is-on .sp-shot{animation:none}.wb-tab.is-on .wb-bar{animation:none;transform:scaleX(1)}}
 /* Arbeiten-Abschluss auf Schwarz */
 .works-foot{background:var(--fg);color:#fff;border-top-color:var(--fg)}
 .works-foot .foot-q{color:#fff}
@@ -1177,7 +1199,7 @@ body::after{ /* swiss-noise */
     <div class="wb-slide is-on" id="wb-s-stroeer" data-dur="11300" role="tabpanel" aria-labelledby="wb-t-stroeer">
       <div class="wb-pic wb-pic--st"><div class="wb-box st-row"><img class="st-logo" src="/assets/img/arbeiten/buehne/stroeer-logo.webp" width="811" height="171" decoding="async" alt="Ströer Logo"><div class="st-dev"><div class="st-screen"><video class="wb-vid-st" muted playsinline loop preload="none" poster="/assets/video/stroeer-teaser-poster.webp" width="406" height="720" aria-label="Ausschnitt aus dem Spot „Raus aus der Komfortzone“"><source src="/assets/video/stroeer-teaser.mp4" type="video/mp4"><source src="/assets/video/stroeer-teaser.webm" type="video/webm"></video></div><span class="st-foot" aria-hidden="true"></span></div></div></div>
       <div class="wb-info">
-        <span class="wb-n">01 / 05</span>
+        <span class="wb-n">01 / 06</span>
         <h3 class="wb-name">Ströer</h3>
         <p class="wb-teaser">Ein 15-Sekunden-Spot, der auf Infoscreens in Bahnhöfen ohne Ton funktionieren muss.</p>
         <p class="wb-meta">Motion Design · DOOH</p>
@@ -1187,7 +1209,7 @@ body::after{ /* swiss-noise */
     <div class="wb-slide" id="wb-s-nomo" data-dur="7100" role="tabpanel" aria-labelledby="wb-t-nomo" hidden>
       <div class="wb-pic wb-pic--video"><video class="wb-vid" muted playsinline loop preload="none" poster="/assets/video/nomo-teaser-poster.webp" width="1280" height="720" aria-label="Animation: Nomo taucht auf, klopft an die Kamera, erschrickt und wird in den Laptop gesaugt"><source src="/assets/video/nomo-teaser.webm" type="video/webm"><source src="/assets/video/nomo-teaser.mp4" type="video/mp4"></video><span class="wb-ai">Animation: KI-generiert mit Gemini</span></div>
       <div class="wb-info">
-        <span class="wb-n">02 / 05</span>
+        <span class="wb-n">02 / 06</span>
         <h3 class="wb-name">Nomo</h3>
         <p class="wb-teaser">Ein KI-Assistent empfängt Besucher auf Kanzlei-Websites und übergibt das Anliegen an die Kanzlei.</p>
         <p class="wb-meta">KI · n8n · Webdesign</p>
@@ -1208,7 +1230,7 @@ body::after{ /* swiss-noise */
 })();
 </script>
       <div class="wb-info">
-        <span class="wb-n">03 / 05</span>
+        <span class="wb-n">03 / 06</span>
         <h3 class="wb-name">Dreamberry Studios</h3>
         <p class="wb-teaser">Instagram-Content für eine Model- und Social-Media-Agentur, gebaut auf einem festen Template-System.</p>
         <p class="wb-meta">Social Media · Content</p>
@@ -1218,17 +1240,36 @@ body::after{ /* swiss-noise */
     <div class="wb-slide" id="wb-s-ems-loccum" role="tabpanel" aria-labelledby="wb-t-ems-loccum" hidden>
       <div class="wb-pic wb-pic--mock"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/ems-800.webp" srcset="/assets/img/arbeiten/buehne/ems-800.webp 800w, /assets/img/arbeiten/buehne/ems-1400.webp 1400w" sizes="(min-width:1024px) 50vw, 100vw" width="1400" height="939" decoding="async" alt="Mockup der Broschüre für EMS Loccum, aufgeklappt"></div></div>
       <div class="wb-info">
-        <span class="wb-n">04 / 05</span>
+        <span class="wb-n">04 / 06</span>
         <h3 class="wb-name">EMS Loccum</h3>
         <p class="wb-teaser">Neues Logo, neue Texte, neue Broschüre für einen erklärungsbedürftigen Dienst.</p>
         <p class="wb-meta">Branding · Print</p>
         <a class="btn btn--accent wb-btn" href="/arbeiten/ems-loccum/">Case ansehen<span class="sr-only">: EMS Loccum</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
+    <div class="wb-slide" id="wb-s-schillerpraxis" data-dur="11000" role="tabpanel" aria-labelledby="wb-t-schillerpraxis" hidden>
+      <div class="wb-pic wb-pic--sp">
+        <div class="sp-win">
+          <div class="sp-top"><span class="sp-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sp-url">die-schillerpraxis.de</span></div>
+          <div class="sp-view"><img class="sp-shot" src="/assets/img/arbeiten/buehne/schiller-desktop-1229.webp" srcset="/assets/img/arbeiten/buehne/schiller-desktop-640.webp 640w, /assets/img/arbeiten/buehne/schiller-desktop-1229.webp 1229w" sizes="(min-width:1024px) 50vw, 80vw" width="1229" height="4385" loading="lazy" decoding="async" alt="Startseite der Schillerpraxis am Desktop, vom Kopf bis zum Fuß"></div>
+        </div>
+        <div class="sp-phone">
+          <div class="sp-view"><img class="sp-shot sp-shot--p" src="/assets/img/arbeiten/buehne/schiller-mobile-489.webp" srcset="/assets/img/arbeiten/buehne/schiller-mobile-300.webp 300w, /assets/img/arbeiten/buehne/schiller-mobile-489.webp 489w" sizes="(min-width:1024px) 10vw, 20vw" width="489" height="3461" loading="lazy" decoding="async" alt="Dieselbe Seite am Handy"></div>
+          <img class="sp-bar" src="/assets/img/arbeiten/buehne/schiller-bar-489.webp" width="489" height="75" loading="lazy" decoding="async" alt="">
+        </div>
+      </div>
+      <div class="wb-info">
+        <span class="wb-n">05 / 06</span>
+        <h3 class="wb-name">Die Schillerpraxis</h3>
+        <p class="wb-teaser">Eine Arztpraxis-Website für Patienten, die nicht mit Technik aufgewachsen sind: kurze Seiten, große Schrift, alles zwei Klicks entfernt.</p>
+        <p class="wb-meta">Webdesign · Entwicklung</p>
+        <a class="btn btn--accent wb-btn" href="/arbeiten/schillerpraxis/">Case ansehen<span class="sr-only">: Die Schillerpraxis</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
     <div class="wb-slide" id="wb-s-av-vertrags-bot" role="tabpanel" aria-labelledby="wb-t-av-vertrags-bot" hidden>
       <div class="wb-pic wb-pic--logo"><div class="wb-box"><img src="/assets/img/arbeiten/buehne/av-bot-platzhalter.svg" width="720" height="300" decoding="async" alt="Illustration: Vertragsdokument mit Haken, über Workflow-Schritte mit einem zweiten Dokument verbunden"></div></div>
       <div class="wb-info">
-        <span class="wb-n">05 / 05</span>
+        <span class="wb-n">06 / 06</span>
         <h3 class="wb-name">AV-Vertrags-Bot</h3>
         <p class="wb-teaser">Ein Bot erstellt DSGVO-Verträge, holt die Unterschriften ein und legt sie ab.</p>
         <p class="wb-meta">Automatisierung · n8n</p>
@@ -1241,7 +1282,8 @@ body::after{ /* swiss-noise */
       <li role="presentation"><button type="button" class="wb-tab" id="wb-t-nomo" style="--dur:7.1s" role="tab" aria-selected="false" aria-controls="wb-s-nomo"><span class="wb-n">02</span><span class="wb-tn">Nomo</span><span class="wb-tm">KI · n8n · Webdesign</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li role="presentation"><button type="button" class="wb-tab" id="wb-t-dreamberry" role="tab" aria-selected="false" aria-controls="wb-s-dreamberry"><span class="wb-n">03</span><span class="wb-tn">Dreamberry Studios</span><span class="wb-tm">Social Media · Content</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li role="presentation"><button type="button" class="wb-tab" id="wb-t-ems-loccum" role="tab" aria-selected="false" aria-controls="wb-s-ems-loccum"><span class="wb-n">04</span><span class="wb-tn">EMS Loccum</span><span class="wb-tm">Branding · Print</span><span class="wb-bar" aria-hidden="true"></span></button></li>
-      <li role="presentation"><button type="button" class="wb-tab" id="wb-t-av-vertrags-bot" role="tab" aria-selected="false" aria-controls="wb-s-av-vertrags-bot"><span class="wb-n">05</span><span class="wb-tn">AV-Vertrags-Bot</span><span class="wb-tm">Automatisierung · n8n</span><span class="wb-bar" aria-hidden="true"></span></button></li>
+      <li role="presentation"><button type="button" class="wb-tab" id="wb-t-schillerpraxis" style="--dur:11s" role="tab" aria-selected="false" aria-controls="wb-s-schillerpraxis"><span class="wb-n">05</span><span class="wb-tn">Die Schillerpraxis</span><span class="wb-tm">Webdesign · Entwicklung</span><span class="wb-bar" aria-hidden="true"></span></button></li>
+      <li role="presentation"><button type="button" class="wb-tab" id="wb-t-av-vertrags-bot" role="tab" aria-selected="false" aria-controls="wb-s-av-vertrags-bot"><span class="wb-n">06</span><span class="wb-tn">AV-Vertrags-Bot</span><span class="wb-tm">Automatisierung · n8n</span><span class="wb-bar" aria-hidden="true"></span></button></li>
     </ul>
   </div>
 
@@ -2228,6 +2270,24 @@ body::after{ /* swiss-noise */
 (function(){
   var d=[].slice.call(document.querySelectorAll('.sx')); if(!d.length) return;
   d.forEach(function(x){ x.addEventListener('toggle',function(){ if(x.open) d.forEach(function(y){ if(y!==x) y.open=false }) }) });
+})();
+</script>
+<script>
+/* Bühne Schillerpraxis: Scrollweg aus den echten Maßen setzen (nur Transform, kein Layout). */
+(function(){
+  var p=document.getElementById('wb-s-schillerpraxis'); if(!p) return;
+  var views=[].slice.call(p.querySelectorAll('.sp-view'));
+  function set(){
+    views.forEach(function(v){
+      var im=v.querySelector('img'); if(!im) return;
+      var w=im.naturalWidth||+im.getAttribute('width'), h=im.naturalHeight||+im.getAttribute('height');
+      if(!w||!h) return;
+      v.style.setProperty('--sp-d', Math.max(0, v.clientWidth*h/w - v.clientHeight)+'px');
+    });
+  }
+  set();
+  if('ResizeObserver' in window) new ResizeObserver(set).observe(p); else window.addEventListener('resize',set);
+  [].forEach.call(p.querySelectorAll('img'),function(im){ im.addEventListener('load',set) });
 })();
 </script>
 <script>
