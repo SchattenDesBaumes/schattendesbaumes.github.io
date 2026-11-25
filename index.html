@@ -756,9 +756,10 @@ body::after{ /* swiss-noise */
 .sp-shot{position:absolute;top:0;left:0;width:100%;height:auto;display:block}
 .sp-phone{position:absolute;z-index:3;right:8cqw;bottom:3cqh;height:80cqh;aspect-ratio:1/1.984;background:#fff;border:3px solid var(--fg);overflow:hidden;display:grid;grid-template-rows:minmax(0,1fr) 7.6%;box-shadow:0 2cqh 6cqh rgba(0,0,0,.4)}
 .sp-bar{width:100%;height:100%;object-fit:fill;display:block;border-top:1px solid #e6e6e6}
-.wb-slide.is-on .sp-shot{animation:spscroll 11s cubic-bezier(.5,0,.5,1) forwards}
+.wb-slide.is-on .sp-shot{animation:spscroll 24s cubic-bezier(.45,0,.55,1) infinite alternate}
 .wb-slide.is-on .sp-shot--p{animation-delay:.9s}
-.wb.is-paused .sp-shot,.wb.is-off .sp-shot{animation-play-state:paused}
+/* Bewusst NICHT bei .is-paused anhalten: der Scroll soll auch unter der Maus weiterlaufen. */
+.wb.is-off .sp-shot{animation-play-state:paused}
 @keyframes spscroll{from{transform:translateY(0)}to{transform:translateY(calc(var(--sp-d,0px) * -1))}}
 @container (max-aspect-ratio: 2/1){
   .sp-win{left:1.5cqw;top:5cqh;width:78cqw;height:82cqh}
@@ -1247,7 +1248,7 @@ body::after{ /* swiss-noise */
         <a class="btn btn--accent wb-btn" href="/arbeiten/ems-loccum/">Case ansehen<span class="sr-only">: EMS Loccum</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="wb-slide" id="wb-s-schillerpraxis" data-dur="11000" role="tabpanel" aria-labelledby="wb-t-schillerpraxis" hidden>
+    <div class="wb-slide" id="wb-s-schillerpraxis" data-dur="24000" role="tabpanel" aria-labelledby="wb-t-schillerpraxis" hidden>
       <div class="wb-pic wb-pic--sp">
         <div class="sp-win">
           <div class="sp-top"><span class="sp-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sp-url">die-schillerpraxis.de</span></div>
@@ -1282,7 +1283,7 @@ body::after{ /* swiss-noise */
       <li role="presentation"><button type="button" class="wb-tab" id="wb-t-nomo" style="--dur:7.1s" role="tab" aria-selected="false" aria-controls="wb-s-nomo"><span class="wb-n">02</span><span class="wb-tn">Nomo</span><span class="wb-tm">KI · n8n · Webdesign</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li role="presentation"><button type="button" class="wb-tab" id="wb-t-dreamberry" role="tab" aria-selected="false" aria-controls="wb-s-dreamberry"><span class="wb-n">03</span><span class="wb-tn">Dreamberry Studios</span><span class="wb-tm">Social Media · Content</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li role="presentation"><button type="button" class="wb-tab" id="wb-t-ems-loccum" role="tab" aria-selected="false" aria-controls="wb-s-ems-loccum"><span class="wb-n">04</span><span class="wb-tn">EMS Loccum</span><span class="wb-tm">Branding · Print</span><span class="wb-bar" aria-hidden="true"></span></button></li>
-      <li role="presentation"><button type="button" class="wb-tab" id="wb-t-schillerpraxis" style="--dur:11s" role="tab" aria-selected="false" aria-controls="wb-s-schillerpraxis"><span class="wb-n">05</span><span class="wb-tn">Die Schillerpraxis</span><span class="wb-tm">Webdesign · Entwicklung</span><span class="wb-bar" aria-hidden="true"></span></button></li>
+      <li role="presentation"><button type="button" class="wb-tab" id="wb-t-schillerpraxis" style="--dur:24s" role="tab" aria-selected="false" aria-controls="wb-s-schillerpraxis"><span class="wb-n">05</span><span class="wb-tn">Die Schillerpraxis</span><span class="wb-tm">Webdesign · Entwicklung</span><span class="wb-bar" aria-hidden="true"></span></button></li>
       <li role="presentation"><button type="button" class="wb-tab" id="wb-t-av-vertrags-bot" role="tab" aria-selected="false" aria-controls="wb-s-av-vertrags-bot"><span class="wb-n">06</span><span class="wb-tn">AV-Vertrags-Bot</span><span class="wb-tm">Automatisierung · n8n</span><span class="wb-bar" aria-hidden="true"></span></button></li>
     </ul>
   </div>
