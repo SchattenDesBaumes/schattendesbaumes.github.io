@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Dreamberry-Referenzbilder: nicht crawlen, nicht in die Bildersuche.
+Disallow: /assets/img/referenzen/dreamberry/
+
 Sitemap: https://www.sidaravci-portfolio.de/sitemap.xml
