@@ -959,6 +959,77 @@ html{scroll-padding-top:calc(var(--hdr-h,72px) + var(--idx-h,56px) + 8px)}
 .site-header .m1-btn__icon i{background:var(--fg)}
 .menu-open .site-header .m1-btn__icon{background:#fff}
 </style>
+<style id="wash">
+/* ============================================================
+   LICHTSCHLEIER — ein ambienter Verlauf ueber die ganze Seite.
+   --wash steuert die Staerke: 0 = aus, 1 = Empfehlung, 2 = doppelt.
+   ============================================================ */
+:root{
+  --wash:1;
+  --warm:255,214,198;     /* heller Akzentton, damit die Helligkeit bleibt */
+  --cool:204,222,247;     /* heller kuehler Gegenpol */
+}
+
+/* Helle Flaechen: fester Schleier hinter dem Inhalt, scrollt nicht mit.
+   Die Blueten sitzen rechts, unten und an den Raendern — der Textblock
+   links oben, wo die rote Headline steht, bleibt hell. */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(75% 85% at 118% 8%,   rgba(var(--cool),  calc(.55 * var(--wash))), transparent 62%),
+    radial-gradient(60% 70% at 92% 96%,   rgba(var(--warm),  calc(.42 * var(--wash))), transparent 60%),
+    radial-gradient(55% 60% at -14% 92%,  rgba(var(--cool),  calc(.40 * var(--wash))), transparent 58%),
+    radial-gradient(40% 36% at -8% -8%,   rgba(var(--warm),  calc(.17 * var(--wash))), transparent 52%),
+    var(--bg);
+}
+
+/* Graue Flaeche durchlaessig machen, damit der Schleier hindurchkommt */
+.bg-muted{background-color:rgba(0,0,0,calc(.045 + .01 * var(--wash)))}
+
+/* Kleine schwarze Elemente: nur ein leichter Schimmer, kein Radialverlauf */
+.btn--primary,
+.works-head .is-active,
+.wsw__thumb,
+.st-foot{
+  background-image:linear-gradient(168deg,
+    rgba(255,255,255,calc(.09 * var(--wash))) 0%,
+    rgba(255,255,255,0) 58%);
+}
+.btn--primary{background-color:var(--fg)}
+
+/* Die Bildschirm-Attrappe behaelt ihren harten Rahmen */
+.st-screen{background-image:none}
+
+
+/* ============================================================
+   ASCHE — weisse Partikel, die langsam nach rechts treiben.
+   Drei Tiefenebenen: nah gross/schnell/hell, fern klein/langsam/matt.
+   ============================================================ */
+.ash{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.ash + *{position:relative;z-index:1}
+.contact > *:not(.ash),
+.band > *:not(.ash),
+.flowsec--dark > *:not(.ash),
+.site-header > *:not(.ash){position:relative;z-index:1}
+.ash i{position:absolute;display:block;border-radius:50%;background:#fff;
+  will-change:transform;animation:drift linear infinite}
+.ash i.f{width:2px;height:2px;opacity:.30}
+.ash i.m{width:3px;height:3px;opacity:.52}
+.ash i.n{width:4px;height:4px;opacity:.78;filter:blur(.5px);box-shadow:0 0 6px rgba(255,255,255,.35)}
+@keyframes drift{
+  from{transform:translate3d(-6vw,0,0)}
+  to  {transform:translate3d(112vw,0,0)}
+}
+.ash b{position:absolute;display:block;animation:sway ease-in-out infinite alternate}
+@keyframes sway{from{transform:translateY(-1.1rem)}to{transform:translateY(1.1rem)}}
+@media (prefers-reduced-motion:reduce){
+  .ash{display:none}
+}
+
+@media (prefers-reduced-transparency:reduce){
+  body::before{display:none}
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
@@ -1406,6 +1477,42 @@ html{scroll-padding-top:calc(var(--hdr-h,72px) + var(--idx-h,56px) + 8px)}
   document.querySelectorAll('[data-menu] a, [data-menu-backdrop]').forEach(function(a){ a.addEventListener('click',function(){ set(false) }) });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false) });
   window.matchMedia('(min-width:1024px)').addEventListener('change',function(e){ if(e.matches) set(false) });
+})();
+</script>
+<script>
+/* Asche in die dunklen Flaechen streuen. Einmal erzeugt, danach reines CSS. */
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ziele = document.querySelectorAll('.contact, .band, .flowsec--dark, .site-header');
+  var ebenen = [
+    {k:'f', d:1/9000,  dauer:[54,78], sway:[9,14]},   /* fern   */
+    {k:'m', d:1/14000, dauer:[34,50], sway:[7,11]},   /* mitte  */
+    {k:'n', d:1/26000, dauer:[20,30], sway:[5,8]}     /* nah    */
+  ];
+  var z = function(a,b){ return a + Math.random()*(b-a); };
+  ziele.forEach(function(ziel){
+    var flaeche = ziel.offsetWidth * ziel.offsetHeight;
+    var box = document.createElement('div');
+    box.className = 'ash'; box.setAttribute('aria-hidden','true');
+    ebenen.forEach(function(e){
+      var anzahl = Math.max(3, Math.min(70, Math.round(flaeche * e.d)));
+      for (var i=0; i<anzahl; i++){
+        var sway = document.createElement('b');
+        sway.style.top = z(2,96).toFixed(1)+'%';
+        sway.style.left = '0';
+        sway.style.width = '100%';
+        sway.style.animationDuration = z(e.sway[0], e.sway[1]).toFixed(1)+'s';
+        sway.style.animationDelay = (-z(0,12)).toFixed(1)+'s';
+        var p = document.createElement('i');
+        p.className = e.k;
+        p.style.animationDuration = z(e.dauer[0], e.dauer[1]).toFixed(1)+'s';
+        p.style.animationDelay = (-z(0, e.dauer[1])).toFixed(1)+'s';
+        sway.appendChild(p);
+        box.appendChild(sway);
+      }
+    });
+    ziel.insertBefore(box, ziel.firstChild);
+  });
 })();
 </script>
 </body>
