@@ -55,77 +55,6 @@ address{font-style:normal;margin:.5rem 0}
 footer{border-top:4px solid var(--fg);padding:1.25rem var(--pad);font-size:.8125rem;display:flex;gap:1.5rem;flex-wrap:wrap}
 footer a{text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
 </style>
-<style id="wash">
-/* ============================================================
-   LICHTSCHLEIER — ein ambienter Verlauf ueber die ganze Seite.
-   --wash steuert die Staerke: 0 = aus, 1 = Empfehlung, 2 = doppelt.
-   ============================================================ */
-:root{
-  --wash:1;
-  --warm:255,214,198;     /* heller Akzentton, damit die Helligkeit bleibt */
-  --cool:204,222,247;     /* heller kuehler Gegenpol */
-}
-
-/* Helle Flaechen: fester Schleier hinter dem Inhalt, scrollt nicht mit.
-   Die Blueten sitzen rechts, unten und an den Raendern — der Textblock
-   links oben, wo die rote Headline steht, bleibt hell. */
-body::before{
-  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:
-    radial-gradient(75% 85% at 118% 8%,   rgba(var(--cool),  calc(.55 * var(--wash))), transparent 62%),
-    radial-gradient(60% 70% at 92% 96%,   rgba(var(--warm),  calc(.42 * var(--wash))), transparent 60%),
-    radial-gradient(55% 60% at -14% 92%,  rgba(var(--cool),  calc(.40 * var(--wash))), transparent 58%),
-    radial-gradient(40% 36% at -8% -8%,   rgba(var(--warm),  calc(.17 * var(--wash))), transparent 52%),
-    var(--bg);
-}
-
-/* Graue Flaeche durchlaessig machen, damit der Schleier hindurchkommt */
-.bg-muted{background-color:rgba(0,0,0,calc(.045 + .01 * var(--wash)))}
-
-/* Kleine schwarze Elemente: nur ein leichter Schimmer, kein Radialverlauf */
-.btn--primary,
-.works-head .is-active,
-.wsw__thumb,
-.st-foot{
-  background-image:linear-gradient(168deg,
-    rgba(255,255,255,calc(.09 * var(--wash))) 0%,
-    rgba(255,255,255,0) 58%);
-}
-.btn--primary{background-color:var(--fg)}
-
-/* Die Bildschirm-Attrappe behaelt ihren harten Rahmen */
-.st-screen{background-image:none}
-
-
-/* ============================================================
-   ASCHE — weisse Partikel, die langsam nach rechts treiben.
-   Drei Tiefenebenen: nah gross/schnell/hell, fern klein/langsam/matt.
-   ============================================================ */
-.ash{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.ash + *{position:relative;z-index:1}
-.contact > *:not(.ash),
-.band > *:not(.ash),
-.flowsec--dark > *:not(.ash),
-.site-header > *:not(.ash){position:relative;z-index:1}
-.ash i{position:absolute;display:block;border-radius:50%;background:#fff;
-  will-change:transform;animation:drift linear infinite}
-.ash i.f{width:2px;height:2px;opacity:.30}
-.ash i.m{width:3px;height:3px;opacity:.52}
-.ash i.n{width:4px;height:4px;opacity:.78;filter:blur(.5px);box-shadow:0 0 6px rgba(255,255,255,.35)}
-@keyframes drift{
-  from{transform:translate3d(-6vw,0,0)}
-  to  {transform:translate3d(112vw,0,0)}
-}
-.ash b{position:absolute;display:block;animation:sway ease-in-out infinite alternate}
-@keyframes sway{from{transform:translateY(-1.1rem)}to{transform:translateY(1.1rem)}}
-@media (prefers-reduced-motion:reduce){
-  .ash{display:none}
-}
-
-@media (prefers-reduced-transparency:reduce){
-  body::before{display:none}
-}
-</style>
 </head>
 <body>
 <header><a href="/" aria-label="Sidar Avci, zur Startseite"><svg class="brand__mark" viewBox="0 0 743.68 880.39" width="29" height="34" aria-hidden="true" focusable="false"><defs><path id="bm" d="M342.7734375 8.7890625Q248.046875 8.7890625 177.490234375 -19.287109375Q106.93359375 -47.36328125 67.87109375 -105.95703125Q28.80859375 -164.55078125 28.3203125 -255.859375H215.8203125Q217.7734375 -222.65625 232.666015625 -199.70703125Q247.55859375 -176.7578125 274.658203125 -165.0390625Q301.7578125 -153.3203125 339.84375 -153.3203125Q371.58203125 -153.3203125 393.06640625 -161.1328125Q414.55078125 -168.9453125 425.537109375 -182.861328125Q436.5234375 -196.77734375 436.5234375 -214.84375Q436.5234375 -231.4453125 426.025390625 -243.896484375Q415.52734375 -256.34765625 391.6015625 -266.6015625Q367.67578125 -276.85546875 327.1484375 -285.15625L253.90625 -300.78125Q157.71484375 -321.2890625 102.294921875 -370.849609375Q46.875 -420.41015625 46.875 -505.859375Q46.875 -575.1953125 84.47265625 -627.197265625Q122.0703125 -679.19921875 188.232421875 -708.251953125Q254.39453125 -737.3046875 340.8203125 -737.3046875Q429.19921875 -737.3046875 493.408203125 -707.763671875Q557.6171875 -678.22265625 592.529296875 -624.755859375Q627.44140625 -571.2890625 627.9296875 -500.0H438.4765625Q436.03515625 -535.64453125 412.353515625 -555.419921875Q388.671875 -575.1953125 340.8203125 -575.1953125Q310.546875 -575.1953125 291.015625 -568.115234375Q271.484375 -561.03515625 262.20703125 -548.33984375Q252.9296875 -535.64453125 252.9296875 -519.53125Q252.9296875 -502.44140625 262.939453125 -489.501953125Q272.94921875 -476.5625 294.677734375 -467.041015625Q316.40625 -457.51953125 350.5859375 -450.1953125L410.15625 -437.5Q470.21484375 -424.8046875 513.427734375 -403.80859375Q556.640625 -382.8125 584.228515625 -354.736328125Q611.81640625 -326.66015625 624.755859375 -291.50390625Q637.6953125 -256.34765625 637.6953125 -214.84375Q637.6953125 -143.06640625 602.294921875 -93.017578125Q566.89453125 -42.96875 500.9765625 -17.08984375Q435.05859375 8.7890625 342.7734375 8.7890625Z"/></defs><g transform="translate(-28.32,737.30)"><g class="brand__flank"><use href="#bm" style="--i:16"/><use href="#bm" style="--i:15"/><use href="#bm" style="--i:14"/><use href="#bm" style="--i:13"/><use href="#bm" style="--i:12"/><use href="#bm" style="--i:11"/><use href="#bm" style="--i:10"/><use href="#bm" style="--i:9"/><use href="#bm" style="--i:8"/><use href="#bm" style="--i:7"/><use href="#bm" style="--i:6"/><use href="#bm" style="--i:5"/><use href="#bm" style="--i:4"/><use href="#bm" style="--i:3"/><use href="#bm" style="--i:2"/><use href="#bm" style="--i:1"/></g><use href="#bm" class="brand__face"/></g></svg><script>(function(){var m=document.currentScript.previousElementSibling;if(!m||!m.classList)return;m.classList.add("is-build");setTimeout(function(){m.classList.remove("is-build")},1400)})();</script>Sidar Avci</a></header>
@@ -232,41 +161,5 @@ Deutschland
 <a class="back" href="/">← Zur Startseite</a>
 </main>
 <footer><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a></footer>
-<script>
-/* Asche in die dunklen Flaechen streuen. Einmal erzeugt, danach reines CSS. */
-(function(){
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var ziele = document.querySelectorAll('.contact, .band, .flowsec--dark, .site-header');
-  var ebenen = [
-    {k:'f', d:1/9000,  dauer:[54,78], sway:[9,14]},   /* fern   */
-    {k:'m', d:1/14000, dauer:[34,50], sway:[7,11]},   /* mitte  */
-    {k:'n', d:1/26000, dauer:[20,30], sway:[5,8]}     /* nah    */
-  ];
-  var z = function(a,b){ return a + Math.random()*(b-a); };
-  ziele.forEach(function(ziel){
-    var flaeche = ziel.offsetWidth * ziel.offsetHeight;
-    var box = document.createElement('div');
-    box.className = 'ash'; box.setAttribute('aria-hidden','true');
-    ebenen.forEach(function(e){
-      var anzahl = Math.max(3, Math.min(70, Math.round(flaeche * e.d)));
-      for (var i=0; i<anzahl; i++){
-        var sway = document.createElement('b');
-        sway.style.top = z(2,96).toFixed(1)+'%';
-        sway.style.left = '0';
-        sway.style.width = '100%';
-        sway.style.animationDuration = z(e.sway[0], e.sway[1]).toFixed(1)+'s';
-        sway.style.animationDelay = (-z(0,12)).toFixed(1)+'s';
-        var p = document.createElement('i');
-        p.className = e.k;
-        p.style.animationDuration = z(e.dauer[0], e.dauer[1]).toFixed(1)+'s';
-        p.style.animationDelay = (-z(0, e.dauer[1])).toFixed(1)+'s';
-        sway.appendChild(p);
-        box.appendChild(sway);
-      }
-    });
-    ziel.insertBefore(box, ziel.firstChild);
-  });
-})();
-</script>
 </body>
 </html>
