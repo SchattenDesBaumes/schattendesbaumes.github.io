@@ -50,7 +50,7 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   --b:4px;                   /* Strukturlinie */
   --b2:2px;
   --pad:clamp(1.25rem, 4vw, 3rem);
-  --pad-y:clamp(4rem, 9vw, 8rem);
+  --pad-y:clamp(2.5rem, 5.2vw, 4.5rem);
   --maxw:110rem;
   --ease:cubic-bezier(.2,0,0,1);
   --font:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -107,8 +107,8 @@ body::after{ /* swiss-noise */
 .sec-label .num::before{content:counter(sec,decimal-leading-zero) ".";color:var(--accent-ink)}
 .h1{font-weight:900;text-transform:uppercase;letter-spacing:-.045em;line-height:1.04;
   font-size:clamp(2.6rem,11.6vw,5.5rem)}
-.h2{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.9;
-  font-size:clamp(2.25rem,9.4vw,7.5rem);hyphens:manual}
+.h2{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.92;
+  font-size:clamp(1.875rem,5vw,4rem);hyphens:manual}
 .h2--side{font-size:clamp(2.25rem,9.4vw,4.75rem)}
 .h3{font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;font-size:clamp(1.375rem,2.2vw,1.875rem)}
 .red{color:var(--accent)}
@@ -416,9 +416,9 @@ body::after{ /* swiss-noise */
 /* ---------- ARBEITEN KOMPAKT (Variante C: kleine Kacheln) ----------
    Ab 1200px fünf Arbeiten pro Reihe, 768–1199px drei, Handy zwei.
    Freie Arbeiten: drei Kacheln mit flacherem Bild und Kurztext. */
-.works-top{padding-top:clamp(3rem,6vw,5rem)}
+.works-top{padding-top:clamp(1.75rem,3.4vw,3rem)}
 .works-head{padding-block:1.25rem clamp(1.5rem,3vw,2.5rem)}
-.works-head .h2{font-size:clamp(2.25rem,6vw,5.5rem)}
+.works-head .h2{font-size:clamp(1.875rem,4.4vw,3.5rem)}
 .work__img svg{left:50%;right:auto;width:auto;height:100%;aspect-ratio:4/3;transform:translateX(-50%)}
 .work:hover .work__img svg{transform:translateX(-50%) scale(1.05)}
 .works>li.is-active .work:hover .work__img svg,.works--own .work:hover .work__img svg{transform:translateX(-50%)}
@@ -462,7 +462,7 @@ body::after{ /* swiss-noise */
 }
 
 /* ---------- LEISTUNGEN: Index (Desktop) / Auswahl mit Bildfläche (Handy) ---------- */
-#leistungen .sec-head .h2{font-size:clamp(2.25rem,6vw,5.5rem)}
+#leistungen .sec-head .h2{font-size:clamp(1.875rem,4.4vw,3.5rem)}
 #leistungen .sec-head{padding-bottom:clamp(1.5rem,3vw,2.5rem)}
 #leistungen .band{padding-block:clamp(2rem,3.5vw,3rem)}
 .svcx{border-top:var(--b) solid var(--border)}
@@ -499,10 +499,10 @@ body::after{ /* swiss-noise */
 /* Tablet und Desktop: wie Variante B */
 @media (min-width:768px){
   .sx summary{grid-template-columns:3.5rem minmax(0,1fr) minmax(0,1.15fr) 3.25rem 2.75rem;column-gap:clamp(1rem,2.5vw,2.5rem);padding:1.5rem var(--pad)}
-  .sx__t{font-size:clamp(1.5rem,3.6vw,3.25rem)}
+  .sx__t{font-size:clamp(1.25rem,2.3vw,2rem)}
   .sx__p{font-size:.9375rem;line-height:1.5;max-width:52ch}
-  .sx__i{display:grid;place-items:center;width:3.25rem;height:3.25rem;border:var(--b2) solid currentColor;transition:transform .3s var(--ease)}
-  .sx__i svg{width:1.6rem;height:1.6rem}
+  .sx__i{display:grid;place-items:center;width:2.5rem;height:2.5rem;border:var(--b2) solid currentColor;transition:transform .3s var(--ease)}
+  .sx__i svg{width:1.25rem;height:1.25rem}
   .sx__a,.sx__art,.sx__lead{display:none}
   .sx summary:hover{background:var(--accent)}
   .sx summary:hover .sx__n{color:var(--fg)}
@@ -510,7 +510,7 @@ body::after{ /* swiss-noise */
   .sx[open] summary{background:var(--fg);color:#fff}
   .sx[open] .sx__n,.sx[open] summary:hover .sx__n{color:var(--accent)}
   .sx[open] .plus::after{transform:translate(-50%,-50%) scaleY(0)}
-  .sx__body{grid-template-columns:3.5rem minmax(0,1fr) minmax(0,1.15fr) 6rem;column-gap:clamp(1rem,2.5vw,2.5rem);align-items:start;padding:1.5rem var(--pad) 2rem}
+  .sx__body{grid-template-columns:3rem minmax(0,1fr) minmax(0,1.15fr) 5rem;column-gap:clamp(1rem,2.5vw,2.5rem);align-items:center;padding:.8rem var(--pad) .95rem}
   .sx__body .plus-list{grid-column:2/4;columns:2;column-gap:2.5rem;border-top:0}
   .sx__body .plus-list li{break-inside:avoid;border-top:1px solid rgba(0,0,0,.25);border-bottom:0}
   .sx__ex{grid-column:2/4}
@@ -606,14 +606,14 @@ body::after{ /* swiss-noise */
 @keyframes flag-wave{0%,100%{transform:scaleX(1) skewY(0)}30%{transform:scaleX(.9) skewY(-6deg)}65%{transform:scaleX(1.04) skewY(3deg)}}
 
 /* ---------- ÜBER MICH ---------- */
-.about{row-gap:2.5rem;padding-bottom:var(--pad-y)}
-.about__media{grid-column:1/-1;position:relative;aspect-ratio:4/5;margin-top:var(--pad-y)}
+.about{row-gap:1.5rem;padding-bottom:var(--pad-y)}
+.about__media{grid-column:1/-1;position:relative;aspect-ratio:1/1;margin-top:calc(var(--pad-y) * .4)}
 .about__media svg{position:absolute;inset:0;width:100%;height:100%}
 .about__media .todo{position:absolute;left:1rem;top:1rem;background:#fff;font-size:.75rem}
-.about__text{grid-column:1/-1;display:grid;gap:2rem;align-content:start}
+.about__text{grid-column:1/-1;display:grid;gap:1.25rem;align-content:start}
 .about__text .sec-head{padding:0}
 .facts-line{border-top:var(--b2) solid var(--fg);padding-top:1rem;font-size:.875rem;color:var(--gray);max-width:60ch}
-@media (max-width:1023px){.about__text{order:-1;padding-top:var(--pad-y)}.about__media{margin-top:0;max-width:30rem}}
+@media (max-width:1023px){.about__text{order:-1;padding-top:calc(var(--pad-y) * .4)}.about__media{margin-top:0;max-width:30rem}}
 @media (min-width:1024px){
   .about__media{grid-column:1/6;position:sticky;top:calc(var(--hdr-h,72px) + 2rem);align-self:start}
   .about__text{grid-column:7/-1;padding-top:var(--pad-y)}
@@ -628,8 +628,12 @@ body::after{ /* swiss-noise */
   .faq__list{grid-column:5/-1;margin-top:var(--pad-y)}
 }
 .qa+.qa{border-top:var(--b2) solid var(--border)}
-.qa summary{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:1.25rem 1rem 1.25rem 1.25rem;
-  cursor:pointer;font-weight:700;font-size:clamp(1rem,1.5vw,1.1875rem);line-height:1.3;transition:background-color .15s linear,color .15s linear}
+.qa summary{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:center;padding:.8rem 1rem .8rem 1.25rem;
+  cursor:pointer;font-weight:700;font-size:clamp(.9375rem,1.1vw,1.0625rem);line-height:1.35;transition:background-color .15s linear,color .15s linear}
+/* Im FAQ reicht das blosse Pluszeichen; der gerahmte Kasten bleibt den Leistungen. */
+.qa .plus{width:1.5rem;height:1.5rem;border:0}
+.qa .plus::before{width:.875rem}
+.qa .plus::after{height:.875rem}
 .qa summary::-webkit-details-marker{display:none}
 .qa__n{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--accent-ink);min-width:1.75rem;font-variant-numeric:tabular-nums}
 .qa summary:hover{background:var(--accent)}
@@ -645,18 +649,30 @@ body::after{ /* swiss-noise */
 .qa[open] .plus::after{transform:translate(-50%,-50%) scaleY(0)}
 .qa__a p+p,.qa__a ul+p{margin-top:.75rem}
 .qa__list{list-style:none;margin:.75rem 0;padding:0;border-top:1px solid rgba(0,0,0,.2)}.qa__list li{padding:.5rem 0;border-bottom:1px solid rgba(0,0,0,.2)}
-.qa__a{padding:1.5rem 1.25rem 1.75rem calc(1.25rem + 1.75rem + 1rem);max-width:62ch;font-size:1rem;line-height:1.6}
+.qa__a{padding:.9rem 1.25rem 1.3rem calc(1.25rem + 1.5rem + .85rem);max-width:62ch;font-size:.9375rem;line-height:1.55}
 @media (max-width:599px){.qa__a{padding-left:1.25rem}}
 
 /* ---------- KONTAKT ---------- */
 .contact{background:var(--fg);color:#fff;position:relative;overflow:hidden;border-top-color:var(--fg)}
-.contact .grid{padding-block:var(--pad-y);row-gap:2rem;position:relative;z-index:1}
+.contact .grid{padding-block:var(--pad-y);row-gap:1.25rem;position:relative;z-index:1}
 .contact .sec-label{grid-column:1/-1}
-.contact .h2{grid-column:1/-1;font-size:clamp(3.25rem,15vw,12rem);line-height:.85}
+.contact .h2{grid-column:1/-1;font-size:clamp(2.5rem,7vw,6rem);line-height:.88}
 .contact__body{grid-column:1/-1;display:grid;gap:2rem;max-width:44rem}
 .contact__body p.big{font-size:clamp(1.125rem,1.8vw,1.375rem);line-height:1.5}
 .contact .small{color:#cfcfcf}
 .contact__circle{position:absolute;width:clamp(16rem,38vw,34rem);aspect-ratio:1;border-radius:50%;background:var(--accent);right:-8%;top:-12%;z-index:0}
+/* Schmale Schirme: die Ueberschrift ist jetzt kompakter, daher rueckt der Text hoch.
+   Der Kreis wird kleiner und weiter hinausgeschoben, damit er den Flaechentext frei laesst.
+   Kein pauschaler Kindselektor - nur diese eine Form. */
+@media (max-width:64rem){.contact__circle{width:clamp(10rem,34vw,17rem);right:-26%;top:-20%}}
+/* Laptop-Band: dort bricht der Beschreibungstext der Leistungen auf drei Zeilen um
+   und treibt den Abschnitt ueber eine Bildschirmhoehe. Enger setzen statt kuerzen. */
+@media (min-width:48.0625rem) and (max-width:85rem){
+  .sx__body{grid-template-columns:2.5rem minmax(0,1fr) minmax(0,1.45fr) 4.25rem;padding:.6rem var(--pad) .7rem}
+  .sx__p{font-size:.875rem;line-height:1.45}
+  .sx__t{font-size:clamp(1.125rem,1.9vw,1.5rem)}
+  .sx__i{width:2.125rem;height:2.125rem}.sx__i svg{width:1.05rem;height:1.05rem}
+}
 .contact__bar{position:absolute;left:0;bottom:0;width:38%;height:var(--b);background:var(--accent)}
 
 .contact__glow{position:absolute;left:0;top:0;z-index:0;pointer-events:none;overflow:visible}
@@ -672,7 +688,7 @@ body::after{ /* swiss-noise */
 
 /* ---------- FOOTER ---------- */
 .footer .frame{border-top:var(--b) solid var(--border)}
-.footer .grid{padding-block:clamp(3rem,6vw,5rem) 2rem;row-gap:2.5rem}
+.footer .grid{padding-block:clamp(1.75rem,3.4vw,3rem) 1.25rem;row-gap:1.5rem}
 .footer__brand{grid-column:1/-1}
 .footer__brand .wm{font-weight:900;text-transform:uppercase;letter-spacing:-.05em;line-height:.85;font-size:clamp(3rem,10vw,7rem)}
 .footer__col{grid-column:span 12;display:grid;gap:.75rem;align-content:start}
